@@ -11,26 +11,30 @@
   <style>
     :root {
       --bg: #242424;
-      --panel: #2a2a2a;
+      --bg-2: #1f1f1f;
+      --bg-3: #2b2622;
+      --panel: rgba(255,255,255,0.03);
+      --panel-strong: rgba(255,255,255,0.05);
       --text: #e7e0d6;
       --muted: #c8c0b5;
       --soft: #b89a72;
-      --line: rgba(231, 224, 214, 0.14);
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      --line: rgba(231,224,214,0.14);
+      --shadow: 0 18px 50px rgba(0,0,0,0.28);
       --radius: 28px;
       --max: 1220px;
+      --section-space: 92px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: "Montserrat", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(184, 154, 114, 0.08), transparent 24%),
-        linear-gradient(180deg, #1f1f1f 0%, #242424 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(184,154,114,0.08), transparent 20%),
+        radial-gradient(circle at 0% 40%, rgba(184,154,114,0.05), transparent 18%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 45%, #222 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -46,16 +50,16 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(31, 31, 31, 0.78);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      z-index: 60;
+      backdrop-filter: blur(16px);
+      background: rgba(25,25,25,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-inner {
       width: min(1320px, calc(100% - 32px));
       margin: 0 auto;
-      min-height: 78px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -66,9 +70,10 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 300;
       letter-spacing: 0.28em;
+      white-space: nowrap;
     }
 
     .brand-mark {
@@ -77,14 +82,15 @@
       border-radius: 10px;
       display: grid;
       place-items: center;
-      background: #303030;
-      color: #d5cec3;
+      background: linear-gradient(180deg, #3a3a3a, #2c2c2c);
+      color: #d8d1c7;
       font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     .links {
       display: flex;
-      gap: 26px;
+      gap: 24px;
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
@@ -93,11 +99,15 @@
 
     .links a {
       color: var(--muted);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, opacity 0.2s ease;
     }
 
-    .links a:hover {
-      color: var(--text);
+    .links a:hover { color: var(--text); }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -110,15 +120,18 @@
       border: 1px solid var(--line);
       letter-spacing: 0.04em;
       font-size: 0.93rem;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
       cursor: pointer;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
 
     .btn.primary {
       background: var(--text);
-      color: #202020;
+      color: #1f1f1f;
       border-color: var(--text);
     }
 
@@ -127,23 +140,26 @@
       color: var(--text);
     }
 
-    .hero { padding: 64px 0 52px; }
+    .hero {
+      padding: 64px 0 56px;
+    }
 
     .hero-card {
-      min-height: 660px;
+      min-height: 700px;
       border-radius: 34px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
       background:
-        linear-gradient(90deg, rgba(18, 18, 18, 0.82) 0%, rgba(18, 18, 18, 0.78) 32%, rgba(18, 18, 18, 0.28) 64%, rgba(18, 18, 18, 0.12) 100%),
-        url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+        linear-gradient(90deg, rgba(18,18,18,0.86) 0%, rgba(18,18,18,0.82) 28%, rgba(18,18,18,0.40) 62%, rgba(18,18,18,0.18) 100%),
+        radial-gradient(circle at 85% 25%, rgba(184,154,114,0.12), transparent 28%),
+        url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
       display: grid;
       align-items: center;
     }
 
     .hero-copy {
-      width: min(700px, calc(100% - 64px));
+      width: min(720px, calc(100% - 64px));
       margin-left: 48px;
     }
 
@@ -152,39 +168,68 @@
       margin-bottom: 18px;
       padding: 10px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.12);
       color: var(--muted);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255,255,255,0.04);
     }
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(2.9rem, 6.2vw, 5.2rem);
+      font-size: clamp(3rem, 6vw, 5.4rem);
       line-height: 0.96;
       font-weight: 500;
       max-width: 9ch;
     }
 
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      line-height: 1.06;
+      font-weight: 500;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+      font-weight: 500;
+    }
+
     .lead {
       max-width: 700px;
       font-size: 1.1rem;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--muted);
       margin: 0 0 28px;
     }
 
-    .btn-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+    section {
+      padding: var(--section-space) 0;
+      position: relative;
     }
 
-    section { padding: 72px 0; }
+    .section-soft::before,
+    .section-warm::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-soft::before {
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+    }
+
+    .section-warm::before {
+      background: radial-gradient(circle at top left, rgba(184,154,114,0.10), transparent 24%);
+    }
 
     .section-head {
+      position: relative;
+      z-index: 1;
       max-width: 760px;
       margin-bottom: 28px;
     }
@@ -197,26 +242,15 @@
       margin-bottom: 12px;
     }
 
-    h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      line-height: 1.06;
-      font-weight: 500;
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 1.22rem;
-      font-weight: 500;
-    }
-
     p {
       margin: 0;
-      line-height: 1.75;
       color: var(--muted);
+      line-height: 1.75;
     }
 
     .grid-3 {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
@@ -228,6 +262,17 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(184,154,114,0.42);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.34);
+    }
+
+    .card:hover .entry-image {
+      transform: scale(1.035);
     }
 
     .card-body { padding: 22px; }
@@ -236,6 +281,7 @@
       aspect-ratio: 1.25 / 1;
       object-fit: cover;
       width: 100%;
+      transition: transform 0.35s ease;
     }
 
     .entry-actions {
@@ -246,10 +292,16 @@
     }
 
     .split {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 28px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
       align-items: center;
+    }
+
+    .split.reverse {
+      grid-template-columns: 0.95fr 1.05fr;
     }
 
     .panel {
@@ -260,10 +312,24 @@
       box-shadow: var(--shadow);
     }
 
+    .page-image img,
+    .right-image img,
+    .figure-card img {
+      width: 100%;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      object-fit: cover;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
     .bullets {
       display: grid;
       gap: 16px;
-      margin-top: 24px;
+      margin-top: 10px;
     }
 
     .bullet {
@@ -273,49 +339,64 @@
       border-radius: 0 18px 18px 0;
     }
 
-    .ambassador {
-      background: radial-gradient(circle at top left, rgba(184,154,114,0.12), transparent 32%);
+    .ambassador-band {
+      background:
+        radial-gradient(circle at 0% 0%, rgba(184,154,114,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(15,15,15,0.55), rgba(15,15,15,0.32));
+      border: 1px solid var(--line);
       border-radius: 34px;
       padding: 34px;
-      border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
     }
 
-    .tiers {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-      margin-top: 24px;
+    .tiers-minimal {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
     }
 
-    .tier {
+    .tier-pill {
+      padding: 12px 16px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 18px;
-      min-height: 168px;
-      background: rgba(0,0,0,0.14);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.92rem;
+      color: var(--text);
     }
 
-    .figure-card img,
-    .page-image img,
-    .right-image img {
-      width: 100%;
-      border-radius: 26px;
+    .muted-line { color: var(--soft); }
+
+    .about-minimal {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .narrative {
+      background: rgba(255,255,255,0.022);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px;
       box-shadow: var(--shadow);
+      max-width: 980px;
     }
-
-    .about-minimal { max-width: 760px; }
 
     .quotes {
       position: relative;
+      z-index: 1;
       overflow: hidden;
-      border-radius: 28px;
+      border-radius: 30px;
       border: 1px solid var(--line);
-      padding: 28px;
+      padding: 34px;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      box-shadow: var(--shadow);
     }
 
     .quote-slide { display: none; }
+
     .quote-slide.active {
       display: block;
       animation: fade 0.5s ease;
@@ -327,18 +408,22 @@
     }
 
     .quote-text {
-      font-size: clamp(1.28rem, 2.2vw, 1.7rem);
+      font-size: clamp(1.08rem, 1.8vw, 1.3rem);
       color: var(--text);
-      line-height: 1.5;
-      margin-bottom: 12px;
+      line-height: 1.82;
+      margin-bottom: 16px;
+      white-space: pre-line;
     }
 
-    .quote-name { color: var(--muted); }
+    .quote-name {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
     .quote-nav {
       display: flex;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
     .dot {
@@ -347,16 +432,26 @@
       border-radius: 999px;
       background: rgba(255,255,255,0.18);
       cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .dot.active { background: var(--soft); }
+    .dot.active {
+      background: var(--soft);
+      transform: scale(1.08);
+    }
 
-    .vault-center { text-align: center; }
+    .vault-center {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
 
     .footer {
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 38px 0 64px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      padding: 46px 0 70px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        radial-gradient(circle at bottom left, rgba(184,154,114,0.08), transparent 25%);
     }
 
     .footer-grid {
@@ -376,14 +471,6 @@
       letter-spacing: 0.28em;
     }
 
-    .contact-list {
-      display: grid;
-      gap: 12px;
-      color: var(--muted);
-    }
-
-    .contact-list a { color: var(--text); }
-
     .mini-links {
       display: grid;
       gap: 12px;
@@ -391,10 +478,6 @@
     }
 
     .page-anchor { scroll-margin-top: 96px; }
-    .stack { display: grid; gap: 18px; }
-    .small { font-size: 0.94rem; color: var(--muted); }
-
-    form { display: grid; gap: 12px; }
 
     .field,
     textarea {
@@ -408,16 +491,8 @@
       font-size: 0.95rem;
     }
 
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+    form { display: grid; gap: 12px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     .checkbox-group {
       border: 1px solid var(--line);
@@ -442,16 +517,16 @@
     }
 
     .page-template {
-      padding: 72px 0;
+      padding: var(--section-space) 0;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .page-hero {
       display: grid;
       grid-template-columns: 1fr 0.95fr;
-      gap: 28px;
+      gap: 34px;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .section-grid { display: grid; gap: 18px; }
@@ -469,20 +544,24 @@
       gap: 16px;
     }
 
-    .muted-line { color: var(--soft); }
+    .small {
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
 
     @media (max-width: 1080px) {
       .grid-3,
-      .tiers,
       .split,
       .footer-grid,
       .page-hero,
-      .manifesto {
+      .manifesto,
+      .form-grid,
+      .check-grid {
         grid-template-columns: 1fr;
       }
 
       .hero-card {
-        min-height: 600px;
+        min-height: 620px;
         background-position: center;
       }
 
@@ -507,18 +586,14 @@
         width: min(var(--max), calc(100% - 24px));
       }
 
-      section { padding: 56px 0; }
+      section { padding: 62px 0; }
 
       .panel,
-      .ambassador,
+      .ambassador-band,
       .quotes,
-      .soft-block {
+      .soft-block,
+      .narrative {
         padding: 22px;
-      }
-
-      .form-grid,
-      .check-grid {
-        grid-template-columns: 1fr;
       }
 
       .brand,
@@ -566,7 +641,7 @@
       </div>
     </section>
 
-    <section id="entry-points" class="page-anchor">
+    <section id="entry-points" class="page-anchor section-soft">
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">Choose your entry point</div>
@@ -576,7 +651,7 @@
 
         <div class="grid-3">
           <article class="card">
-            <img class="entry-image" src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80" alt="Luxury skincare setup" />
+            <img class="entry-image" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury skin image" />
             <div class="card-body">
               <h3>Skin</h3>
               <p>Provider-guided pathways for barrier health, correction, resilience, and long-term skin quality.</p>
@@ -598,7 +673,7 @@
           </article>
 
           <article class="card">
-            <img class="entry-image" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Luxury ambassador concept" />
+            <img class="entry-image" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Luxury member card concept" />
             <div class="card-body">
               <h3>Ambassador Program</h3>
               <p>A loyalty and community ecosystem built around access, recognition, progression, perks, and The Vault.</p>
@@ -624,10 +699,10 @@
           </p>
 
           <div class="bullets">
-            <div class="bullet"><strong>Skin</strong><br /><span class="small">Barrier health, inflammation, resilience, pigment, texture, and long-term quality.</span></div>
-            <div class="bullet"><strong>Injectables</strong><br /><span class="small">Movement, support, balance, and better sequencing.</span></div>
-            <div class="bullet"><strong>Structural planning</strong><br /><span class="small">A fuller facial assessment that avoids chasing one isolated detail.</span></div>
-            <div class="bullet"><strong>Regenerative care + refinement</strong><br /><span class="small">Better tissue support first, smaller adjustments second.</span></div>
+            <div class="bullet"><strong>Skin</strong><br><span class="small">Barrier health, inflammation, resilience, pigment, texture, and long-term quality.</span></div>
+            <div class="bullet"><strong>Injectables</strong><br><span class="small">Movement, support, balance, and better sequencing.</span></div>
+            <div class="bullet"><strong>Structural planning</strong><br><span class="small">A fuller facial assessment that avoids chasing one isolated detail.</span></div>
+            <div class="bullet"><strong>Regenerative care + refinement</strong><br><span class="small">Better tissue support first, smaller adjustments second.</span></div>
           </div>
 
           <div class="btn-row">
@@ -636,15 +711,15 @@
         </div>
 
         <div class="right-image">
-          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Clinical luxury planning image" />
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury skin image" />
         </div>
       </div>
     </section>
 
-    <section id="ambassador-preview" class="page-anchor">
+    <section id="ambassador-preview" class="page-anchor section-warm">
       <div class="wrap">
-        <div class="ambassador">
-          <div class="split" style="align-items:start;">
+        <div class="ambassador-band">
+          <div class="split">
             <div class="stack">
               <div class="kicker">Ambassador Program</div>
               <h2>More than loyalty. A world of access, recognition, and status.</h2>
@@ -654,6 +729,17 @@
               <p>
                 Inside Calibrae, many simply call it <span class="muted-line">The Circle</span>. Some things are public. Some things are not. Some things are earned over time. Some things only make sense once you are inside.
               </p>
+
+              <div class="tiers-minimal">
+                <span class="tier-pill">Access</span>
+                <span class="tier-pill">The Circle</span>
+                <span class="tier-pill">The Board</span>
+                <span class="tier-pill">Founding Queens</span>
+                <span class="tier-pill">Black Label — men’s</span>
+              </div>
+
+              <p class="muted-line">Some things are not explained. They are earned.</p>
+
               <div class="btn-row">
                 <a href="#ambassador-program" class="btn primary">Explore the Ambassador Program</a>
                 <a href="#ambassador-waitlist" class="btn secondary">Join the Waitlist</a>
@@ -661,17 +747,17 @@
             </div>
 
             <div class="figure-card">
-              <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80" alt="Luxury ambassador identity" />
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Luxury ambassador identity card" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skin-preview" class="page-anchor">
-      <div class="wrap split">
+    <section id="skin-preview" class="page-anchor section-soft">
+      <div class="wrap split reverse">
         <div class="page-image">
-          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury skincare scene" />
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury skin image" />
         </div>
 
         <div class="panel stack">
@@ -680,9 +766,11 @@
           <p>
             At Calibrae, skin is not treated like an afterthought, and it is not approached through random product collecting, trend chasing, or guesswork.
           </p>
-          <p>
-            Skin care should support the way your skin functions, not just the way it looks for a week. That is why skin care at Calibrae is approached as part of a larger treatment philosophy, not as a shelf of products.
-          </p>
+          <div class="bullets">
+            <div class="bullet"><strong>Protect</strong><br><span class="small">Support the barrier, reduce unnecessary irritation, and defend daily skin function.</span></div>
+            <div class="bullet"><strong>Correct</strong><br><span class="small">Target what needs active attention with more intention and less noise.</span></div>
+            <div class="bullet"><strong>Build</strong><br><span class="small">Strengthen long-term skin quality through resilience, recovery, and consistency.</span></div>
+          </div>
           <div class="btn-row">
             <a href="#skin-page" class="btn primary">Explore Skin</a>
             <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener" class="btn secondary">Shop Skincare</a>
@@ -691,15 +779,58 @@
       </div>
     </section>
 
-    <section id="meet-danielle" class="page-anchor">
-      <div class="wrap">
-        <div class="about-minimal">
-          <div class="kicker">About Danielle</div>
-          <h2>More individualized, more conservative, more intentional.</h2>
-          <p class="lead" style="max-width:840px;">
-            Danielle Wiley, PA-C is a board-certified Physician Assistant, aesthetic provider, and founder of Calibrae Institute of Aesthetic Medicine. Her work is grounded in detailed assessment, full-face treatment planning, natural results, patient education, and a commitment to helping patients understand not only what is being recommended, but why.
+    <section id="injectables-preview" class="page-anchor">
+      <div class="wrap split">
+        <div class="panel stack">
+          <div class="kicker">Injectables</div>
+          <h2>Structure before refinement.</h2>
+          <p>
+            Injectables at Calibrae are guided by anatomy, movement, structure, proportion, tissue quality, and a clearer understanding of what is actually driving the concern.
           </p>
-          <a href="#about-danielle" class="btn primary">About Danielle</a>
+          <p>
+            The goal is not to do more. The goal is to do what makes sense, in the right order, for the right reason.
+          </p>
+          <div class="btn-row">
+            <a href="#injectables-page" class="btn primary">Explore Injectables</a>
+            <a href="#consultation" class="btn secondary">Request Consultation</a>
+          </div>
+        </div>
+
+        <div class="page-image">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Luxury injectable setup" />
+        </div>
+      </div>
+    </section>
+
+    <section id="meet-danielle" class="page-anchor section-soft">
+      <div class="wrap">
+        <div class="narrative">
+          <div class="kicker">About Danielle</div>
+          <h2>About Danielle</h2>
+          <p>
+            Danielle Wiley, PA-C is a board-certified Physician Assistant and the founder of Calibrae Institute of Aesthetic Medicine.
+          </p>
+          <p>
+            Her background includes family medicine, weight loss medicine, urgent care, and pediatric urgent care, a foundation that shaped how she approaches patient care long before entering aesthetics.
+          </p>
+          <p>
+            What drew Danielle to aesthetic medicine was the intersection of anatomy, precision, and meaningful transformation. She was drawn to a field where thoughtful, well-executed treatment could create visible impact while still looking natural, balanced, and true to the individual.
+          </p>
+          <p>
+            Over time, she became known for an approach that felt different. More individualized. More conservative. More intentional.
+          </p>
+          <p>
+            Rather than focusing on isolated concerns, Danielle takes a full-picture approach, assessing structure, support, movement, proportion, and skin quality together. Her work is built on detailed assessment, long-term planning, and results that refine rather than alter.
+          </p>
+          <p>
+            Calibrae was created to bring that philosophy fully to life. A space where patients are educated, not sold to. Where care is collaborative, not transactional. Where recommendations are made with purpose, not pressure.
+          </p>
+          <p>
+            Her goal is simple: to deliver thoughtful, anatomy-based care that helps patients look like themselves, just more supported, more balanced, and more in alignment.
+          </p>
+          <div class="btn-row" style="margin-top: 8px;">
+            <a href="#about-danielle" class="btn primary">About Danielle</a>
+          </div>
         </div>
       </div>
     </section>
@@ -713,19 +844,22 @@
 
         <div class="quotes">
           <div class="quote-slide active">
-            <div class="quote-text">“The only place I trust with my face.”</div>
+            <div class="quote-text">This is THE place I go for Botox &amp; filler. Danielle is very professional, knowledgeable, and skilled at her craft. This is the only place I will trust with my face. She makes the whole experience comfortable and answers every question thoroughly.</div>
             <div class="quote-name">— Arianna</div>
           </div>
+
           <div class="quote-slide">
-            <div class="quote-text">“Gentle, precise, and so natural.”</div>
+            <div class="quote-text">Danielle took her time to explain everything thoroughly, listened carefully, and made the entire process feel personalized from start to finish. The treatment was gentle, precise, and customized, and my results looked natural and refreshing.</div>
             <div class="quote-name">— Cynthia</div>
           </div>
+
           <div class="quote-slide">
-            <div class="quote-text">“Healthier, smoother, more radiant skin.”</div>
+            <div class="quote-text">Your knowledge, attention to detail, and expertise really show. My skin looks healthier, smoother, and more radiant. You can tell you genuinely care about doing things the right way.</div>
             <div class="quote-name">— Crystal</div>
           </div>
+
           <div class="quote-slide">
-            <div class="quote-text">“Kind, knowledgeable, and unbelievably professional.”</div>
+            <div class="quote-text">She was kind, knowledgeable, and unbelievably professional. I felt comfortable immediately. Her technique was so precise that I had zero pain or bruising, and I left feeling completely confident in her care.</div>
             <div class="quote-name">— LAD</div>
           </div>
 
@@ -739,7 +873,7 @@
       </div>
     </section>
 
-    <section id="vault-preview" class="page-anchor">
+    <section id="vault-preview" class="page-anchor section-warm">
       <div class="wrap">
         <div class="panel vault-center">
           <div class="kicker">The Vault</div>
@@ -749,6 +883,22 @@
           </p>
           <div class="btn-row" style="justify-content:center; margin-top:24px;">
             <a href="#ambassador-program" class="btn primary">See How It Works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="final-cta" class="page-anchor section-soft">
+      <div class="wrap">
+        <div class="panel vault-center">
+          <div class="kicker">Begin here</div>
+          <h2>Start with intention.</h2>
+          <p style="max-width:720px; margin:0 auto;">
+            Thoughtful, individualized planning starts here.
+          </p>
+          <div class="btn-row" style="justify-content:center; margin-top:24px;">
+            <a href="#consultation" class="btn primary">Request Consultation</a>
+            <a href="#skin-plan" class="btn secondary">Start Your Skin Plan</a>
           </div>
         </div>
       </div>
@@ -834,7 +984,7 @@
           </div>
 
           <div class="page-image">
-            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Luxury clinical planning image" />
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury clinical planning image" />
           </div>
         </div>
 
@@ -863,7 +1013,7 @@
       </div>
     </section>
 
-    <section id="ambassador-program" class="page-template page-anchor">
+    <section id="ambassador-program" class="page-template page-anchor section-warm">
       <div class="wrap">
         <div class="page-hero">
           <div class="stack">
@@ -879,7 +1029,7 @@
           </div>
 
           <div class="page-image">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Founding Queens card concept" />
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" alt="Ambassador identity card concept" />
           </div>
         </div>
 
@@ -888,15 +1038,15 @@
           <p>The Ambassador Program was built to reward more than spending. It was created for the people who stay close to the brand, believe in what it stands for, and want more than a one-time appointment or purchase.</p>
         </div>
 
-        <div class="tiers">
-          <div class="tier"><h3>Access</h3><p>The place where proximity begins, where connection to the brand becomes visible and loyalty starts to take shape.</p></div>
-          <div class="tier"><h3>The Circle</h3><p>A deeper current of recognition, belonging, and closeness to the culture of the brand.</p></div>
-          <div class="tier"><h3>The Board</h3><p>A more selective level of access for those whose loyalty, visibility, and alignment carry more weight.</p></div>
-          <div class="tier"><h3>Founding Queens</h3><p>Publicly acknowledged, never fully explained, and intentionally outside the standard path.</p></div>
-          <div class="tier"><h3>Black Label</h3><p>The men’s-side subgroup, carrying the same Calibrae identity through a more tailored lens.</p></div>
+        <div class="tiers-minimal" style="margin-top: 22px; margin-bottom: 22px;">
+          <span class="tier-pill">Access</span>
+          <span class="tier-pill">The Circle</span>
+          <span class="tier-pill">The Board</span>
+          <span class="tier-pill">Founding Queens</span>
+          <span class="tier-pill">Black Label — men’s</span>
         </div>
 
-        <div class="section-grid" style="margin-top:22px;">
+        <div class="section-grid">
           <div class="soft-block">
             <h3>Some things are only known from the inside.</h3>
             <p>Founding Queens are not simply another level in the program. They are part of a protected launch-era inner tier. You may know the name. You may know they exist. But unless you are inside that circle, you do not know what comes with it.</p>
@@ -939,7 +1089,7 @@
       </div>
     </section>
 
-    <section id="skin-page" class="page-template page-anchor">
+    <section id="skin-page" class="page-template page-anchor section-soft">
       <div class="wrap">
         <div class="page-hero">
           <div class="stack">
@@ -953,7 +1103,7 @@
           </div>
 
           <div class="page-image">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Skin image" />
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Luxury skin image" />
           </div>
         </div>
 
@@ -999,7 +1149,7 @@
           </div>
 
           <div class="page-image">
-            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Injectable planning image" />
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Luxury injectable setup" />
           </div>
         </div>
 
@@ -1028,7 +1178,7 @@
       </div>
     </section>
 
-    <section id="about-danielle" class="page-template page-anchor">
+    <section id="about-danielle" class="page-template page-anchor section-soft">
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">About Danielle</div>
@@ -1036,19 +1186,14 @@
           <p>Board-certified Physician Assistant, aesthetic provider, and founder of Calibrae Institute of Aesthetic Medicine.</p>
         </div>
 
-        <div class="section-grid">
-          <div class="soft-block">
-            <h3>A provider-led approach, built through both medicine and aesthetics</h3>
-            <p>Danielle Wiley, PA-C is a board-certified Physician Assistant whose background has included family medicine, weight loss medicine, urgent care, and pediatric urgent care before transitioning fully into aesthetic medicine.</p>
-          </div>
-          <div class="soft-block">
-            <h3>What drew Danielle to aesthetic medicine</h3>
-            <p>What drew Danielle to injectables was the intersection of anatomy, artistry, precision, and meaningful patient transformation, thoughtful, well-executed treatment that could create visible impact while still looking natural, balanced, and true to the individual.</p>
-          </div>
-          <div class="soft-block">
-            <h3>Why Calibrae was created</h3>
-            <p>Calibrae exists because Danielle believed patients deserved a better aesthetic experience, one that felt more thoughtful, more personal, more honest, and more collaborative. A place where patients are educated, not sold to.</p>
-          </div>
+        <div class="narrative">
+          <p>Danielle Wiley, PA-C is a board-certified Physician Assistant and the founder of Calibrae Institute of Aesthetic Medicine.</p>
+          <p>Her background includes family medicine, weight loss medicine, urgent care, and pediatric urgent care, a foundation that shaped how she approaches patient care long before entering aesthetics.</p>
+          <p>What drew Danielle to aesthetic medicine was the intersection of anatomy, precision, and meaningful transformation. She was drawn to a field where thoughtful, well-executed treatment could create visible impact while still looking natural, balanced, and true to the individual.</p>
+          <p>Over time, she became known for an approach that felt different. More individualized. More conservative. More intentional.</p>
+          <p>Rather than focusing on isolated concerns, Danielle takes a full-picture approach, assessing structure, support, movement, proportion, and skin quality together. Her work is built on detailed assessment, long-term planning, and results that refine rather than alter.</p>
+          <p>Calibrae was created to bring that philosophy fully to life. A space where patients are educated, not sold to. Where care is collaborative, not transactional. Where recommendations are made with purpose, not pressure.</p>
+          <p>Her goal is simple: to deliver thoughtful, anatomy-based care that helps patients look like themselves, just more supported, more balanced, and more in alignment.</p>
         </div>
 
         <div class="manifesto" style="margin-top:18px;">
@@ -1079,11 +1224,11 @@
           <div class="panel stack">
             <h3>Get in touch</h3>
             <div class="contact-list">
-              <div><strong>Phone</strong><br />(703) 593-1948</div>
-              <div><strong>Email</strong><br /><a href="mailto:calibraeaestheticmedicine@gmail.com">calibraeaestheticmedicine@gmail.com</a></div>
-              <div><strong>Location</strong><br />3343 Valley Pike, Suite 400<br />Winchester, VA</div>
-              <div><strong>Instagram</strong><br /><a href="https://instagram.com/calibraeinstitute" target="_blank" rel="noopener">@calibraeinstitute</a></div>
-              <div><strong>Shop</strong><br /><a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Browse curated skincare</a></div>
+              <div><strong>Phone</strong><br>(703) 593-1948</div>
+              <div><strong>Email</strong><br><a href="mailto:calibraeaestheticmedicine@gmail.com">calibraeaestheticmedicine@gmail.com</a></div>
+              <div><strong>Location</strong><br>3343 Valley Pike, Suite 400<br>Winchester, VA</div>
+              <div><strong>Instagram</strong><br><a href="https://instagram.com/calibraeinstitute" target="_blank" rel="noopener">@calibraeinstitute</a></div>
+              <div><strong>Shop</strong><br><a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Browse curated skincare</a></div>
             </div>
 
             <div class="btn-row">
@@ -1142,18 +1287,18 @@
   </footer>
 
   <script>
-    const slides = document.querySelectorAll(".quote-slide");
-    const dots = document.querySelectorAll(".dot");
+    const slides = document.querySelectorAll('.quote-slide');
+    const dots = document.querySelectorAll('.dot');
     let current = 0;
 
     function showSlide(index) {
-      slides.forEach((s, i) => s.classList.toggle("active", i === index));
-      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
       current = index;
     }
 
     dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => showSlide(i));
+      dot.addEventListener('click', () => showSlide(i));
     });
 
     setInterval(() => {
