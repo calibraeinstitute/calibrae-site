@@ -33,9 +33,9 @@
       font-family: "Montserrat", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top right, rgba(184,154,114,0.08), transparent 20%),
-        radial-gradient(circle at 0% 35%, rgba(184,154,114,0.05), transparent 18%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 52%, #202020 100%);
+        radial-gradient(circle at 85% 10%, rgba(184,154,114,0.12), transparent 25%),
+        radial-gradient(circle at 10% 40%, rgba(255,255,255,0.04), transparent 20%),
+        linear-gradient(180deg, #1a1a1a 0%, #222222 40%, #2a2a2a 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -214,6 +214,20 @@
       background: radial-gradient(circle at top left, rgba(184,154,114,0.10), transparent 24%);
     }
 
+    .section-light {
+      background: linear-gradient(180deg, #2a2a2a, #323232);
+    }
+
+    .section-glow {
+      background:
+        radial-gradient(circle at top left, rgba(184,154,114,0.18), transparent 30%),
+        linear-gradient(180deg, #232323, #2d2d2d);
+    }
+
+    .section-contrast {
+      background: linear-gradient(180deg, #262626, #1f1f1f);
+    }
+
     .section-divider::before {
       top: auto;
       height: 1px;
@@ -310,7 +324,7 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
@@ -715,7 +729,7 @@
       </div>
     </section>
 
-    <section id="entry-points" class="page-anchor section-soft section-divider">
+    <section id="entry-points" class="page-anchor section-light section-divider">
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">Choose your entry point</div>
@@ -760,7 +774,7 @@
       </div>
     </section>
 
-    <section id="layer-home" class="section-divider">
+    <section id="layer-home" class="section-glow section-divider">
       <div class="wrap split">
         <div class="panel stack">
           <div class="kicker">The Layer Method™</div>
@@ -781,7 +795,7 @@
       </div>
     </section>
 
-    <section id="services-home" class="section-soft section-divider">
+    <section id="services-home" class="section-contrast section-divider">
       <div class="wrap service-duo">
         <article class="service-panel skin">
           <div class="service-content">
@@ -823,7 +837,7 @@
       </div>
     </section>
 
-    <section id="reviews" class="page-anchor section-soft section-divider">
+    <section id="reviews" class="page-anchor section-light section-divider">
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">What patients have said about Danielle’s care</div>
@@ -857,7 +871,7 @@
       </div>
     </section>
 
-    <section id="final-cta" class="section-soft section-divider">
+    <section id="final-cta" class="section-glow section-divider">
       <div class="wrap">
         <div class="panel vault-center">
           <div class="kicker">Begin here</div>
