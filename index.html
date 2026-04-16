@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #1f1f1f;
+      --bg: #1d1d1d;
       --bg-2: #242424;
       --bg-3: #2b2622;
       --panel: rgba(255,255,255,0.03);
@@ -22,8 +22,8 @@
       --shadow: 0 18px 50px rgba(0,0,0,0.28);
       --radius: 28px;
       --max: 1240px;
-      --section-space: 100px;
-      --nav-h: 82px;
+      --section-space: 92px;
+      --nav-h: 84px;
     }
 
     * { box-sizing: border-box; }
@@ -34,8 +34,8 @@
       color: var(--text);
       background:
         radial-gradient(circle at top right, rgba(184,154,114,0.08), transparent 20%),
-        radial-gradient(circle at 0% 40%, rgba(184,154,114,0.05), transparent 18%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 50%, #222 100%);
+        radial-gradient(circle at 0% 35%, rgba(184,154,114,0.05), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 52%, #202020 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -56,7 +56,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(20,20,20,0.76);
+      background: rgba(20,20,20,0.78);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -94,20 +94,66 @@
 
     .links {
       display: flex;
-      gap: 24px;
+      gap: 22px;
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
       font-size: 0.92rem;
     }
 
-    .links a {
+    .nav-item {
+      position: relative;
       color: var(--muted);
       transition: color 0.2s ease;
     }
 
-    .links a:hover,
-    .links a.active { color: var(--text); }
+    .nav-item:hover { color: var(--text); }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown > a::after {
+      content: "⌄";
+      margin-left: 6px;
+      font-size: 0.78rem;
+      color: var(--soft);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      min-width: 220px;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(19,19,19,0.96);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
 
     .btn-row {
       display: flex;
@@ -136,7 +182,7 @@
 
     .btn.primary {
       background: var(--text);
-      color: #1f1f1f;
+      color: #1d1d1d;
       border-color: var(--text);
     }
 
@@ -145,18 +191,47 @@
       color: var(--text);
     }
 
+    section {
+      padding: var(--section-space) 0;
+      position: relative;
+    }
+
+    .section-soft::before,
+    .section-warm::before,
+    .section-divider::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-soft::before {
+      background: linear-gradient(180deg, rgba(255,255,255,0.014), rgba(255,255,255,0));
+    }
+
+    .section-warm::before {
+      background: radial-gradient(circle at top left, rgba(184,154,114,0.10), transparent 24%);
+    }
+
+    .section-divider::before {
+      top: auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+    }
+
     .hero {
-      padding: 64px 0 60px;
+      padding: 62px 0 54px;
     }
 
     .hero-card {
-      min-height: 720px;
+      min-height: 680px;
       border-radius: 36px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
       background:
-        linear-gradient(90deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.82) 30%, rgba(18,18,18,0.40) 63%, rgba(18,18,18,0.18) 100%),
+        linear-gradient(90deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.82) 30%, rgba(18,18,18,0.42) 62%, rgba(18,18,18,0.18) 100%),
         radial-gradient(circle at 85% 25%, rgba(184,154,114,0.12), transparent 28%),
         url('./hero-danielle.png') center/cover no-repeat;
       display: grid;
@@ -183,7 +258,7 @@
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(3rem, 6vw, 5.4rem);
+      font-size: clamp(3rem, 6vw, 5.3rem);
       line-height: 0.96;
       font-weight: 500;
       max-width: 9ch;
@@ -191,8 +266,8 @@
 
     h2 {
       margin: 0 0 12px;
-      font-size: clamp(2rem, 3.4vw, 3rem);
-      line-height: 1.06;
+      font-size: clamp(2rem, 3.3vw, 3rem);
+      line-height: 1.05;
       font-weight: 500;
     }
 
@@ -202,41 +277,17 @@
       font-weight: 500;
     }
 
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
     .lead {
       max-width: 700px;
       font-size: 1.08rem;
       line-height: 1.82;
-      color: var(--muted);
       margin: 0 0 28px;
-    }
-
-    section {
-      padding: var(--section-space) 0;
-      position: relative;
-    }
-
-    .section-soft::before,
-    .section-warm::before,
-    .section-divider::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .section-soft::before {
-      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
-    }
-
-    .section-warm::before {
-      background: radial-gradient(circle at top left, rgba(184,154,114,0.10), transparent 24%);
-    }
-
-    .section-divider::before {
-      top: auto;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
     }
 
     .section-head {
@@ -250,12 +301,6 @@
       letter-spacing: 0.12em;
       font-size: 0.78rem;
       margin-bottom: 12px;
-    }
-
-    p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.78;
     }
 
     .grid-3 {
@@ -281,14 +326,14 @@
 
     .card:hover .entry-image { transform: scale(1.035); }
 
-    .card-body { padding: 22px; }
-
     .entry-image {
+      width: 100%;
       aspect-ratio: 1.25 / 1;
       object-fit: cover;
-      width: 100%;
       transition: transform 0.35s ease;
     }
+
+    .card-body { padding: 22px; }
 
     .entry-actions {
       margin-top: 18px;
@@ -304,10 +349,6 @@
       align-items: center;
     }
 
-    .split.reverse {
-      grid-template-columns: 0.98fr 1.02fr;
-    }
-
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border: 1px solid var(--line);
@@ -316,16 +357,16 @@
       box-shadow: var(--shadow);
     }
 
-    .page-image img,
+    .stack { display: grid; gap: 18px; }
+
     .right-image img,
+    .page-image img,
     .figure-card img {
       width: 100%;
       border-radius: 26px;
       box-shadow: var(--shadow);
       object-fit: cover;
     }
-
-    .stack { display: grid; gap: 18px; }
 
     .bullets {
       display: grid;
@@ -340,34 +381,6 @@
       border-radius: 0 18px 18px 0;
     }
 
-    .ambassador-band {
-      background:
-        radial-gradient(circle at 0% 0%, rgba(184,154,114,0.12), transparent 28%),
-        linear-gradient(180deg, rgba(15,15,15,0.55), rgba(15,15,15,0.32));
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .tiers-minimal {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 22px;
-    }
-
-    .tier-pill {
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      font-size: 0.92rem;
-      color: var(--text);
-    }
-
-    .muted-line { color: var(--soft); }
-
     .service-duo {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -375,7 +388,7 @@
     }
 
     .service-panel {
-      min-height: 340px;
+      min-height: 360px;
       border-radius: 30px;
       overflow: hidden;
       position: relative;
@@ -411,7 +424,7 @@
       position: relative;
       z-index: 2;
       padding: 30px;
-      max-width: 420px;
+      max-width: 430px;
     }
 
     .about-home {
@@ -426,9 +439,8 @@
     }
 
     .about-home-photo {
-      min-height: 100%;
-      background: url('./danielle-homepage.png') center/cover no-repeat;
       min-height: 520px;
+      background: url('./danielle-homepage.png') center/cover no-repeat;
     }
 
     .about-home-copy {
@@ -440,7 +452,7 @@
     }
 
     .about-home-copy h2 {
-      font-size: clamp(2.1rem, 4vw, 4.2rem);
+      font-size: clamp(2.1rem, 4vw, 4rem);
       line-height: 1.02;
       max-width: 9ch;
     }
@@ -487,10 +499,7 @@
       transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .dot.active {
-      background: var(--soft);
-      transform: scale(1.08);
-    }
+    .dot.active { background: var(--soft); transform: scale(1.08); }
 
     .vault-center { text-align: center; }
 
@@ -586,12 +595,6 @@
       background: rgba(255,255,255,0.025);
     }
 
-    .manifesto {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
     .narrative {
       background: rgba(255,255,255,0.022);
       border: 1px solid var(--line);
@@ -601,26 +604,28 @@
       max-width: 980px;
     }
 
+    .manifesto {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
     .small { font-size: 0.94rem; color: var(--muted); }
 
     @media (max-width: 1080px) {
       .grid-3,
       .split,
+      .service-duo,
+      .about-home,
       .footer-grid,
       .page-hero,
       .manifesto,
       .form-grid,
-      .check-grid,
-      .service-duo,
-      .about-home {
+      .check-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        min-height: 620px;
-        background-position: center;
-      }
-
+      .hero-card { min-height: 620px; background-position: center; }
       .about-home-photo { min-height: 420px; }
       h1 { max-width: none; }
     }
@@ -633,20 +638,21 @@
       }
 
       .links { gap: 14px; }
+      .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; margin-top: 8px; }
       .hero-copy { width: calc(100% - 36px); margin-left: 18px; }
       .wrap { width: min(var(--max), calc(100% - 24px)); }
-      section { padding: 70px 0; }
+      section { padding: 68px 0; }
 
       .panel,
-      .ambassador-band,
       .quotes,
       .soft-block,
       .narrative,
-      .about-home-copy { padding: 22px; }
+      .about-home-copy,
+      .card-body,
+      .service-content { padding: 22px; }
 
       .brand,
       .footer-brand { letter-spacing: 0.18em; }
-
       .about-home-copy h2 { max-width: none; }
     }
   </style>
@@ -658,14 +664,36 @@
         <span class="brand-mark">C</span>
         <span>CALIBRAE</span>
       </a>
+
       <nav class="links">
-        <a href="#layer-method">The Layer Method™</a>
-        <a href="#ambassador-program">Ambassador Program</a>
-        <a href="#skin-page">Skin</a>
-        <a href="#injectables-page">Injectables</a>
-        <a href="#about-home">About Danielle</a>
-        <a href="#contact-page">Contact</a>
-        <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Shop</a>
+        <a class="nav-item" href="#top">Home</a>
+        <a class="nav-item" href="#layer-method-page">The Layer Method™</a>
+
+        <div class="dropdown nav-item">
+          <a href="#skin-page">Skin</a>
+          <div class="dropdown-menu">
+            <a href="#skin-page">Skin Overview</a>
+            <a href="#skin-plan">Start Your Skin Plan</a>
+            <a href="#skin-edit">Calibrae Skin Edit</a>
+            <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Shop Skincare</a>
+          </div>
+        </div>
+
+        <div class="dropdown nav-item">
+          <a href="#injectables-page">Injectables</a>
+          <div class="dropdown-menu">
+            <a href="#injectables-page">Injectables Overview</a>
+            <a href="#injectables-page">Neurotoxin</a>
+            <a href="#injectables-page">Facial Balancing</a>
+            <a href="#injectables-page">Regenerative Treatments</a>
+            <a href="#consultation">Consultation</a>
+          </div>
+        </div>
+
+        <a class="nav-item" href="#ambassador-program">Ambassador Program</a>
+        <a class="nav-item" href="#about-danielle">About Danielle</a>
+        <a class="nav-item" href="#contact-page">Contact</a>
+        <a class="nav-item" href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Shop</a>
       </nav>
     </div>
   </header>
@@ -675,14 +703,12 @@
       <div class="wrap">
         <div class="hero-card">
           <div class="hero-copy">
-            <div class="eyebrow">Luxury clinical aesthetics • provider-led • diagnosis-first</div>
-            <h1>A more intentional approach to aesthetic medicine</h1>
-            <p class="lead">
-              Calibrae is a provider-led aesthetic brand built around The Layer Method™, a diagnosis-first approach to skin, injectables, and long-term treatment planning designed to create results that feel natural, intelligent, and elevated.
-            </p>
+            <div class="eyebrow">Provider-led • luxury clinical aesthetics</div>
+            <h1>Calibrae Institute of Aesthetic Medicine</h1>
+            <p class="lead">A more intentional approach to aesthetics.</p>
             <div class="btn-row">
               <a href="#consultation" class="btn primary">Request Consultation</a>
-              <a href="#ambassador-program" class="btn secondary">Explore the Ambassador Program</a>
+              <a href="#layer-method-page" class="btn secondary">Explore The Layer Method™</a>
             </div>
           </div>
         </div>
@@ -693,8 +719,8 @@
       <div class="wrap">
         <div class="section-head">
           <div class="kicker">Choose your entry point</div>
-          <h2>Three ways into the Calibrae world</h2>
-          <p>Whether you begin with skin, injectables, or access, every path is guided with more intention.</p>
+          <h2>Three ways in.</h2>
+          <p>Skin, injectables, or access. Each path leads into the Calibrae world a little differently.</p>
         </div>
 
         <div class="grid-3">
@@ -715,7 +741,7 @@
               <h3>Injectables</h3>
               <p>Thoughtful treatment planning for movement, structure, balance, and refined rejuvenation.</p>
               <div class="entry-actions">
-                <a href="#consultation" class="btn secondary">Request Consultation</a>
+                <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
               </div>
             </div>
           </article>
@@ -726,7 +752,7 @@
               <h3>Ambassador Program</h3>
               <p>A loyalty and community ecosystem built around access, recognition, progression, perks, and The Vault.</p>
               <div class="entry-actions">
-                <a href="#ambassador-program" class="btn secondary">See How It Works</a>
+                <a href="#ambassador-program" class="btn secondary">Explore the Program</a>
               </div>
             </div>
           </article>
@@ -734,22 +760,15 @@
       </div>
     </section>
 
-    <section id="layer-method" class="page-anchor section-divider">
+    <section id="layer-home" class="section-divider">
       <div class="wrap split">
         <div class="panel stack">
           <div class="kicker">The Layer Method™</div>
-          <h2>Treat the driver, not just the complaint.</h2>
-          <p>
-            The Layer Method™ is Calibrae’s diagnosis-first framework for understanding what is actually driving a concern, then treating the right layer in the right order.
-          </p>
-          <p>
-            It is not just a way to choose a product. It is the philosophy behind how Calibrae approaches care as a whole, from skin to injectables to structural planning, regenerative support, and refinement.
-          </p>
+          <h2>Treat the driver, not just the symptom.</h2>
           <div class="bullets">
-            <div class="bullet"><strong>Skin</strong><br><span class="small">Barrier health, inflammation, resilience, pigment, texture, and long-term quality.</span></div>
-            <div class="bullet"><strong>Injectables</strong><br><span class="small">Movement, support, balance, and better sequencing.</span></div>
-            <div class="bullet"><strong>Structural planning</strong><br><span class="small">A fuller facial assessment that avoids chasing one isolated detail.</span></div>
-            <div class="bullet"><strong>Regenerative care + refinement</strong><br><span class="small">Better tissue support first, smaller adjustments second.</span></div>
+            <div class="bullet"><strong>Structure before refinement</strong><br><span class="small">Step back first. Understand what is actually creating the visible concern.</span></div>
+            <div class="bullet"><strong>Diagnosis before product</strong><br><span class="small">The plan comes before the syringe, the product, or the trend.</span></div>
+            <div class="bullet"><strong>Skin and injectables work together</strong><br><span class="small">The result is stronger when support, structure, and skin quality are treated as one system.</span></div>
           </div>
           <div class="btn-row">
             <a href="#layer-method-page" class="btn primary">Explore The Layer Method™</a>
@@ -762,47 +781,13 @@
       </div>
     </section>
 
-    <section id="ambassador-program" class="page-anchor section-warm section-divider">
-      <div class="wrap">
-        <div class="ambassador-band">
-          <div class="split">
-            <div class="stack">
-              <div class="kicker">Ambassador Program</div>
-              <h2>More than loyalty. A world of access, recognition, and status.</h2>
-              <p>
-                The Calibrae Ambassador Program is an access-and-identity ecosystem built around loyalty, progression, private perks, The Vault, and a deeper place inside the culture of the brand.
-              </p>
-              <p>
-                Inside Calibrae, many simply call it <span class="muted-line">The Circle</span>. Some things are public. Some things are not. Some things are earned over time. Some things only make sense once you are inside.
-              </p>
-              <div class="tiers-minimal">
-                <span class="tier-pill">Access</span>
-                <span class="tier-pill">The Circle</span>
-                <span class="tier-pill">The Board</span>
-                <span class="tier-pill">Founding Queens</span>
-                <span class="tier-pill">Black Label — men’s</span>
-              </div>
-              <p class="muted-line">Some things are not explained. They are earned.</p>
-              <div class="btn-row">
-                <a href="#ambassador-waitlist" class="btn primary">Join the Waitlist</a>
-                <a href="#vault-preview" class="btn secondary">Learn About the Vault</a>
-              </div>
-            </div>
-            <div class="figure-card">
-              <img src="./founding-queens-card.png" alt="Founding Queens member card" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="services-home" class="section-soft section-divider">
       <div class="wrap service-duo">
         <article class="service-panel skin">
           <div class="service-content">
             <div class="kicker">Skin</div>
-            <h2>Your skin is an organ. Treat it like one.</h2>
-            <p>Protect. Correct. Build.</p>
+            <h2>Your skin is the foundation.</h2>
+            <p>Provider-led care built around Protect. Correct. Build.</p>
             <div class="btn-row" style="margin-top: 18px;">
               <a href="#skin-page" class="btn secondary">Explore Skin</a>
             </div>
@@ -812,8 +797,8 @@
         <article class="service-panel injectables">
           <div class="service-content">
             <div class="kicker">Injectables</div>
-            <h2>Structure before refinement.</h2>
-            <p>Purposeful, precise, and always guided by anatomy.</p>
+            <h2>Purposeful. Precise. Natural.</h2>
+            <p>Structure, movement, and balance—planned with more intention.</p>
             <div class="btn-row" style="margin-top: 18px;">
               <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
             </div>
@@ -829,9 +814,7 @@
           <div class="about-home-copy">
             <div class="kicker">Founder & Provider</div>
             <h2>Led by Experience. Defined by Precision.</h2>
-            <p>
-              Danielle brings clinical mastery, a conservative eye, and a more intentional approach to every treatment.
-            </p>
+            <p>Danielle Wiley, PA-C is known for a more intentional, anatomy-based approach that prioritizes natural, balanced results and thoughtful treatment planning.</p>
             <div class="btn-row">
               <a href="#about-danielle" class="btn primary">About Danielle</a>
             </div>
@@ -874,94 +857,15 @@
       </div>
     </section>
 
-    <section id="vault-preview" class="section-warm section-divider">
-      <div class="wrap">
-        <div class="panel vault-center">
-          <div class="kicker">The Vault</div>
-          <h2>Rotating access. Limited drops. Rewards worth checking for.</h2>
-          <p style="max-width:760px; margin:0 auto;">
-            The Vault is where loyalty becomes visible, with tiered access, limited drops, elevated experiences, treatment credits, surprise perks, and a reward shelf designed to feel collectible, dynamic, and hard to ignore.
-          </p>
-          <div class="btn-row" style="justify-content:center; margin-top:24px;">
-            <a href="#ambassador-program" class="btn primary">See How It Works</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="final-cta" class="section-soft section-divider">
       <div class="wrap">
         <div class="panel vault-center">
           <div class="kicker">Begin here</div>
-          <h2>Start with intention.</h2>
-          <p style="max-width:720px; margin:0 auto;">Thoughtful, individualized planning starts here.</p>
+          <h2>Start with a consultation. Build a plan that actually makes sense.</h2>
           <div class="btn-row" style="justify-content:center; margin-top:24px;">
             <a href="#consultation" class="btn primary">Request Consultation</a>
-            <a href="#skin-plan" class="btn secondary">Start Your Skin Plan</a>
+            <a href="#ambassador-program" class="btn secondary">Join the Waitlist</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="consultation" class="page-anchor section-divider">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">Request Consultation</div>
-          <h2>Start with the right plan.</h2>
-          <p>Tell us a little about what you’re interested in, and we’ll guide you toward the right next step.</p>
-        </div>
-
-        <div class="panel">
-          <form action="https://formsubmit.co/calibraeaestheticmedicine@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New Calibrae Consultation Request" />
-            <input type="hidden" name="_captcha" value="false" />
-
-            <div class="form-grid">
-              <input class="field" name="First Name" placeholder="First Name" required />
-              <input class="field" name="Last Name" placeholder="Last Name" required />
-              <input class="field" type="email" name="Email" placeholder="Email Address" required />
-              <input class="field" name="Phone" placeholder="Phone Number" required />
-            </div>
-
-            <div class="checkbox-group">
-              <strong>Services you’re interested in</strong>
-              <div class="check-grid">
-                <label><input type="checkbox" name="Services" value="Injectables" /> Injectables</label>
-                <label><input type="checkbox" name="Services" value="Skin Care" /> Skin Care</label>
-                <label><input type="checkbox" name="Services" value="Facial Balancing" /> Facial Balancing</label>
-                <label><input type="checkbox" name="Services" value="Regenerative Treatments" /> Regenerative Treatments</label>
-                <label><input type="checkbox" name="Services" value="Skin Rejuvenation" /> Skin Rejuvenation</label>
-                <label><input type="checkbox" name="Services" value="Weight Loss" /> Weight Loss</label>
-                <label><input type="checkbox" name="Services" value="Hair Restoration" /> Hair Restoration</label>
-                <label><input type="checkbox" name="Services" value="Not Sure Yet, I Need Guidance" /> Not Sure Yet, I Need Guidance</label>
-              </div>
-            </div>
-
-            <div class="checkbox-group">
-              <strong>Treatments or categories you’re considering</strong>
-              <div class="check-grid">
-                <label><input type="checkbox" name="Interests" value="Neurotoxin Treatments" /> Neurotoxin Treatments</label>
-                <label><input type="checkbox" name="Interests" value="Structural Facial Balancing" /> Structural Facial Balancing</label>
-                <label><input type="checkbox" name="Interests" value="Lip Enhancement" /> Lip Enhancement</label>
-                <label><input type="checkbox" name="Interests" value="Chin and Jawline Balancing" /> Chin and Jawline Balancing</label>
-                <label><input type="checkbox" name="Interests" value="Neck Rejuvenation" /> Neck Rejuvenation</label>
-                <label><input type="checkbox" name="Interests" value="PRF / EZ Gel Treatments" /> PRF / EZ Gel Treatments</label>
-                <label><input type="checkbox" name="Interests" value="Microneedling" /> Microneedling</label>
-                <label><input type="checkbox" name="Interests" value="Skin Rejuvenation" /> Skin Rejuvenation</label>
-                <label><input type="checkbox" name="Interests" value="Hair Restoration" /> Hair Restoration</label>
-                <label><input type="checkbox" name="Interests" value="Weight Loss / GLP-1" /> Weight Loss / GLP-1</label>
-                <label><input type="checkbox" name="Interests" value="Stretch Mark Revision" /> Stretch Mark Revision</label>
-                <label><input type="checkbox" name="Interests" value="Skin Care Planning" /> Skin Care Planning</label>
-                <label><input type="checkbox" name="Interests" value="Calibrae Skin Edit" /> Calibrae Skin Edit</label>
-                <label><input type="checkbox" name="Interests" value="Not Sure Yet — Help Me Choose" /> Not Sure Yet — Help Me Choose</label>
-              </div>
-            </div>
-
-            <textarea name="Comments" placeholder="Tell us a little more about what you’re looking for"></textarea>
-            <div class="btn-row">
-              <button class="btn primary" type="submit">Submit Request</button>
-            </div>
-          </form>
         </div>
       </div>
     </section>
@@ -987,8 +891,6 @@
           <div class="soft-block"><h3>Treat the driver, not just the complaint.</h3><p>Most patients talk about what they see, heaviness, lines, dullness, sagging, skin changes, or that something just feels off. The Layer Method™ looks deeper to understand what is actually causing that concern before deciding what treatment makes sense.</p></div>
           <div class="soft-block"><h3>A more intelligent way to plan care</h3><p>Sometimes the issue is movement. Sometimes it is support loss. Sometimes it is skin quality. Sometimes it is tissue change, proportion, or a combination. The Layer Method™ helps organize that thinking so care is guided with more precision and less guesswork.</p></div>
           <div class="soft-block"><h3>How it shows up across the practice</h3><p><strong>Skin:</strong> barrier health, resilience, pigment, texture, and long-term quality. <strong>Injectables:</strong> movement, support, balance, and sequencing. <strong>Structural planning:</strong> assessing the bigger picture. <strong>Regenerative care:</strong> tissue support beyond simple correction. <strong>Refinement:</strong> smaller finishing adjustments after the main driver is addressed.</p></div>
-          <div class="soft-block"><h3>Where structure comes in</h3><p>Calibrae also uses a structural assessment lens to help identify when support loss, facial framework changes, or deeper architecture are contributing to what a patient sees. That helps make sure the visible complaint is not being treated in the wrong category.</p></div>
-          <div class="soft-block"><h3>Diagnosis guides the plan. Home care supports the result.</h3><p>The Layer Method™ helps determine what is driving the concern. The Calibrae regimen helps support the result at home through barrier support, correction, resilience, recovery, and maintenance.</p></div>
         </div>
       </div>
     </section>
@@ -1015,7 +917,6 @@
           <div class="soft-block"><h3>Protect. Correct. Build.</h3><p><strong>Protect:</strong> support the barrier and daily defense. <strong>Correct:</strong> target what needs active attention. <strong>Build:</strong> strengthen long-term skin quality through resilience and consistency.</p></div>
           <div class="soft-block" id="skin-plan"><h3>Start Your Skin Plan</h3><p>This is the self-guided entry point into Calibrae skin care for people who want clearer direction without having to figure everything out on their own.</p></div>
           <div class="soft-block" id="skin-edit"><h3>Calibrae Skin Edit</h3><p><strong>A personalized review of what to keep, remove, replace, and rebuild.</strong> This is the more provider-led option for people who are starting from scratch, already own products but do not know what is helping, or want a more strategic expert review.</p></div>
-          <div class="soft-block"><h3>Home care is part of the plan</h3><p>At Calibrae, home care is not separate from treatment planning. It is part of it. Even when skin is not the loudest complaint, it still affects how polished, healthy, and supported the overall result looks.</p></div>
         </div>
 
         <div class="btn-row" style="margin-top:24px;">
@@ -1044,8 +945,6 @@
           <div class="soft-block"><h3>Not every concern needs the same kind of treatment.</h3><p>Sometimes the issue is movement. Sometimes it is support loss. Sometimes it is proportion. Sometimes it is tissue quality. Sometimes it is skin quality. Sometimes it is a combination. That is part of The Layer Method™ in practice.</p></div>
           <div class="soft-block"><h3>When movement is the driver</h3><p>Neurotoxin helps soften overactive pull patterns, reduce repetitive movement that deepens certain lines over time, and create a more balanced, rested appearance without disconnecting the face from expression.</p></div>
           <div class="soft-block"><h3>When structure needs support</h3><p>This is where facial balancing, chin and jawline balancing, and support-focused placement matter. The goal is not to add volume for the sake of volume. It is to restore or support architecture with purpose.</p></div>
-          <div class="soft-block"><h3>When the tissue itself needs support</h3><p>Some patients benefit from a regenerative layer, where PRF and EZ Gel may play a role in supporting tissue quality, healing environment, and longer-term rejuvenation.</p></div>
-          <div class="soft-block"><h3>Refinement comes after the foundation</h3><p>The most polished outcomes usually do not come from chasing one isolated detail first. They come from understanding what needs to be addressed before refinement, then making smaller adjustments in a way that still looks natural and balanced.</p></div>
         </div>
       </div>
     </section>
@@ -1064,8 +963,6 @@
           <p>What drew Danielle to aesthetic medicine was the intersection of anatomy, precision, and meaningful transformation. She was drawn to a field where thoughtful, well-executed treatment could create visible impact while still looking natural, balanced, and true to the individual.</p>
           <p>Over time, she became known for an approach that felt different. More individualized. More conservative. More intentional.</p>
           <p>Rather than focusing on isolated concerns, Danielle takes a full-picture approach, assessing structure, support, movement, proportion, and skin quality together. Her work is built on detailed assessment, long-term planning, and results that refine rather than alter.</p>
-          <p>Calibrae was created to bring that philosophy fully to life. A space where patients are educated, not sold to. Where care is collaborative, not transactional. Where recommendations are made with purpose, not pressure.</p>
-          <p>Her goal is simple: to deliver thoughtful, anatomy-based care that helps patients look like themselves, just more supported, more balanced, and more in alignment.</p>
         </div>
 
         <div class="manifesto" style="margin-top:18px;">
@@ -1073,13 +970,6 @@
           <div class="soft-block"><h3>Natural always comes first</h3><p>The most beautiful results are the ones that still look like you.</p></div>
           <div class="soft-block"><h3>Education matters</h3><p>Patients deserve to understand what is being treated, why it is being treated, and what options truly make sense for them.</p></div>
           <div class="soft-block"><h3>More product is not better care</h3><p>Precision matters more than excess.</p></div>
-          <div class="soft-block"><h3>Respect results and investment</h3><p>Recommendations should be strategic, realistic, and worth it.</p></div>
-          <div class="soft-block"><h3>Care should feel collaborative</h3><p>The best outcomes happen when clinical judgment and patient priorities work together.</p></div>
-        </div>
-
-        <div class="btn-row" style="margin-top:24px;">
-          <a href="#consultation" class="btn primary">Request Consultation</a>
-          <a href="#contact-page" class="btn secondary">Contact</a>
         </div>
       </div>
     </section>
@@ -1095,17 +985,15 @@
         <div class="split">
           <div class="panel stack">
             <h3>Get in touch</h3>
-            <div class="contact-list">
-              <div><strong>Phone</strong><br>(703) 593-1948</div>
-              <div><strong>Email</strong><br><a href="mailto:calibraeaestheticmedicine@gmail.com">calibraeaestheticmedicine@gmail.com</a></div>
-              <div><strong>Location</strong><br>3343 Valley Pike, Suite 400<br>Winchester, VA</div>
-              <div><strong>Instagram</strong><br><a href="https://instagram.com/calibraeinstitute" target="_blank" rel="noopener">@calibraeinstitute</a></div>
-              <div><strong>Shop</strong><br><a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Browse curated skincare</a></div>
+            <div class="small">
+              <div><strong>Phone</strong><br />(703) 593-1948</div><br />
+              <div><strong>Email</strong><br /><a href="mailto:calibraeaestheticmedicine@gmail.com">calibraeaestheticmedicine@gmail.com</a></div><br />
+              <div><strong>Location</strong><br />3343 Valley Pike, Suite 400<br />Winchester, VA</div><br />
+              <div><strong>Instagram</strong><br /><a href="https://instagram.com/calibraeinstitute" target="_blank" rel="noopener">@calibraeinstitute</a></div>
             </div>
             <div class="btn-row">
               <a href="#consultation" class="btn primary">Request Consultation</a>
-              <a href="#skin-page" class="btn secondary">Explore Skin</a>
-              <a href="#ambassador-program" class="btn secondary">Explore the Ambassador Program</a>
+              <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener" class="btn secondary">Shop Skincare</a>
             </div>
           </div>
 
@@ -1125,7 +1013,6 @@
                 <button class="btn primary" type="submit">Send Message</button>
               </div>
             </form>
-            <p class="small" style="margin-top:14px;">We’ll do our best to respond as soon as possible and guide you toward the right next step.</p>
           </div>
         </div>
       </div>
@@ -1139,9 +1026,7 @@
           <span class="brand-mark">C</span>
           <span>CALIBRAE</span>
         </div>
-        <p style="max-width:620px;">
-          Calibrae Institute of Aesthetic Medicine is a luxury editorial, provider-led aesthetic practice built around diagnosis, planning, restraint, and patient education.
-        </p>
+        <p style="max-width:620px;">Calibrae Institute of Aesthetic Medicine is a provider-led aesthetic practice built around diagnosis, planning, restraint, and patient education.</p>
       </div>
       <div class="mini-links">
         <a href="tel:7035931948">(703) 593-1948</a>
