@@ -101,6 +101,36 @@
       font-size: 0.92rem;
     }
 
+    .nav-toggle-checkbox { display: none; }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle-checkbox:checked ~ .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle-checkbox:checked ~ .nav-toggle span:nth-child(2) { opacity: 0; }
+    .nav-toggle-checkbox:checked ~ .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     .nav-item {
       position: relative;
       color: var(--muted);
@@ -645,17 +675,65 @@
     }
 
     @media (max-width: 720px) {
+      :root { --nav-h: 64px; }
+
       .nav-inner {
-        padding: 12px 0;
-        align-items: flex-start;
-        flex-direction: column;
+        padding: 10px 0;
+        flex-wrap: wrap;
+        align-items: center;
       }
 
-      .links { gap: 14px; }
-      .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; margin-top: 8px; }
+      .brand { font-size: 1.15rem; letter-spacing: 0.18em; }
+      .brand-mark { width: 30px; height: 30px; }
+
+      .nav-toggle { display: inline-flex; }
+
+      .links {
+        display: none;
+        flex-basis: 100%;
+        order: 3;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px 0 8px;
+        font-size: 0.98rem;
+      }
+
+      .nav-toggle-checkbox:checked ~ .links { display: flex; }
+
+      .links > .nav-item,
+      .links > .dropdown > a {
+        display: block;
+        padding: 12px 4px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 4px 0 8px 14px;
+        min-width: 0;
+      }
+
+      .dropdown-menu a { padding: 8px 4px; font-size: 0.9rem; }
+
+      .hero { padding: 36px 0 40px; }
+      .hero-card { min-height: 520px; border-radius: 24px; }
       .hero-copy { width: calc(100% - 36px); margin-left: 18px; }
+
+      h1 { font-size: clamp(2.1rem, 8.5vw, 3rem); max-width: 12ch; }
+      h2 { font-size: clamp(1.7rem, 6.2vw, 2.3rem); }
+      .lead { font-size: 1rem; }
+      .btn { min-height: 48px; padding: 0 20px; font-size: 0.88rem; }
+      .btn-row { gap: 10px; }
+
       .wrap { width: min(var(--max), calc(100% - 24px)); }
-      section { padding: 68px 0; }
+      section { padding: 56px 0; }
 
       .panel,
       .quotes,
@@ -665,7 +743,9 @@
       .card-body,
       .service-content { padding: 22px; }
 
-      .brand,
+      .about-home-photo { min-height: 320px; }
+      .entry-image { aspect-ratio: 1.6 / 1; }
+
       .footer-brand { letter-spacing: 0.18em; }
       .about-home-copy h2 { max-width: none; }
     }
@@ -678,6 +758,11 @@
         <span class="brand-mark">C</span>
         <span>CALIBRAE</span>
       </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </label>
 
       <nav class="links">
         <a class="nav-item" href="#top">Home</a>
