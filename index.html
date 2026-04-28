@@ -1,25 +1,26 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calibrae Institute of Aesthetic Medicine</title>
-  <meta name="description" content="Luxury, provider-led aesthetic medicine guided by The Layer Method™." />
+  <meta name="description" content="Luxury, provider-led aesthetic medicine guided by The Layer Method&#8482;." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #1d1d1d;
-      --bg-2: #242424;
-      --bg-3: #2b2622;
-      --panel: rgba(255,255,255,0.03);
-      --panel-strong: rgba(255,255,255,0.05);
-      --text: #e7e0d6;
-      --muted: #c8c0b5;
-      --soft: #b89a72;
-      --line: rgba(231,224,214,0.14);
-      --shadow: 0 18px 50px rgba(0,0,0,0.28);
+      --bg: #464646;
+      --bg-2: #575757;
+      --bg-3: #666666;
+      --panel: rgba(255,255,255,0.18);
+      --panel-strong: rgba(255,255,255,0.26);
+      --text: #f7f7f5;
+      --muted: #e0e0dc;
+      --soft: #d2d2cd;
+      --line: rgba(255,255,255,0.22);
+      --shadow: 0 18px 50px rgba(0,0,0,0.16);
+      --shadow-soft: 0 18px 44px rgba(0,0,0,0.14);
       --radius: 28px;
       --max: 1240px;
       --section-space: 92px;
@@ -33,9 +34,9 @@
       font-family: "Montserrat", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 85% 10%, rgba(184,154,114,0.12), transparent 25%),
-        radial-gradient(circle at 10% 40%, rgba(255,255,255,0.04), transparent 20%),
-        linear-gradient(180deg, #1a1a1a 0%, #222222 40%, #2a2a2a 100%);
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,0.16), transparent 24%),
+        radial-gradient(circle at 10% 40%, rgba(255,255,255,0.08), transparent 20%),
+        linear-gradient(180deg, #707070 0%, #626262 42%, #575757 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -56,8 +57,8 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(16px);
-      background: rgba(20,20,20,0.78);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(58,58,58,0.58);
+      border-bottom: 1px solid rgba(255,255,255,0.16);
     }
 
     .nav-inner {
@@ -86,8 +87,8 @@
       border-radius: 10px;
       display: grid;
       place-items: center;
-      background: linear-gradient(180deg, #3a3a3a, #2c2c2c);
-      color: #d8d1c7;
+      background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.14));
+      color: #ffffff;
       font-weight: 500;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     }
@@ -131,20 +132,30 @@
     .nav-toggle-checkbox:checked ~ .nav-toggle span:nth-child(2) { opacity: 0; }
     .nav-toggle-checkbox:checked ~ .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .nav-item {
+    .nav-item,
+    .dropdown > a {
       position: relative;
       color: var(--muted);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, background-size 0.24s ease, opacity 0.24s ease;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: 0 calc(100% + 2px);
+      background-size: 0% 1px;
     }
 
-    .nav-item:hover { color: var(--text); }
+    .nav-item:hover,
+    .dropdown > a:hover,
+    .dropdown:hover > a {
+      color: var(--text);
+      background-size: 100% 1px;
+    }
 
     .dropdown {
       position: relative;
     }
 
     .dropdown > a::after {
-      content: "⌄";
+      content: "▾";
       margin-left: 6px;
       font-size: 0.78rem;
       color: var(--soft);
@@ -199,8 +210,9 @@
       padding: 0 24px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.035em;
       font-size: 0.93rem;
+      font-weight: 500;
       transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
       cursor: pointer;
     }
@@ -210,6 +222,68 @@
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
     }
 
+    .hero .btn.primary:hover,
+    #entry-points .btn.primary:hover,
+    #layer-home .btn.primary:hover,
+    #services-home .btn.primary:hover,
+    #about-home .btn.primary:hover,
+    #reviews .btn.primary:hover,
+    #final-cta .btn.primary:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .hero .btn.secondary:hover,
+    #entry-points .btn.secondary:hover,
+    #layer-home .btn.secondary:hover,
+    #services-home .btn.secondary:hover,
+    #about-home .btn.secondary:hover,
+    #reviews .btn.secondary:hover,
+    #final-cta .btn.secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.30);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.46);
+      outline-offset: 4px;
+    }
+
+    .reveal-up,
+    .reveal-image,
+    .layer-step {
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .reveal-up {
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-image {
+      transform: translateY(18px) scale(0.985);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+
+    .reveal-up.is-visible,
+    .reveal-image.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .home-section-reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.72s ease, transform 0.72s ease;
+      will-change: transform, opacity;
+    }
+
+    .home-section-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .btn.primary {
       background: var(--text);
       color: #1d1d1d;
@@ -217,7 +291,7 @@
     }
 
     .btn.secondary {
-      background: transparent;
+      background: rgba(255,255,255,0.025);
       color: var(--text);
     }
 
@@ -248,6 +322,10 @@
       background: linear-gradient(180deg, #2a2a2a, #323232);
     }
 
+    #reviews.section-light {
+      background: linear-gradient(180deg, #313131, #3a3a3a);
+    }
+
     .section-glow {
       background:
         radial-gradient(circle at top left, rgba(184,154,114,0.18), transparent 30%),
@@ -266,25 +344,140 @@
 
     .hero {
       padding: 62px 0 54px;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.14), transparent 18%),
+        radial-gradient(circle at 74% 16%, rgba(255,255,255,0.10), transparent 16%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      background-attachment: scroll, scroll, scroll;
     }
 
     .hero-card {
-      min-height: 680px;
+      min-height: 560px;
       border-radius: 36px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.08);
       background:
-        linear-gradient(90deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.82) 30%, rgba(18,18,18,0.42) 62%, rgba(18,18,18,0.18) 100%),
-        radial-gradient(circle at 85% 25%, rgba(184,154,114,0.12), transparent 28%),
-        url('./skin-closeup.png') center/cover no-repeat;
-      display: grid;
-      align-items: center;
+        linear-gradient(90deg, rgba(112,112,112,0.42) 0%, rgba(112,112,112,0.24) 42%, rgba(112,112,112,0.14) 100%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 20%),
+        linear-gradient(125deg, rgba(126,126,126,0.28) 0%, rgba(136,136,136,0.18) 42%, rgba(150,150,150,0.12) 100%);
+      display: block;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(255,255,255,0.12) 0 1px, transparent 1.5px 100%),
+        radial-gradient(circle at 68% 32%, rgba(255,255,255,0.10) 0 1px, transparent 1.5px 100%),
+        radial-gradient(circle at 40% 72%, rgba(255,255,255,0.10) 0 1px, transparent 1.5px 100%),
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 48%, transparent 100%);
+      background-size: 240px 240px, 320px 320px, 280px 280px, 72px 72px, 72px 72px, 100% 100%;
+      background-position: 6% 12%, 84% 18%, 52% 76%, center, center, center;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -80px -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 68%);
+      filter: blur(18px);
+      animation: heroPulse 9s ease-in-out infinite;
+      pointer-events: none;
     }
 
     .hero-copy {
-      width: min(720px, calc(100% - 64px));
-      margin-left: 48px;
+      position: relative;
+      z-index: 1;
+      width: min(100%, 980px);
+      margin: 0;
+      padding: 96px 88px 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: none;
+    }
+
+    .hero-copy > * {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroItemIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-copy h1 { animation-delay: 0.08s; }
+    .hero-copy .lead { animation-delay: 0.16s; }
+    .hero-copy .hero-subtext { animation-delay: 0.24s; }
+    .hero-copy .btn-row { animation-delay: 0.32s; }
+
+    @keyframes heroItemIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-copy h1 {
+      max-width: none;
+      margin-bottom: 28px;
+      display: grid;
+      gap: 14px;
+      white-space: normal;
+    }
+
+    .hero-brand-main {
+      display: block;
+      font-size: clamp(3.5rem, 7.6vw, 6.2rem);
+      line-height: 0.94;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-brand-sub {
+      display: block;
+      font-size: clamp(0.92rem, 1.5vw, 1.22rem);
+      line-height: 1.35;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .brand span:last-child,
+    .footer-brand span:last-child {
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-subtext {
+      max-width: 760px;
+      font-size: 1.02rem;
+      line-height: 1.74;
+      margin-bottom: 38px;
+    }
+
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroFloatIn {
+      from { opacity: 0; transform: translateX(26px) scale(0.98); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @keyframes heroPulse {
+      0%, 100% { transform: scale(1); opacity: 0.55; }
+      50% { transform: scale(1.12); opacity: 0.9; }
     }
 
     .eyebrow {
@@ -292,13 +485,14 @@
       margin-bottom: 18px;
       padding: 10px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.9);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.12);
     }
+
 
     h1 {
       margin: 0 0 18px;
@@ -313,12 +507,15 @@
       font-size: clamp(2rem, 3.3vw, 3rem);
       line-height: 1.05;
       font-weight: 500;
+      letter-spacing: -0.025em;
     }
 
     h3 {
       margin: 0 0 10px;
       font-size: 1.22rem;
       font-weight: 500;
+      line-height: 1.32;
+      letter-spacing: -0.01em;
     }
 
     p {
@@ -334,6 +531,15 @@
       margin: 0 0 28px;
     }
 
+    .hero-copy .lead {
+      text-transform: none;
+      letter-spacing: 0.01em;
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
     .section-head {
       max-width: 760px;
       margin-bottom: 28px;
@@ -342,8 +548,9 @@
     .kicker {
       color: var(--soft);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       font-size: 0.78rem;
+      font-weight: 600;
       margin-bottom: 12px;
     }
 
@@ -355,10 +562,10 @@
 
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
       transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
     }
 
@@ -377,7 +584,16 @@
       transition: transform 0.35s ease;
     }
 
+    .skin-entry-image {
+      object-position: center 62%;
+    }
+
     .card-body { padding: 22px; }
+
+    .card.muted-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      opacity: 0.88;
+    }
 
     .entry-actions {
       margin-top: 18px;
@@ -395,10 +611,10 @@
 
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: var(--radius);
       padding: 34px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
     }
 
     .stack { display: grid; gap: 18px; }
@@ -425,6 +641,114 @@
       border-radius: 0 18px 18px 0;
     }
 
+    .layer-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .layer-step {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .layer-step-index {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .layer-home-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .layer-home-copy {
+      max-width: 560px;
+    }
+
+    .layer-home-copy p {
+      max-width: 52ch;
+    }
+
+    .home-layer-method .lm-reveal,
+    .home-layer-method .lm-reveal-card {
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .home-layer-method .lm-reveal {
+      transform: translateY(18px);
+      transition: opacity 0.62s cubic-bezier(0.22, 1, 0.36, 1), transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .home-layer-method .lm-reveal-card {
+      transform: translateY(18px) scale(0.985);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .home-layer-method.is-visible .lm-reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .home-layer-method.is-visible .lm-reveal-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .layer-home-visual {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow);
+    }
+
+    .layer-home-visual img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .layer-home-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(100deg, transparent 26%, rgba(255,255,255,0.14) 50%, transparent 74%);
+      transform: translateX(-135%);
+      opacity: 0;
+    }
+
+    #layer-home.is-visible .layer-home-visual {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 0.18s;
+    }
+
+    #layer-home.is-visible .layer-home-visual::before {
+      opacity: 1;
+      animation: layerHomeSweep 0.9s ease 0.72s 1 forwards;
+    }
+
+    @keyframes layerHomeSweep {
+      from { transform: translateX(-135%); opacity: 0; }
+      20% { opacity: 0.42; }
+      to { transform: translateX(135%); opacity: 0; }
+    }
+
     .service-duo {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -446,29 +770,76 @@
     .service-panel:hover {
       transform: translateY(-4px);
       border-color: rgba(184,154,114,0.42);
+      box-shadow: 0 22px 54px rgba(0,0,0,0.22);
     }
 
     .service-panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,10,0.08), rgba(10,10,10,0.68));
+      background: linear-gradient(180deg, rgba(8,8,8,0.18) 0%, rgba(8,8,8,0.40) 42%, rgba(8,8,8,0.82) 100%);
       z-index: 1;
     }
 
+    .service-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
     .service-panel.skin {
-      background: url('./skin-closeup.png') center/cover no-repeat;
+      background: url('./images/skin-card-serum.jpg.png') center 42%/cover no-repeat;
     }
 
     .service-panel.injectables {
       background: url('./injectables-syringe.png') center/cover no-repeat;
     }
 
+    .service-panel.skin::after {
+      background: linear-gradient(90deg, rgba(12,12,12,0.62) 0%, rgba(12,12,12,0.34) 46%, rgba(12,12,12,0.14) 100%);
+    }
+
+    .service-panel.injectables::after {
+      background: linear-gradient(90deg, rgba(12,12,12,0.52) 0%, rgba(12,12,12,0.24) 48%, rgba(12,12,12,0.10) 100%);
+    }
+
     .service-content {
       position: relative;
       z-index: 2;
-      padding: 30px;
-      max-width: 430px;
+      padding: 38px 38px 36px;
+      max-width: 432px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-content .kicker {
+      margin-bottom: 10px;
+    }
+
+    .service-content h2 {
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 2.4vw, 2.45rem);
+      line-height: 1.06;
+    }
+
+    .service-content > p {
+      max-width: 38ch;
+      margin: 0;
+      line-height: 1.68;
+    }
+
+    .service-support {
+      margin-top: 16px;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.92rem;
+      line-height: 1.62;
+    }
+
+    .service-actions {
+      margin-top: 28px;
     }
 
     .about-home {
@@ -484,21 +855,59 @@
 
     .about-home-photo {
       min-height: 520px;
-      background: url('./founding-queens-card.png') center/cover no-repeat;
+      background: url('./images/hero-clinic-background.png') center 28%/cover no-repeat;
     }
 
     .about-home-copy {
-      padding: 42px;
+      padding: 50px 46px;
       display: grid;
       align-content: center;
       gap: 18px;
       background: linear-gradient(180deg, rgba(18,18,18,0.88), rgba(18,18,18,0.80));
     }
 
+    .about-home-copy .kicker {
+      margin-bottom: 2px;
+    }
+
     .about-home-copy h2 {
-      font-size: clamp(2.1rem, 4vw, 4rem);
-      line-height: 1.02;
-      max-width: 9ch;
+      font-size: clamp(1.88rem, 3.2vw, 3.1rem);
+      line-height: 1.08;
+      max-width: 11ch;
+    }
+
+    .about-home-copy p {
+      max-width: 56ch;
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .founder-actions {
+      margin-top: 12px;
+    }
+
+    .founder-actions .btn {
+      min-width: 180px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+    }
+
+    .founder-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .founder-proof {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .quotes {
@@ -534,6 +943,71 @@
       margin-top: 22px;
     }
 
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      padding: 28px 26px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.016));
+      box-shadow: 0 16px 38px rgba(0,0,0,0.16);
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+      display: grid;
+      align-content: start;
+      gap: 0;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.2);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+
+    .testimonial-kicker {
+      display: block;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.56);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-quote-mark {
+      display: block;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.2);
+      font-size: 1.8rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .testimonial-card p {
+      color: var(--text);
+      line-height: 1.76;
+      font-size: 1rem;
+    }
+
+    .testimonial-card cite {
+      display: block;
+      margin-top: 16px;
+      color: rgba(255,255,255,0.72);
+      font-style: normal;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+    }
+
+    .testimonial-meta {
+      margin-top: 6px;
+      color: rgba(255,255,255,0.48);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+
     .dot {
       width: 11px;
       height: 11px;
@@ -546,6 +1020,27 @@
     .dot.active { background: var(--soft); transform: scale(1.08); }
 
     .vault-center { text-align: center; }
+
+    #final-cta {
+      background:
+        linear-gradient(180deg, rgba(56,56,56,0.34), rgba(56,56,56,0.16)),
+        radial-gradient(circle at top center, rgba(255,255,255,0.06), transparent 42%);
+    }
+
+    #final-cta .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      padding: 42px 32px;
+    }
+
+    .final-cta-copy {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .final-cta-actions {
+      justify-content: center;
+      margin-top: 24px;
+    }
 
     .footer {
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -578,6 +1073,23 @@
       justify-items: start;
     }
 
+    .footer p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.72;
+    }
+
+    .mini-links a {
+      color: var(--muted);
+      text-decoration: none;
+      line-height: 1.5;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .mini-links a:hover {
+      color: var(--text);
+      transform: translateX(2px);
+    }
+
     .page-anchor { scroll-margin-top: 96px; }
 
     .field,
@@ -590,6 +1102,25 @@
       border-radius: 16px;
       font-family: inherit;
       font-size: 0.95rem;
+      line-height: 1.5;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field {
+      min-height: 52px;
+    }
+
+    .field::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,0.54);
+    }
+
+    .field:focus,
+    textarea:focus {
+      outline: none;
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.36);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
     }
 
     form { display: grid; gap: 12px; }
@@ -633,10 +1164,15 @@
     .section-grid { display: grid; gap: 18px; }
 
     .soft-block {
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.17);
       border-radius: 24px;
-      padding: 22px;
-      background: rgba(255,255,255,0.025);
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .soft-block p {
+      line-height: 1.7;
     }
 
     .narrative {
@@ -648,6 +1184,1020 @@
       max-width: 980px;
     }
 
+    .about-page-hero {
+      grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .about-page-image {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.02);
+      min-height: 540px;
+    }
+
+    .about-page-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      transform: scale(1.08);
+      display: block;
+    }
+
+    .about-page-intro {
+      align-self: center;
+      max-width: 560px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .about-page-intro .kicker {
+      margin-bottom: 2px;
+    }
+
+    .about-page-intro h2 {
+      margin: 0;
+    }
+
+    .about-page-subhead {
+      margin: 0 0 4px;
+      color: rgba(255,255,255,0.76);
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+
+    .about-page-lede {
+      margin: 0;
+      max-width: 52ch;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.78;
+    }
+
+    .about-page-body {
+      max-width: none;
+      padding: 40px 40px 42px;
+    }
+
+    .about-page-body p + p {
+      margin-top: 20px;
+    }
+
+    .about-page-cta {
+      margin-top: 24px;
+      padding: 28px 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+    }
+
+    .hair-page-hero {
+      align-items: stretch;
+    }
+
+    .hair-page-copy {
+      max-width: 560px;
+      align-self: center;
+    }
+
+    .hair-page-copy .kicker {
+      margin-bottom: 10px;
+    }
+
+    .hair-page-copy h2 {
+      margin-bottom: 16px;
+    }
+
+    .hair-page-subhead {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.72;
+      letter-spacing: 0.04em;
+    }
+
+    .hair-page-visual {
+      min-height: 460px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .hair-page-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.28;
+    }
+
+    .hair-page-visual::after {
+      content: "";
+      position: absolute;
+      inset: 12% 10%;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.10);
+      pointer-events: none;
+    }
+
+    .hair-visual-card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 360px);
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(20,20,20,0.68), rgba(20,20,20,0.44));
+      backdrop-filter: blur(4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .hair-visual-label {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hair-visual-card h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      line-height: 1.16;
+    }
+
+    .hair-visual-card p {
+      margin: 0;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.68;
+    }
+
+    .hair-step-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .hair-step-card {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hair-step-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hair-step-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .hair-page-closing {
+      margin-top: 24px;
+      text-align: center;
+      font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .hair-page-cta {
+      margin-top: 24px;
+    }
+
+    .skin-page-hero {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .skin-page-copy {
+      max-width: 560px;
+      align-self: center;
+    }
+
+    .skin-page-copy .kicker {
+      margin-bottom: 10px;
+    }
+
+    .skin-page-copy h2 {
+      margin-bottom: 16px;
+    }
+
+    .skin-page-subhead {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.72;
+      letter-spacing: 0.04em;
+    }
+
+    .skin-page-visual {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.02);
+      min-height: 420px;
+    }
+
+    .skin-page-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .skin-page-section {
+      margin-top: 28px;
+      padding: 36px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.022);
+      box-shadow: var(--shadow);
+    }
+
+    .skin-page-section-head {
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .skin-page-section-head .kicker {
+      margin-bottom: 8px;
+    }
+
+    .skin-page-section-head h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      line-height: 1.1;
+    }
+
+    .skin-page-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+
+    .skin-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .skin-page-point {
+      padding: 22px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.028);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .skin-page-point h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .skin-page-point p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+    }
+
+    .skin-page-closing {
+      margin-top: 24px;
+      color: rgba(255,255,255,0.86);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .skin-page-actions {
+      margin-top: 24px;
+    }
+
+    .skin-plan-page-hero {
+      grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .skin-plan-page-copy {
+      max-width: 580px;
+      align-self: center;
+    }
+
+    .skin-plan-page-copy .kicker {
+      margin-bottom: 10px;
+    }
+
+    .skin-plan-page-copy h2 {
+      margin-bottom: 16px;
+    }
+
+    .skin-plan-page-subhead {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.68;
+      letter-spacing: 0.04em;
+    }
+
+    .skin-plan-page-visual {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.02);
+      min-height: 420px;
+    }
+
+    .skin-plan-page-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 58%;
+      display: block;
+    }
+
+    .skin-plan-page-section {
+      margin-top: 28px;
+      padding: 36px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.016));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skin-plan-page-section-head {
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .skin-plan-page-section-head .kicker {
+      margin-bottom: 8px;
+    }
+
+    .skin-plan-page-section-head h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      line-height: 1.1;
+    }
+
+    .skin-plan-page-section-head p {
+      line-height: 1.72;
+    }
+
+    .skin-plan-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .skin-plan-page-point {
+      padding: 22px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.032);
+      min-height: 100%;
+    }
+
+    .skin-plan-page-point h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .skin-plan-page-point p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+    }
+
+    .skin-plan-page-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skin-plan-page-list li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.028);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skin-plan-page-closing {
+      margin-top: 24px;
+      color: rgba(255,255,255,0.86);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .skin-plan-page-actions {
+      margin-top: 24px;
+    }
+
+    .skin-plan-quiz {
+      margin-top: 28px;
+      padding: 40px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(20,20,20,0.42), rgba(20,20,20,0.24));
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+    }
+
+    #skin-pathway-quiz {
+      scroll-margin-top: 112px;
+    }
+
+    .skin-plan-quiz-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .skin-plan-quiz-header {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    .skin-plan-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 28px 0 28px;
+      text-align: left;
+    }
+
+    .skin-plan-step {
+      padding: 20px 20px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .skin-plan-step-index {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .skin-plan-step h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .skin-plan-step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.64;
+    }
+
+    .skin-plan-quiz-launch {
+      margin-top: 26px;
+      padding: 34px 30px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.042), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skin-plan-quiz-launch p {
+      max-width: 44ch;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+
+    .skin-plan-quiz-actions {
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .skin-plan-quiz-note {
+      max-width: 760px;
+      margin: 20px auto 0;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.68;
+      text-align: center;
+    }
+
+    .injectables-page-hero {
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .injectables-page-copy {
+      max-width: 560px;
+      align-self: center;
+    }
+
+    .injectables-page-copy .kicker {
+      margin-bottom: 10px;
+    }
+
+    .injectables-page-copy h2 {
+      margin-bottom: 16px;
+    }
+
+    .injectables-page-subhead {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.72;
+      letter-spacing: 0.04em;
+    }
+
+    .injectables-page-visual {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.02);
+      min-height: 420px;
+    }
+
+    .injectables-page-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .injectables-page-section {
+      margin-top: 30px;
+      padding: 38px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.022);
+      box-shadow: var(--shadow);
+    }
+
+    .injectables-page-section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .injectables-page-section-head .kicker {
+      margin-bottom: 6px;
+    }
+
+    .injectables-page-section-head h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      line-height: 1.08;
+    }
+
+    .injectables-page-subtitle {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+
+    .injectables-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .injectables-page-point {
+      padding: 24px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.028);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .injectables-page-point h4 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .injectables-page-point p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .injectables-page-closing {
+      margin-top: 26px;
+      color: rgba(255,255,255,0.86);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .injectables-page-keyline {
+      margin-top: 22px;
+      white-space: pre-line;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.84;
+    }
+
+    .injectables-page-actions {
+      margin-top: 26px;
+    }
+
+    .layer-method-hero {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      align-items: stretch;
+      gap: 34px;
+      margin-bottom: 46px;
+    }
+
+    .layer-method-copy {
+      max-width: 590px;
+      padding: 22px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .layer-method-copy .kicker {
+      margin-bottom: 12px;
+    }
+
+    .layer-method-copy h2 {
+      max-width: 9.5ch;
+      margin-bottom: 18px;
+    }
+
+    .layer-method-copy p {
+      max-width: 56ch;
+    }
+
+    .layer-method-visual {
+      overflow: hidden;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018)),
+        rgba(255,255,255,0.02);
+      min-height: 468px;
+      position: relative;
+      padding: 16px;
+    }
+
+    .layer-method-visual::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+
+    .layer-method-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .layer-method-section {
+      margin-top: 28px;
+      padding: 38px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.016));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layer-method-section::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+      pointer-events: none;
+    }
+
+    .layer-method-overview {
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.055), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.038), rgba(255,255,255,0.016));
+    }
+
+    .layer-method-branch {
+      background: linear-gradient(180deg, rgba(255,255,255,0.028), rgba(255,255,255,0.012));
+    }
+
+    .layer-method-staging {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.042), rgba(255,255,255,0.016)),
+        rgba(255,255,255,0.02);
+    }
+
+    .layer-method-closing-section {
+      background:
+        radial-gradient(circle at bottom right, rgba(184,154,114,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.034), rgba(255,255,255,0.014));
+    }
+
+    .layer-method-section-head {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .layer-method-section-head .kicker {
+      margin-bottom: 8px;
+    }
+
+    .layer-method-section-head h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      line-height: 1.06;
+    }
+
+    .layer-method-subtitle {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+      line-height: 1.72;
+      letter-spacing: 0.05em;
+    }
+
+    .layer-method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .layer-method-points {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .layer-method-point {
+      padding: 24px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.03);
+      min-height: 100%;
+      position: relative;
+    }
+
+    .layer-method-point h4 {
+      margin: 0 0 10px;
+      font-size: 1.02rem;
+      line-height: 1.38;
+    }
+
+    .layer-method-point p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .layer-method-point-index,
+    .layer-method-stage-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 30px;
+      margin-bottom: 18px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.82);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .layer-method-principles .layer-method-point {
+      padding-top: 26px;
+    }
+
+    .layer-method-principles .layer-method-point h4 {
+      max-width: 18ch;
+    }
+
+    .layer-method-stage-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      position: relative;
+      align-items: start;
+    }
+
+    .layer-method-stage-grid .layer-method-point {
+      padding: 28px 24px 26px;
+      min-height: 220px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.03));
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+    }
+
+    .layer-method-stage-grid .layer-method-point:nth-child(2) {
+      margin-top: 18px;
+    }
+
+    .layer-method-stage-grid .layer-method-point:nth-child(3) {
+      margin-top: 36px;
+    }
+
+    .layer-method-stage-grid .layer-method-point h4 {
+      max-width: 14ch;
+    }
+
+    .layer-method-stage-lead {
+      max-width: 58ch;
+    }
+
+    .layer-method-stage-flow {
+      margin-top: 28px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      position: static;
+    }
+
+    .layer-method-closing {
+      margin-top: 24px;
+      color: rgba(255,255,255,0.86);
+      font-size: 1.02rem;
+      line-height: 1.72;
+      max-width: 58ch;
+    }
+
+    .layer-method-keyline {
+      margin-top: 24px;
+      white-space: pre-line;
+      color: rgba(255,255,255,0.84);
+      line-height: 1.82;
+      max-width: 42ch;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .layer-method-step-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .layer-method-step {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .layer-method-step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .layer-method-step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .layer-method-actions {
+      margin-top: 26px;
+    }
+
+    .layer-method-plan-grid {
+      margin-bottom: 8px;
+    }
+
+    .layer-method-closeout {
+      margin-top: 0;
+      padding: 34px 34px 36px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .layer-method-closeout .kicker {
+      margin-bottom: 8px;
+    }
+
+    .layer-method-closeout h3 {
+      margin: 0 0 16px;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      line-height: 1.06;
+      max-width: 12ch;
+    }
+
+    .layer-method-closeout p {
+      max-width: 58ch;
+    }
+
+    .layer-method-closeout .layer-method-closing {
+      margin-top: 22px;
+      max-width: 42ch;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.96rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .layer-method-closeout .layer-method-actions {
+      margin-top: 24px;
+    }
+
+    .layer-method-section,
+    .skin-page-section,
+    .injectables-page-section {
+      border-color: rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.016));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .layer-method-point,
+    .layer-method-step,
+    .skin-page-point,
+    .injectables-page-point,
+    .hair-step-card {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.032);
+    }
+
+    .layer-method-section-head p,
+    .skin-page-section-head p,
+    .injectables-page-section-head p,
+    .hair-page-copy p {
+      line-height: 1.72;
+    }
+
+    .layer-method-subtitle,
+    .skin-page-subtitle,
+    .injectables-page-subtitle,
+    .hair-page-subhead {
+      color: rgba(255,255,255,0.78);
+      line-height: 1.68;
+    }
+
     .manifesto {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -655,6 +2205,41 @@
     }
 
     .small { font-size: 0.94rem; color: var(--muted); }
+
+    .consult-info-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .consult-info-card {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.028);
+    }
+
+    .consult-info-card h4 {
+      margin: 0 0 8px;
+      font-size: 0.96rem;
+      line-height: 1.4;
+    }
+
+    .consult-info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .contact-form-success {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.84);
+      line-height: 1.68;
+    }
 
     @media (max-width: 1080px) {
       .grid-3,
@@ -665,13 +2250,104 @@
       .page-hero,
       .manifesto,
       .form-grid,
-      .check-grid {
+      .check-grid,
+      .layer-steps,
+      .layer-home-layout,
+      .founder-proof-grid,
+      .testimonials-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card { min-height: 620px; background-position: center; }
+      .about-page-image {
+        min-height: 420px;
+      }
+
+      .hair-page-visual {
+        min-height: 320px;
+      }
+
+      .layer-method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .layer-method-points {
+        grid-template-columns: 1fr;
+      }
+
+      .skin-page-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skin-plan-page-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .injectables-page-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        background:
+          radial-gradient(circle at 16% 20%, rgba(255,255,255,0.12), transparent 18%),
+          radial-gradient(circle at 78% 14%, rgba(255,255,255,0.08), transparent 14%),
+          linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+        background-attachment: scroll, scroll;
+      }
+
+      .hero-card {
+        min-height: 620px;
+      }
+      .hero-visual {
+        min-height: auto;
+        padding: 0 38px 38px;
+      }
       .about-home-photo { min-height: 420px; }
       h1 { max-width: none; }
+      .hero-copy h1 {
+        gap: 8px;
+      }
+      .hero-brand-main {
+        letter-spacing: 0.18em;
+      }
+
+      .page-hero,
+      .about-page-hero,
+      .skin-page-hero,
+      .skin-plan-page-hero,
+      .injectables-page-hero,
+      .layer-method-hero,
+      .hair-page-hero {
+        gap: 24px;
+      }
+
+      .skin-plan-page-visual,
+      .skin-page-visual,
+      .injectables-page-visual,
+      .layer-method-visual {
+        min-height: 360px;
+      }
+
+      .layer-method-copy {
+        max-width: 100%;
+        padding: 8px 0 0;
+      }
+
+      .layer-method-copy h2 {
+        max-width: 12ch;
+      }
+
+      .layer-method-stage-grid .layer-method-point::after {
+        display: none;
+      }
+
+      .layer-method-stage-grid .layer-method-point:nth-child(2),
+      .layer-method-stage-grid .layer-method-point:nth-child(3) {
+        margin-top: 0;
+      }
+
+      .layer-method-stage-flow::before {
+        display: none;
+      }
     }
 
     @media (max-width: 720px) {
@@ -697,6 +2373,8 @@
         gap: 4px;
         padding: 12px 0 8px;
         font-size: 0.98rem;
+        max-height: calc(100vh - 88px);
+        overflow-y: auto;
       }
 
       .nav-toggle-checkbox:checked ~ .links { display: flex; }
@@ -722,15 +2400,68 @@
 
       .dropdown-menu a { padding: 8px 4px; font-size: 0.9rem; }
 
-      .hero { padding: 36px 0 40px; }
+      .hero {
+        padding: 36px 0 40px;
+        background:
+          radial-gradient(circle at 20% 18%, rgba(255,255,255,0.10), transparent 16%),
+          linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+        background-attachment: scroll, scroll;
+      }
       .hero-card { min-height: 520px; border-radius: 24px; }
-      .hero-copy { width: calc(100% - 36px); margin-left: 18px; }
+      .hero-copy { width: auto; margin-left: 0; padding: 34px 18px 24px; }
+      .hero-copy h1 {
+        max-width: none;
+        white-space: normal;
+        gap: 8px;
+      }
+      .hero-brand-main {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+        letter-spacing: 0.16em;
+      }
+      .hero-brand-sub {
+        font-size: 0.74rem;
+        letter-spacing: 0.18em;
+      }
+      .hero-subtext { font-size: 0.96rem; margin-bottom: 22px; }
+      .hero-meta { grid-template-columns: 1fr; margin-top: 22px; }
+      .hero-visual { min-height: 320px; padding: 0 18px 18px; }
+      .hero-visual-frame { width: min(100%, 290px); border-radius: 24px; }
+      .hero-framework {
+        inset: 16px;
+        padding: 14px 14px 16px;
+        border-radius: 20px;
+      }
+      .hero-framework-main {
+        gap: 10px;
+        padding: 18px 4px 20px;
+      }
+      .hero-framework-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        letter-spacing: 0.12em;
+      }
+      .hero-framework-subtitle {
+        max-width: 16ch;
+        font-size: 0.9rem;
+      }
+      .hero-framework-graphic {
+        min-height: 140px;
+      }
 
       h1 { font-size: clamp(2.1rem, 8.5vw, 3rem); max-width: 12ch; }
       h2 { font-size: clamp(1.7rem, 6.2vw, 2.3rem); }
       .lead { font-size: 1rem; }
       .btn { min-height: 48px; padding: 0 20px; font-size: 0.88rem; }
-      .btn-row { gap: 10px; }
+      .btn-row {
+        gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-row .btn,
+      .btn-row button {
+        width: 100%;
+      }
+      .founder-proof-grid,
+      .testimonials-grid { gap: 12px; }
 
       .wrap { width: min(var(--max), calc(100% - 24px)); }
       section { padding: 56px 0; }
@@ -748,6 +2479,267 @@
 
       .footer-brand { letter-spacing: 0.18em; }
       .about-home-copy h2 { max-width: none; }
+
+      .page-hero,
+      .about-page-hero,
+      .skin-page-hero,
+      .skin-plan-page-hero,
+      .injectables-page-hero,
+      .layer-method-hero,
+      .hair-page-hero {
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .layer-method-section,
+      .skin-page-section,
+      .injectables-page-section,
+      .skin-plan-page-section,
+      .skin-plan-quiz {
+        padding: 24px 18px;
+        border-radius: 24px;
+      }
+
+      .skin-page-section-head,
+      .injectables-page-section-head,
+      .layer-method-section-head,
+      .skin-plan-page-section-head {
+        margin-bottom: 20px;
+      }
+
+      .skin-page-section-head h3,
+      .injectables-page-section-head h3,
+      .layer-method-section-head h3,
+      .skin-plan-page-section-head h3 {
+        font-size: clamp(1.45rem, 6vw, 2rem);
+        line-height: 1.14;
+      }
+
+      .skin-page-subhead,
+      .injectables-page-subhead,
+      .hair-page-subhead,
+      .skin-plan-page-subhead,
+      .about-page-subhead {
+        font-size: 0.96rem;
+        line-height: 1.62;
+        letter-spacing: 0.03em;
+      }
+
+      .about-page-image {
+        min-height: 380px;
+      }
+
+      .about-page-image img {
+        object-position: center 12%;
+        transform: scale(1.04);
+      }
+
+      .about-page-intro {
+        max-width: none;
+        gap: 10px;
+      }
+
+      .about-page-lede {
+        max-width: none;
+        line-height: 1.72;
+      }
+
+      .skin-plan-page-visual,
+      .skin-page-visual,
+      .injectables-page-visual,
+      .layer-method-visual {
+        min-height: 280px;
+      }
+
+      .layer-method-visual {
+        padding: 12px;
+      }
+
+      .layer-method-stage-flow {
+        padding: 10px 10px 2px;
+      }
+
+      .skin-plan-page-visual img,
+      .skin-page-visual img,
+      .injectables-page-visual img,
+      .layer-method-visual img {
+        object-position: center 50%;
+      }
+
+      .skin-plan-page-grid,
+      .skin-page-grid,
+      .injectables-page-grid,
+      .layer-method-grid,
+      .skin-plan-steps,
+      .layer-method-points {
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .skin-plan-page-point,
+      .skin-page-point,
+      .injectables-page-point,
+      .layer-method-point,
+      .hair-step-card {
+        padding: 18px 18px;
+      }
+
+      .layer-method-point-index,
+      .layer-method-stage-number {
+        margin-bottom: 12px;
+      }
+
+      .layer-method-stage-grid .layer-method-point {
+        min-height: 0;
+      }
+
+      .layer-method-closeout {
+        padding: 22px 20px 24px;
+      }
+
+      .layer-method-closeout h3 {
+        max-width: none;
+      }
+
+      .skin-plan-page-list {
+        margin-top: 18px;
+        gap: 10px;
+      }
+
+      .skin-plan-page-list li {
+        padding: 14px 16px;
+      }
+
+      .skin-plan-step {
+        padding: 18px 18px 16px;
+      }
+
+      .skin-plan-quiz-inner {
+        max-width: none;
+      }
+
+      .skin-plan-quiz-launch {
+        margin-top: 18px;
+        padding: 24px 18px;
+      }
+
+      .narrative.about-page-body {
+        padding: 28px 20px 30px;
+      }
+
+      .about-page-body p + p {
+        margin-top: 16px;
+      }
+
+      .footer {
+        padding: 38px 0 54px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand {
+        font-size: 1.02rem;
+        letter-spacing: 0.14em;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+      }
+
+      .hero-copy {
+        padding: 30px 16px 22px;
+      }
+
+      .hero-brand-main {
+        font-size: clamp(1.95rem, 11vw, 2.7rem);
+        letter-spacing: 0.13em;
+      }
+
+      .hero-brand-sub {
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+      }
+
+      .hero-subtext,
+      .about-page-lede,
+      .skin-plan-page-section-head p,
+      .skin-page-section-head p,
+      .injectables-page-section-head p,
+      .layer-method-section-head p,
+      .hair-page-copy p,
+      .final-cta-copy {
+        font-size: 0.95rem;
+        line-height: 1.66;
+      }
+
+      .hero-card {
+        min-height: 480px;
+      }
+
+      .entry-image {
+        aspect-ratio: 1.3 / 1;
+      }
+
+      .about-page-image {
+        min-height: 340px;
+      }
+
+      .about-page-image img {
+        object-position: center 10%;
+      }
+
+      .skin-plan-page-visual,
+      .skin-page-visual,
+      .injectables-page-visual,
+      .layer-method-visual,
+      .hair-page-visual {
+        min-height: 240px;
+      }
+
+      .skin-plan-page-section,
+      .skin-page-section,
+      .injectables-page-section,
+      .layer-method-section,
+      .soft-block,
+      .panel,
+      .quotes,
+      .about-home-copy,
+      .card-body,
+      .service-content,
+      .narrative {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .layer-method-copy h2 {
+        max-width: 11ch;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-copy,
+      .hero-copy > *,
+      .hero-visual,
+      .hero-card::after,
+      .home-layer-method .lm-reveal,
+      .home-layer-method .lm-reveal-card,
+      .reveal-up,
+      .reveal-image,
+      .layer-step,
+      .home-section-reveal,
+      .card,
+      .service-panel,
+      .testimonial-card,
+      .btn,
+      .nav-item,
+      .dropdown > a {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
@@ -766,14 +2758,13 @@
 
       <nav class="links">
         <a class="nav-item" href="#top">Home</a>
-        <a class="nav-item" href="#layer-method-page">The Layer Method™</a>
+        <a class="nav-item" href="#layer-method-page">The Layer Method&#8482;</a>
 
         <div class="dropdown nav-item">
           <a href="#skin-page">Skin</a>
           <div class="dropdown-menu">
             <a href="#skin-page">Skin Overview</a>
-            <a href="#skin-plan">Start Your Skin Plan</a>
-            <a href="#skin-edit">Calibrae Skin Edit</a>
+            <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener">Start Your Skin Plan</a>
             <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Shop Skincare</a>
           </div>
         </div>
@@ -785,73 +2776,74 @@
             <a href="#injectables-page">Neurotoxin</a>
             <a href="#injectables-page">Facial Balancing</a>
             <a href="#injectables-page">Regenerative Treatments</a>
-            <a href="#consultation">Consultation</a>
+            <a href="#contact-page">Consultation</a>
           </div>
         </div>
 
-        <a class="nav-item" href="#ambassador-program">Ambassador Program</a>
         <a class="nav-item" href="#about-danielle">About Danielle</a>
         <a class="nav-item" href="#contact-page">Contact</a>
-        <a class="nav-item" href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener">Shop</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero section-divider">
+    <section class="hero section-divider reveal-image">
       <div class="wrap">
         <div class="hero-card">
           <div class="hero-copy">
-            <div class="eyebrow">Provider-led • luxury clinical aesthetics</div>
-            <h1>Calibrae Institute of Aesthetic Medicine</h1>
+            <h1>
+              <span class="hero-brand-main">CALIBRAE</span>
+              <span class="hero-brand-sub">INSTITUTE OF AESTHETIC MEDICINE</span>
+            </h1>
             <p class="lead">A more intentional approach to aesthetics.</p>
+            <p class="hero-subtext">Diagnosis-first care built around skin, structure, movement, and thoughtful treatment planning.</p>
             <div class="btn-row">
-              <a href="#consultation" class="btn primary">Request Consultation</a>
-              <a href="#layer-method-page" class="btn secondary">Explore The Layer Method™</a>
+              <a href="#contact-page" class="btn primary">Request Consultation</a>
+              <a href="#layer-method-page" class="btn secondary">Explore The Layer Method&#8482;</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="entry-points" class="page-anchor section-light section-divider">
+    <section id="entry-points" class="page-anchor section-light section-divider home-section-reveal">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal-up">
           <div class="kicker">Choose your entry point</div>
-          <h2>Three ways in.</h2>
-          <p>Skin, injectables, or access. Each path leads into the Calibrae world a little differently.</p>
+          <h2>Choose your entry point.</h2>
+          <p>Not every patient needs the same kind of care. Calibrae offers clear starting points for skincare, injectables, and diagnosis-first treatment planning.</p>
         </div>
 
         <div class="grid-3">
-          <article class="card">
-            <img class="entry-image" src="./skin-closeup.png" alt="Luxury skin image" />
+          <article class="card reveal-up">
+            <img class="entry-image skin-entry-image" src="./images/skin-card-serum.jpg.png" alt="Clinical-elevated skincare still life" />
             <div class="card-body">
               <h3>Skin</h3>
-              <p>Provider-guided pathways for barrier health, correction, resilience, and long-term skin quality.</p>
+              <p>Provider-guided pathways for barrier health, correction, and long-term skin quality.</p>
               <div class="entry-actions">
                 <a href="#skin-page" class="btn secondary">Explore Skin</a>
               </div>
             </div>
           </article>
 
-          <article class="card">
-            <img class="entry-image" src="./injectables-syringe.png" alt="Luxury injectable setup" />
+          <article class="card reveal-up">
+            <img class="entry-image" src="./images/entry-injectables-luxury.png" alt="Luxury clinical injectables setup" />
             <div class="card-body">
               <h3>Injectables</h3>
-              <p>Thoughtful treatment planning for movement, structure, balance, and refined rejuvenation.</p>
+              <p>Thoughtful treatment planning for movement, structure, balance, and natural-looking rejuvenation.</p>
               <div class="entry-actions">
                 <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
               </div>
             </div>
           </article>
 
-          <article class="card">
-            <img class="entry-image" src="./founding-queens-card.png" alt="Founding Queens member card" />
+          <article class="card muted-card reveal-up">
+            <img class="entry-image" src="./images/start-here-founder.jpg.png" alt="Consultation-focused founder guidance" />
             <div class="card-body">
-              <h3>Ambassador Program</h3>
-              <p>A loyalty and community ecosystem built around access, recognition, progression, perks, and The Vault.</p>
+              <h3>Start Here</h3>
+              <p>Not sure where to begin? Start with a consultation or guided pathway so your next step matches what you actually need.</p>
               <div class="entry-actions">
-                <a href="#ambassador-program" class="btn secondary">Explore the Program</a>
+                <a href="#contact-page" class="btn secondary">Request Consultation</a>
               </div>
             </div>
           </article>
@@ -859,62 +2851,61 @@
       </div>
     </section>
 
-    <section id="layer-home" class="section-glow section-divider">
-      <div class="wrap split">
-        <div class="panel stack">
-          <div class="kicker">The Layer Method™</div>
-          <h2>Treat the driver, not just the symptom.</h2>
-          <div class="bullets">
-            <div class="bullet"><strong>Structure before refinement</strong><br><span class="small">Step back first. Understand what is actually creating the visible concern.</span></div>
-            <div class="bullet"><strong>Diagnosis before product</strong><br><span class="small">The plan comes before the syringe, the product, or the trend.</span></div>
-            <div class="bullet"><strong>Skin and injectables work together</strong><br><span class="small">The result is stronger when support, structure, and skin quality are treated as one system.</span></div>
+        <section id="layer-home" class="section-glow section-divider home-layer-method">
+      <div class="wrap">
+        <div class="layer-home-layout">
+          <div class="layer-home-copy">
+            <div class="kicker layer-home-eyebrow lm-reveal" data-lm-delay="0">The Layer Method™</div>
+            <h2 class="layer-home-title lm-reveal" data-lm-delay="80">Treat the driver, not just the complaint.</h2>
+            <p class="layer-home-body lm-reveal" data-lm-delay="160">Most people describe what they see — lines, heaviness, dullness, imbalance, or skin change. Calibrae steps back first to understand what is actually driving that concern so treatment can be placed in the right layer and the right order.</p>
+            <div class="btn-row layer-home-actions lm-reveal" data-lm-delay="240" style="margin-top:24px;">
+              <a href="#layer-method-page" class="btn primary">Explore The Layer Method™</a>
+            </div>
           </div>
-          <div class="btn-row">
-            <a href="#layer-method-page" class="btn primary">Explore The Layer Method™</a>
+          <div class="layer-home-visual lm-reveal-card" data-lm-delay="120">
+            <img src="./images/layer-method-principles.png.png" alt="The Layer Method principles graphic" />
           </div>
-        </div>
-
-        <div class="right-image">
-          <img src="./skin-closeup.png" alt="Human skin layers diagram" />
         </div>
       </div>
     </section>
 
-    <section id="services-home" class="section-contrast section-divider">
+    <section id="services-home" class="section-contrast section-divider home-section-reveal">
       <div class="wrap service-duo">
-        <article class="service-panel skin">
+        <article class="service-panel skin reveal-image">
           <div class="service-content">
             <div class="kicker">Skin</div>
-            <h2>Your skin is the foundation.</h2>
-            <p>Provider-led care built around Protect. Correct. Build.</p>
-            <div class="btn-row" style="margin-top: 18px;">
-              <a href="#skin-page" class="btn secondary">Explore Skin</a>
-            </div>
+            <h2>Skin, guided with more intention.</h2>
+            <p>Calibrae approaches skin care as provider-guided support for barrier health, correction, resilience, and long-term skin quality — not just product shopping.</p>
+            <p class="service-support">Simple guidance if you need a place to start. Personalized review if you need a more strategic reset.</p>
+        <div class="btn-row service-actions">
+          <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+        </div>
+        <p class="service-support">Start with a guided skin plan. After review, Calibrae will recommend the most appropriate next step based on your routine, concerns, goals, and overall level of support needed.</p>
           </div>
         </article>
 
-        <article class="service-panel injectables">
+        <article class="service-panel injectables reveal-image">
           <div class="service-content">
             <div class="kicker">Injectables</div>
-            <h2>Purposeful. Precise. Natural.</h2>
-            <p>Structure, movement, and balance—planned with more intention.</p>
-            <div class="btn-row" style="margin-top: 18px;">
-              <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
-            </div>
+            <h2>Injectables, planned with more intention.</h2>
+            <p>Thoughtful treatment planning for movement, structure, balance, and natural-looking rejuvenation.</p>
+        <div class="btn-row service-actions">
+          <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
+        </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="about-home" class="page-anchor section-divider">
+    <section id="about-home" class="page-anchor section-divider home-section-reveal">
       <div class="wrap">
         <div class="about-home">
-          <div class="about-home-photo"></div>
-          <div class="about-home-copy">
+          <div class="about-home-photo reveal-image"></div>
+          <div class="about-home-copy reveal-up">
             <div class="kicker">Founder & Provider</div>
-            <h2>Led by Experience. Defined by Precision.</h2>
-            <p>Danielle Wiley, PA-C is known for a more intentional, anatomy-based approach that prioritizes natural, balanced results and thoughtful treatment planning.</p>
-            <div class="btn-row">
+            <h2>Led by experience. Defined by precision.</h2>
+            <p>Danielle Wiley, PA-C is a board-certified physician assistant specializing in advanced aesthetic and regenerative treatments. Known for her structured, anatomy-driven approach, she focuses on identifying the true cause of a concern rather than treating it superficially. As the founder of Calibrae Institute of Aesthetic Medicine and creator of The Layer Method&#8482;, Danielle is recognized for delivering natural, balanced results through thoughtful, precision-based care.</p>
+            <div class="btn-row founder-actions">
               <a href="#about-danielle" class="btn primary">About Danielle</a>
             </div>
           </div>
@@ -922,153 +2913,627 @@
       </div>
     </section>
 
-    <section id="reviews" class="page-anchor section-light section-divider">
+    <section id="reviews" class="page-anchor section-light section-divider home-section-reveal">
       <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">What patients have said about Danielle’s care</div>
-          <h2>Trusted With Their Face</h2>
+        <div class="section-head reveal-up">
+          <div class="kicker">Patient Experience</div>
+          <h2>Trusted with their face.</h2>
+          <p>Thoughtful care. Clear education. Natural-looking results.</p>
         </div>
-
-        <div class="quotes">
-          <div class="quote-slide active">
-            <div class="quote-text">This is THE place I go for Botox &amp; filler. Danielle is very professional, knowledgeable, and skilled at her craft. This is the only place I will trust with my face. She makes the whole experience comfortable and answers every question thoroughly.</div>
-            <div class="quote-name">— Arianna</div>
-          </div>
-          <div class="quote-slide">
-            <div class="quote-text">Danielle took her time to explain everything thoroughly, listened carefully, and made the entire process feel personalized from start to finish. The treatment was gentle, precise, and customized, and my results looked natural and refreshing.</div>
-            <div class="quote-name">— Cynthia</div>
-          </div>
-          <div class="quote-slide">
-            <div class="quote-text">Your knowledge, attention to detail, and expertise really show. My skin looks healthier, smoother, and more radiant. You can tell you genuinely care about doing things the right way.</div>
-            <div class="quote-name">— Crystal</div>
-          </div>
-          <div class="quote-slide">
-            <div class="quote-text">She was kind, knowledgeable, and unbelievably professional. I felt comfortable immediately. Her technique was so precise that I had zero pain or bruising, and I left feeling completely confident in her care.</div>
-            <div class="quote-name">— LAD</div>
-          </div>
-          <div class="quote-nav">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="final-cta" class="section-glow section-divider">
-      <div class="wrap">
-        <div class="panel vault-center">
-          <div class="kicker">Begin here</div>
-          <h2>Start with a consultation. Build a plan that actually makes sense.</h2>
-          <div class="btn-row" style="justify-content:center; margin-top:24px;">
-            <a href="#consultation" class="btn primary">Request Consultation</a>
-            <a href="#ambassador-program" class="btn secondary">Join the Waitlist</a>
-          </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal-up">
+            <span class="testimonial-kicker">Trust</span>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p>This is the only place I will trust with my face. Danielle makes the whole experience comfortable and answers every question thoroughly.</p>
+            <cite>— Arianna</cite>
+            <div class="testimonial-meta">Patient experience</div>
+          </article>
+          <article class="testimonial-card reveal-up">
+            <span class="testimonial-kicker">Personalized</span>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p>The entire process felt personalized from start to finish. The treatment was gentle, precise, and my results looked natural and refreshing.</p>
+            <cite>— Cynthia</cite>
+            <div class="testimonial-meta">Patient experience</div>
+          </article>
+          <article class="testimonial-card reveal-up">
+            <span class="testimonial-kicker">Precision</span>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p>Her technique was so precise that I had zero pain or bruising, and I left feeling completely confident in her care.</p>
+            <cite>— LAD</cite>
+            <div class="testimonial-meta">Patient experience</div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="layer-method-page" class="page-template page-anchor section-divider">
       <div class="wrap">
-        <div class="page-hero">
-          <div class="stack">
-            <div class="kicker">The Layer Method™</div>
-            <h2>The Layer Method™</h2>
-            <p>Calibrae’s diagnosis-first framework for understanding what is actually driving a concern, then treating the right layer in the right order.</p>
+        <div class="page-hero layer-method-hero">
+          <div class="stack layer-method-copy">
+            <div class="kicker">The Layer Method&#8482;</div>
+            <h2>Treat the driver, not just the complaint.</h2>
+            <p>Most people describe what they see &mdash; lines, heaviness, dullness, imbalance, or skin change. Calibrae steps back first to understand what is actually driving the concern so treatment can be placed in the right layer and the right order.</p>
             <div class="btn-row">
-              <a href="#consultation" class="btn primary">Request Consultation</a>
+              <a href="#contact-page" class="btn primary">Request Consultation</a>
               <a href="#skin-page" class="btn secondary">Explore Skin</a>
             </div>
           </div>
-          <div class="page-image">
-            <img src="./skin-closeup.png" alt="Human skin layers diagram" />
+          <div class="page-image layer-method-visual">
+            <img src="./images/layer-method-principles.png.png" alt="The Layer Method principles graphic" />
           </div>
         </div>
 
-        <div class="section-grid">
-          <div class="soft-block"><h3>Treat the driver, not just the complaint.</h3><p>Most patients talk about what they see, heaviness, lines, dullness, sagging, skin changes, or that something just feels off. The Layer Method™ looks deeper to understand what is actually causing that concern before deciding what treatment makes sense.</p></div>
-          <div class="soft-block"><h3>A more intelligent way to plan care</h3><p>Sometimes the issue is movement. Sometimes it is support loss. Sometimes it is skin quality. Sometimes it is tissue change, proportion, or a combination. The Layer Method™ helps organize that thinking so care is guided with more precision and less guesswork.</p></div>
-          <div class="soft-block"><h3>How it shows up across the practice</h3><p><strong>Skin:</strong> barrier health, resilience, pigment, texture, and long-term quality. <strong>Injectables:</strong> movement, support, balance, and sequencing. <strong>Structural planning:</strong> assessing the bigger picture. <strong>Regenerative care:</strong> tissue support beyond simple correction. <strong>Refinement:</strong> smaller finishing adjustments after the main driver is addressed.</p></div>
-        </div>
+        <section id="layer-method-overview" class="layer-method-section layer-method-overview">
+          <div class="layer-method-section-head">
+            <div class="kicker">Overview</div>
+            <h3>The Layer Method&#8482;</h3>
+            <p class="layer-method-subtitle">Diagnosis first. Treatment second.</p>
+            <p>The Layer Method&#8482; is Calibrae&rsquo;s diagnosis-first framework for understanding what is truly driving a concern before choosing treatment. Instead of reacting to the surface complaint alone, treatment is guided by structure, movement, skin quality, and sequencing.</p>
+          </div>
+          <div class="layer-method-points layer-method-principles">
+            <div class="layer-method-point">
+              <span class="layer-method-point-index">01</span>
+              <h4>Diagnosis before product</h4>
+              <p>Treatment starts with understanding the cause, not reaching for a product first.</p>
+            </div>
+            <div class="layer-method-point">
+              <span class="layer-method-point-index">02</span>
+              <h4>Structure before refinement</h4>
+              <p>A stronger foundation creates more balanced, natural-looking results.</p>
+            </div>
+            <div class="layer-method-point">
+              <span class="layer-method-point-index">03</span>
+              <h4>Treatment by cause, not impulse</h4>
+              <p>What bothers you most is not always what should be treated first.</p>
+            </div>
+            <div class="layer-method-point">
+              <span class="layer-method-point-index">04</span>
+              <h4>The right treatment, in the right layer, in the right order</h4>
+              <p>Better outcomes come from treating the correct driver in the correct sequence.</p>
+            </div>
+          </div>
+          <p class="layer-method-closing">The goal is not to do more. The goal is to do what actually belongs.</p>
+        </section>
+
+        <section id="skincare-within-layer-method" class="layer-method-section layer-method-branch">
+          <div class="layer-method-section-head">
+            <div class="kicker">Skin</div>
+            <h3>Skincare Within the Layer Method&#8482;</h3>
+            <p class="layer-method-subtitle">Not separate &mdash; foundational</p>
+            <p>At Calibrae, skincare is not treated as an add-on. Skin quality is one of the primary layers that can drive visible concerns, and in many cases, it is where treatment should begin.</p>
+          </div>
+          <div class="layer-method-grid">
+            <div class="layer-method-point">
+              <h4>Barrier + Hydration</h4>
+              <p>Supporting skin function and resilience</p>
+            </div>
+            <div class="layer-method-point">
+              <h4>Correction</h4>
+              <p>Pigment, texture, acne, and tone</p>
+            </div>
+            <div class="layer-method-point">
+              <h4>Regenerative Support</h4>
+              <p>Collagen health and long-term skin quality</p>
+            </div>
+          </div>
+          <p class="layer-method-closing">Healthy skin improves every other treatment layer.</p>
+          <div class="btn-row layer-method-actions">
+            <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+          </div>
+        </section>
+
+        <section id="injectables-within-layer-method" class="layer-method-section layer-method-branch">
+          <div class="layer-method-section-head">
+            <div class="kicker">Injectables</div>
+            <h3>Injectables Within the Layer Method&#8482;</h3>
+            <p class="layer-method-subtitle">Chosen by layer, not impulse</p>
+            <p>Injectables are used intentionally within The Layer Method&#8482; &mdash; not as isolated fixes, but as tools selected based on what is actually causing the concern.</p>
+          </div>
+          <div class="layer-method-grid">
+            <div class="layer-method-point">
+              <h4>Movement (Neurotoxin)</h4>
+              <p>Addresses expression patterns and muscle pull</p>
+            </div>
+            <div class="layer-method-point">
+              <h4>Volume / Support (Filler / PRF)</h4>
+              <p>Restores contour and structural balance</p>
+            </div>
+            <div class="layer-method-point">
+              <h4>Regenerative Injectables</h4>
+              <p>Supports tissue quality and long-term outcomes</p>
+            </div>
+          </div>
+          <p class="layer-method-keyline">Not every concern requires filler.
+Not every line requires toxin.
+Treatment depends on what is actually causing the concern.</p>
+          <div class="btn-row layer-method-actions">
+            <a href="#injectables-page" class="btn secondary">Explore Injectables</a>
+          </div>
+        </section>
+
+        <section id="why-treatment-is-staged" class="layer-method-section layer-method-staging">
+          <div class="layer-method-section-head">
+            <div class="kicker">Staging</div>
+            <h3>Why Treatment Is Staged</h3>
+            <p class="layer-method-subtitle">Better results, not faster results</p>
+            <p class="layer-method-stage-lead">Calibrae does not approach every concern as something that should be treated all at once. Many of the best outcomes come from sequencing treatment thoughtfully so the right layer is addressed at the right time.</p>
+          </div>
+          <div class="layer-method-stage-flow">
+            <div class="layer-method-grid layer-method-stage-grid">
+              <div class="layer-method-point">
+                <span class="layer-method-stage-number">01</span>
+                <h4>Foundation First</h4>
+                <p>Structure and deeper support</p>
+              </div>
+              <div class="layer-method-point">
+                <span class="layer-method-stage-number">02</span>
+                <h4>Driver Second</h4>
+                <p>Movement or volume correction</p>
+              </div>
+              <div class="layer-method-point">
+                <span class="layer-method-stage-number">03</span>
+                <h4>Refinement Last</h4>
+                <p>Surface and aesthetic finishing</p>
+              </div>
+            </div>
+          </div>
+          <p class="layer-method-closing">Rushing treatment often creates imbalance. Staging treatment creates results that feel more natural, more strategic, and more likely to last.</p>
+        </section>
+
+        <section id="your-plan" class="layer-method-section layer-method-closing-section">
+          <div class="layer-method-closeout">
+            <div class="kicker">Next Step</div>
+            <h3>Start with the right next step.</h3>
+            <p>The Layer Method begins with understanding what is actually driving the concern. Start with a guided skin plan, or request a consultation if you need a more comprehensive discussion.</p>
+            <div class="btn-row layer-method-actions">
+              <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+              <a href="#contact-page" class="btn secondary">Request Consultation</a>
+            </div>
+            <p class="layer-method-closing">Diagnosis first. Treatment second.</p>
+          </div>
+        </section>
       </div>
     </section>
 
     <section id="skin-page" class="page-template page-anchor section-soft section-divider">
       <div class="wrap">
-        <div class="page-hero">
-          <div class="stack">
+        <div class="page-hero skin-page-hero">
+          <div class="stack skin-page-copy">
             <div class="kicker">Skin</div>
             <h2>Skin, guided with more intention.</h2>
-            <p>At Calibrae, skin care is not just product shopping. It is a structured, provider-guided approach to barrier health, correction, resilience, and long-term skin quality.</p>
+            <p class="skin-page-subhead">Provider-guided support for barrier health, correction, resilience, and long-term skin quality.</p>
+            <p>At Calibrae, skincare is not treated as product shopping or an afterthought. Skin is approached as a meaningful treatment layer that can influence texture, tone, recovery, resilience, and the way every other aesthetic treatment performs over time.</p>
             <div class="btn-row">
-              <a href="#skin-plan" class="btn primary">Start Your Skin Plan</a>
-              <a href="#skin-edit" class="btn secondary">Book Skin Edit</a>
+              <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+            </div>
+            <p class="skin-page-subhead">Start with a guided skin plan. After review, Calibrae will recommend the most appropriate next step based on your routine, concerns, goals, and overall level of support needed.</p>
+          </div>
+          <div class="page-image skin-page-visual">
+            <img src="./images/skin-card-serum.jpg.png" alt="Refined skincare still life" />
+          </div>
+        </div>
+
+        <section class="skin-page-section">
+          <div class="skin-page-section-head">
+            <div class="kicker">Philosophy</div>
+            <h3>Your skin is an organ. Treat it like one.</h3>
+            <p>Healthy skin is not built through random products, rushed routines, or constant overcorrection. Calibrae approaches skin with the same philosophy used throughout the practice: understand what is happening first, then choose the right level of support with more clarity and more intention.</p>
+          </div>
+          <p class="skin-page-closing">Better skin starts with better structure, better support, and better sequencing.</p>
+        </section>
+
+        <section class="skin-page-section">
+          <div class="skin-page-section-head">
+            <div class="kicker">Framework</div>
+            <h3>Protect. Correct. Build.</h3>
+            <p class="skin-page-subtitle">A more intentional way to organize skin care.</p>
+            <p>Calibrae&rsquo;s skin system is built around three core functions: protect what the skin needs, correct what is actively driving concern, and build healthier skin quality over time.</p>
+          </div>
+          <div class="skin-page-grid">
+            <div class="skin-page-point">
+              <h4>Protect</h4>
+              <p>Barrier support, cleansing, hydration, lipid balance, and daily SPF help create the conditions skin needs to function well.</p>
+            </div>
+            <div class="skin-page-point">
+              <h4>Correct</h4>
+              <p>Pigment, texture, acne, uneven tone, and other visible concerns are approached more thoughtfully when the skin is ready for correction.</p>
+            </div>
+            <div class="skin-page-point">
+              <h4>Build</h4>
+              <p>Long-term skin quality depends on consistency, collagen support, resilience, and a plan that strengthens the skin over time rather than constantly stressing it.</p>
             </div>
           </div>
-          <div class="page-image">
-            <img src="./skin-closeup.png" alt="Close up luxury skin image" />
+          <p class="skin-page-closing">The goal is not to overload the skin. The goal is to support it intelligently.</p>
+        </section>
+
+        <section class="skin-page-section">
+          <div class="skin-page-section-head">
+            <div class="kicker">Within The Layer Method&#8482;</div>
+            <h3>Skincare Within The Layer Method&#8482;</h3>
+            <p class="skin-page-subtitle">Not separate &mdash; foundational</p>
+            <p>Skin quality is one of the primary layers that can drive visible concerns, and in many cases, it is where treatment should begin. Calibrae does not separate skin from the larger treatment plan. It is part of the plan.</p>
+          </div>
+          <div class="skin-page-grid">
+            <div class="skin-page-point">
+              <h4>Barrier + Hydration</h4>
+              <p>Supporting skin function and resilience</p>
+            </div>
+            <div class="skin-page-point">
+              <h4>Correction</h4>
+              <p>Pigment, texture, acne, and tone</p>
+            </div>
+            <div class="skin-page-point">
+              <h4>Regenerative Support</h4>
+              <p>Collagen health and long-term skin quality</p>
+            </div>
+          </div>
+          <p class="skin-page-closing">Healthy skin improves every other treatment layer.</p>
+        </section>
+
+        <section class="skin-page-section">
+          <div class="skin-page-section-head">
+            <div class="kicker">How To Begin</div>
+            <h3>Start with a guided skin plan.</h3>
+            <p class="skin-page-subtitle">One clear entry point. The right next step after review.</p>
+            <p>Start with a guided skin plan. After review, Calibrae will recommend the most appropriate next step based on your routine, concerns, goals, and overall level of support needed.</p>
+          </div>
+          <div class="skin-page-grid">
+            <div class="skin-page-point" id="skin-start">
+              <h4>Start Your Skin Plan</h4>
+              <p>Start Your Skin Plan is the single guided entry point. After submission, Calibrae will review your routine, concerns, and goals to recommend the most appropriate next step.</p>
+              <div class="btn-row skin-page-actions">
+                <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+              </div>
+            </div>
+            <div class="skin-page-point" id="skin-edit">
+              <h4>More personalized review if needed</h4>
+              <p>For some patients, the next step after review may include a more personalized discussion, virtual follow-up, or appointment-based guidance.</p>
+            </div>
+          </div>
+          <p class="skin-page-closing">One guided starting point. The right recommendation after review.</p>
+        </section>
+
+        <section class="skin-page-section">
+          <div class="skin-page-section-head">
+            <div class="kicker">What Matters</div>
+            <h3>Good skin care should support every other result.</h3>
+            <p>Whether you are focused on skin alone or integrating skin care with injectables and other treatments, the right skin plan creates a better foundation for long-term outcomes. Calibrae treats skin as part of thoughtful aesthetic medicine, not as an extra.</p>
+          </div>
+          <div class="btn-row skin-page-actions">
+            <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+            <a href="#contact-page" class="btn secondary">Request Consultation</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="skin-plan-page" class="page-template page-anchor section-soft section-divider">
+      <div class="wrap">
+        <div id="skin-plan-hero" class="page-hero skin-plan-page-hero">
+          <div class="stack skin-plan-page-copy">
+            <div class="kicker">Skin</div>
+            <h2>Start Your Skin Plan</h2>
+            <p class="skin-plan-page-subhead">A guided skincare entry point designed to help Calibrae understand your goals, concerns, routine, and next best step.</p>
+            <p>Not every patient needs the same level of support. Some need a simpler place to begin. Others need a more personalized review. The Calibrae Skin Pathway Quiz helps direct you toward the most appropriate next step based on your skin, routine, and goals.</p>
+            <div class="btn-row">
+              <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+            </div>
+          </div>
+          <div class="page-image skin-plan-page-visual">
+            <img src="./images/skin-card-serum.jpg.png" alt="Refined skincare still life" />
           </div>
         </div>
 
-        <div class="section-grid">
-          <div class="soft-block"><h3>Your skin is an organ. Treat it like one.</h3><p>Skin care should support the way your skin functions, not just the way it looks for a week. It should strengthen barrier health, improve resilience, support correction where needed, and create a better foundation for everything else you do in aesthetic medicine.</p></div>
-          <div class="soft-block"><h3>Protect. Correct. Build.</h3><p><strong>Protect:</strong> support the barrier and daily defense. <strong>Correct:</strong> target what needs active attention. <strong>Build:</strong> strengthen long-term skin quality through resilience and consistency.</p></div>
-          <div class="soft-block" id="skin-plan"><h3>Start Your Skin Plan</h3><p>This is the self-guided entry point into Calibrae skin care for people who want clearer direction without having to figure everything out on their own.</p></div>
-          <div class="soft-block" id="skin-edit"><h3>Calibrae Skin Edit</h3><p><strong>A personalized review of what to keep, remove, replace, and rebuild.</strong> This is the more provider-led option for people who are starting from scratch, already own products but do not know what is helping, or want a more strategic expert review.</p></div>
-        </div>
+        <section class="skin-plan-page-section">
+          <div class="skin-plan-page-section-head">
+            <div class="kicker">How It Works</div>
+            <h3>A more thoughtful place to begin.</h3>
+            <p>The Calibrae Skin Pathway Quiz is designed to gather the right starting information before recommendations are made. Rather than guessing or choosing products at random, this process helps create a more intentional first step.</p>
+          </div>
+          <div class="skin-plan-page-grid">
+            <div class="skin-plan-page-point">
+              <h4>Tell us about your skin</h4>
+              <p>Share your goals, concerns, current routine, and what feels most important right now.</p>
+            </div>
+            <div class="skin-plan-page-point">
+              <h4>Upload photos if requested</h4>
+              <p>Visual context helps Calibrae better understand what may be contributing to your concerns.</p>
+            </div>
+            <div class="skin-plan-page-point">
+              <h4>Get the right next step</h4>
+              <p>Based on your submission, the next step may be a starting routine, a Skin Edit, or a more personalized consultation.</p>
+            </div>
+          </div>
+          <p class="skin-plan-page-closing">A better plan starts with better information.</p>
+        </section>
 
-        <div class="btn-row" style="margin-top:24px;">
-          <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener" class="btn primary">Shop Skincare</a>
-        </div>
+        <section class="skin-plan-page-section">
+          <div class="skin-plan-page-section-head">
+            <div class="kicker">Who It&rsquo;s For</div>
+            <h3>Designed for patients who want guidance without guesswork.</h3>
+            <p>This pathway is ideal for patients who want a clearer place to begin, are not sure what their skin needs, or want more structure before making bigger treatment decisions.</p>
+          </div>
+          <ul class="skin-plan-page-list">
+            <li>patients new to medical-grade skincare</li>
+            <li>patients with routine confusion</li>
+            <li>patients who want provider-guided direction</li>
+            <li>patients deciding between a simple plan and a more personalized review</li>
+          </ul>
+        </section>
+
+        <section class="skin-plan-page-section">
+          <div class="skin-plan-page-section-head">
+            <div class="kicker">What Happens Next</div>
+            <h3>Your next step depends on what you actually need.</h3>
+            <p>Not every patient should enter care the same way. Some submissions may be best directed toward a simpler skin plan. Others may be better suited for Calibrae Skin Edit or a consultation if a deeper review is needed.</p>
+          </div>
+          <div class="skin-plan-page-grid">
+            <div class="skin-plan-page-point">
+              <h4>A simpler starting point</h4>
+              <p>If you need a clearer baseline, Calibrae may direct you toward a provider-guided skin plan.</p>
+            </div>
+            <div class="skin-plan-page-point">
+              <h4>A more personalized review</h4>
+              <p>For some patients, the next step after review may include a more personalized discussion about routine, strategy, and recommendations.</p>
+            </div>
+            <div class="skin-plan-page-point">
+              <h4>A deeper consultation</h4>
+              <p>If your concerns extend beyond a simple skincare starting point, a consultation may be recommended.</p>
+            </div>
+          </div>
+          <p class="skin-plan-page-closing">The right entry point depends on the right assessment.</p>
+        </section>
+
+        <section class="skin-plan-page-section">
+          <div class="skin-plan-page-section-head">
+            <div class="kicker">Begin</div>
+            <h3>Take the first step.</h3>
+            <p>When you&rsquo;re ready, begin the Calibrae Skin Pathway Quiz below. After submission, Calibrae will review your form and determine the most appropriate next step.</p>
+          </div>
+          <div class="btn-row skin-plan-page-actions">
+            <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+          </div>
+        </section>
+
+        <section id="skin-pathway-quiz" class="skin-plan-quiz">
+          <div class="skin-plan-quiz-inner">
+            <div class="skin-plan-quiz-header">
+              <div class="kicker">Skin Pathway</div>
+              <h3>Calibrae Skin Pathway Quiz</h3>
+              <p>Provider-guided. Thoughtful. Built to identify the right starting point.</p>
+            </div>
+            <div class="skin-plan-quiz-launch">
+              <p>Start with a guided skin plan. After review, Calibrae recommends the most appropriate next step based on your routine, concerns, goals, and overall level of support needed.</p>
+              <div class="btn-row skin-plan-quiz-actions">
+                <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
+              </div>
+            </div>
+            <p class="skin-plan-quiz-note">Not every patient needs the same level of support. This pathway helps Calibrae recommend the right place to begin with more clarity and less guesswork.</p>
+          </div>
+        </section>
       </div>
     </section>
 
     <section id="injectables-page" class="page-template page-anchor section-divider">
       <div class="wrap">
-        <div class="page-hero">
-          <div class="stack">
+        <div class="page-hero injectables-page-hero">
+          <div class="stack injectables-page-copy">
             <div class="kicker">Injectables</div>
             <h2>Injectables, planned with more intention.</h2>
-            <p>At Calibrae, injectable treatment is guided by anatomy, movement, structure, proportion, tissue quality, and a clearer understanding of what is actually driving the concern.</p>
+            <p class="injectables-page-subhead">Thoughtful treatment planning for movement, structure, balance, and natural-looking rejuvenation.</p>
+            <p>At Calibrae, injectables are not approached as isolated fixes or impulse treatments. They are used as part of a more thoughtful plan built around anatomy, structural support, movement, proportion, and long-term outcomes.</p>
             <div class="btn-row">
-              <a href="#consultation" class="btn primary">Request Consultation</a>
+              <a href="#contact-page" class="btn primary">Request Consultation</a>
+              <a href="#layer-method-page" class="btn secondary">Explore The Layer Method&#8482;</a>
             </div>
           </div>
-          <div class="page-image">
-            <img src="./injectables-syringe.png" alt="Luxury syringe image" />
+          <div class="page-image injectables-page-visual">
+            <img src="./images/entry-injectables-luxury.png" alt="Luxury clinical injectables planning setup" />
+          </div>
+        </div>
+
+        <section class="injectables-page-section">
+          <div class="injectables-page-section-head">
+            <div class="kicker">Approach</div>
+            <h3>Diagnosis before product.</h3>
+            <p>Calibrae does not begin with a syringe. Treatment starts with assessment. The goal is to understand what is truly driving a concern before deciding whether neurotoxin, filler, regenerative support, or staging makes the most sense.</p>
+          </div>
+          <p class="injectables-page-closing">The best result starts with the right diagnosis.</p>
+        </section>
+
+        <section class="injectables-page-section">
+          <div class="injectables-page-section-head">
+            <div class="kicker">Framework</div>
+            <h3>Movement. Support. Sequence.</h3>
+            <p class="injectables-page-subtitle">A more thoughtful way to plan injectable care.</p>
+            <p>Visible concerns are not always caused by the thing patients notice first. Some concerns are driven by expression patterns. Some reflect volume loss or structural decline. Others are shaped by skin quality or changes that need to be staged over time.</p>
+          </div>
+          <div class="injectables-page-grid">
+            <div class="injectables-page-point">
+              <h4>Movement</h4>
+              <p>Neurotoxin is used to address expression patterns, muscular pull, and dynamic contributors when movement is the true driver.</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Support</h4>
+              <p>Filler and supportive treatments are used to restore contour, proportion, and structure when support loss is the bigger issue.</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Sequence</h4>
+              <p>Not every concern should be treated at once. Many of the best outcomes come from choosing the right order rather than trying to do everything in one visit.</p>
+            </div>
+          </div>
+          <p class="injectables-page-closing">The goal is not more product. The goal is better placement and better planning.</p>
+        </section>
+
+        <section class="injectables-page-section">
+          <div class="injectables-page-section-head">
+            <div class="kicker">Within The Layer Method&#8482;</div>
+            <h3>Injectables Within The Layer Method&#8482;</h3>
+            <p class="injectables-page-subtitle">Chosen by layer, not impulse</p>
+            <p>Injectables are selected based on what is actually causing the concern, not just what is easiest to see. Calibrae uses The Layer Method&#8482; to determine whether a concern is more meaningfully driven by movement, support loss, skin quality, or a combination that requires staging.</p>
+          </div>
+          <div class="injectables-page-grid">
+            <div class="injectables-page-point">
+              <h4>Movement (Neurotoxin)</h4>
+              <p>Addresses expression patterns and muscle pull</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Volume / Support (Filler / PRF)</h4>
+              <p>Restores contour and structural balance</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Regenerative Injectables</h4>
+              <p>Supports tissue quality and long-term outcomes</p>
+            </div>
+          </div>
+          <p class="injectables-page-keyline">Not every concern requires filler.
+Not every line requires toxin.
+Treatment depends on what is actually causing the concern.</p>
+          <div class="btn-row injectables-page-actions">
+            <a href="#layer-method-page" class="btn secondary">Explore The Layer Method&#8482;</a>
+          </div>
+        </section>
+
+        <section class="injectables-page-section">
+          <div class="injectables-page-section-head">
+            <div class="kicker">What This Means</div>
+            <h3>A more personalized treatment plan.</h3>
+            <p class="injectables-page-subtitle">Not every patient should start in the same place.</p>
+            <p>Some patients need a simpler starting point. Others need structure first, refinement later, or a plan built in stages over time. Calibrae approaches injectable care with more restraint, more intention, and more respect for long-term balance.</p>
+          </div>
+          <div class="injectables-page-grid">
+            <div class="injectables-page-point">
+              <h4>Some patients need movement correction first</h4>
+              <p>When expression patterns are driving the concern, neurotoxin may be the best first step.</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Some patients need structural support first</h4>
+              <p>When the deeper issue is support loss, treatment may need to focus there before refinement makes sense.</p>
+            </div>
+            <div class="injectables-page-point">
+              <h4>Some patients need staging</h4>
+              <p>The best outcome may come from sequencing care over time rather than trying to do everything in one visit.</p>
+            </div>
+          </div>
+          <p class="injectables-page-closing">The most thoughtful plan is not always the fastest one.</p>
+        </section>
+
+        <section class="injectables-page-section">
+          <div class="injectables-page-section-head">
+            <div class="kicker">How To Begin</div>
+            <h3>Start with consultation, not guesswork.</h3>
+            <p>Injectable care works best when it begins with thoughtful assessment. Calibrae consultations are designed to identify what is truly driving a concern and build a plan that feels more intentional, more balanced, and more aligned with natural-looking results.</p>
+          </div>
+          <div class="consult-info-stack">
+            <div class="consult-info-card">
+              <h4>Aesthetic Consultation &mdash; $100</h4>
+              <p>Applied toward your treatment plan, skincare, or future services.</p>
+            </div>
+            <div class="consult-info-card">
+              <h4>Consultation + Treatment</h4>
+              <p>For patients who would like to be evaluated and treated during the same visit when clinically appropriate. Same-day treatment is not guaranteed and depends on candidacy, timing, medical history, provider recommendation, and appointment availability.</p>
+            </div>
+          </div>
+          <div class="btn-row injectables-page-actions">
+            <a href="#contact-page" class="btn primary">Request Consultation</a>
+            <a href="#about-danielle" class="btn secondary">About Danielle</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="hair-page" class="page-template page-anchor section-divider">
+      <div class="wrap">
+        <div class="page-hero hair-page-hero">
+          <div class="stack hair-page-copy">
+            <div class="kicker">Hair</div>
+            <h2>Hair, approached with more intention.</h2>
+            <p class="hair-page-subhead">A medically informed approach to thinning, shedding, density changes, and long-term hair support.</p>
+            <p>At Calibrae, hair concerns are approached the same way as every other treatment plan &mdash; with assessment first. Rather than treating hair loss as a quick-fix cosmetic issue, Calibrae looks at pattern, timing, scalp environment, and realistic treatment pathways to build a more thoughtful plan.</p>
+          </div>
+          <div class="page-image hair-page-visual reveal-image" aria-hidden="true">
+            <div class="hair-visual-card">
+              <span class="hair-visual-label">Diagnosis-First Hair Support</span>
+              <h3>Hair plans are often built in layers, not chosen as a one-step fix.</h3>
+              <p>Assessment, foundational support, and staged treatment planning matter more than rushed intervention.</p>
+            </div>
           </div>
         </div>
 
         <div class="section-grid">
-          <div class="soft-block"><h3>Not every concern needs the same kind of treatment.</h3><p>Sometimes the issue is movement. Sometimes it is support loss. Sometimes it is proportion. Sometimes it is tissue quality. Sometimes it is skin quality. Sometimes it is a combination. That is part of The Layer Method™ in practice.</p></div>
-          <div class="soft-block"><h3>When movement is the driver</h3><p>Neurotoxin helps soften overactive pull patterns, reduce repetitive movement that deepens certain lines over time, and create a more balanced, rested appearance without disconnecting the face from expression.</p></div>
-          <div class="soft-block"><h3>When structure needs support</h3><p>This is where facial balancing, chin and jawline balancing, and support-focused placement matter. The goal is not to add volume for the sake of volume. It is to restore or support architecture with purpose.</p></div>
+          <div class="soft-block">
+            <h3>Assessment first</h3>
+            <p>Hair concerns are not all the same. Thinning, shedding, reduced density, and changes around the hairline can have different drivers, timelines, and treatment needs. The first step is understanding what is actually happening before deciding how to treat it.</p>
+          </div>
+          <div class="soft-block">
+            <h3>Build the foundation</h3>
+            <p>Healthy hair begins with a healthier environment. Calibrae&rsquo;s approach considers scalp condition, follicular support, consistency, and long-term maintenance rather than relying on one isolated intervention.</p>
+          </div>
+          <div class="soft-block">
+            <h3>Treatment in steps</h3>
+            <p>Hair concerns are rarely improved through one isolated intervention alone. Most patients benefit from a staged approach that may begin with assessment and foundational support, then build into more targeted treatment over time. Calibrae approaches hair the same way it approaches every other concern: understand the driver first, then build the right plan in the right order.</p>
+            <div class="hair-step-stack">
+              <div class="hair-step-card">
+                <strong>Step 1 &mdash; Assess</strong>
+                <p>Pattern, timing, shedding behavior, scalp condition, and treatment history</p>
+              </div>
+              <div class="hair-step-card">
+                <strong>Step 2 &mdash; Build</strong>
+                <p>Scalp support, follicular support, consistency, and foundational care</p>
+              </div>
+              <div class="hair-step-card">
+                <strong>Step 3 &mdash; Support Over Time</strong>
+                <p>Regenerative options, maintenance planning, and long-term follow-through when appropriate</p>
+              </div>
+            </div>
+          </div>
+          <div class="soft-block">
+            <h3>A personalized plan</h3>
+            <p>Some patients need guidance on where to begin. Others may need a more layered strategy over time. Calibrae builds hair plans with the same philosophy used throughout the practice: understand the driver first, then choose the right level of support.</p>
+          </div>
+        </div>
+
+        <p class="hair-page-closing">Better hair support comes from a more thoughtful plan &mdash; not a rushed fix.</p>
+
+        <div class="about-page-cta hair-page-cta">
+          <div class="btn-row" style="justify-content:center;">
+            <a href="#contact-page" class="btn primary">Request Consultation</a>
+            <a href="#contact-page" class="btn secondary">Contact Calibrae</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="about-danielle" class="page-template page-anchor section-soft section-divider">
       <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">About Danielle</div>
-          <h2>About Danielle</h2>
-          <p>Board-certified Physician Assistant, aesthetic provider, and founder of Calibrae Institute of Aesthetic Medicine.</p>
+        <div class="page-hero about-page-hero">
+          <div class="page-image about-page-image">
+            <img src="./images/start-here-founder2.png" alt="Portrait of Danielle Wiley, PA-C" />
+          </div>
+          <div class="stack about-page-intro">
+            <div class="kicker">Founder & Provider</div>
+            <h2>Danielle Wiley, PA-C</h2>
+            <p class="about-page-subhead">Founder, Calibrae Institute of Aesthetic Medicine</p>
+            <p class="about-page-lede">Danielle Wiley, PA-C is a board-certified physician assistant specializing in advanced aesthetic and regenerative treatments. Known for her structured, anatomy-driven approach, she focuses on identifying the true cause of a concern rather than treating it superficially. As the founder of Calibrae Institute of Aesthetic Medicine and creator of The Layer Method&#8482;, Danielle is recognized for delivering natural, balanced results through thoughtful, precision-based care.</p>
+          </div>
         </div>
 
-        <div class="narrative">
-          <p>Danielle Wiley, PA-C is a board-certified Physician Assistant and the founder of Calibrae Institute of Aesthetic Medicine.</p>
-          <p>Her background includes family medicine, weight loss medicine, urgent care, and pediatric urgent care, a foundation that shaped how she approaches patient care long before entering aesthetics.</p>
-          <p>What drew Danielle to aesthetic medicine was the intersection of anatomy, precision, and meaningful transformation. She was drawn to a field where thoughtful, well-executed treatment could create visible impact while still looking natural, balanced, and true to the individual.</p>
-          <p>Over time, she became known for an approach that felt different. More individualized. More conservative. More intentional.</p>
-          <p>Rather than focusing on isolated concerns, Danielle takes a full-picture approach, assessing structure, support, movement, proportion, and skin quality together. Her work is built on detailed assessment, long-term planning, and results that refine rather than alter.</p>
+        <div class="narrative about-page-body">
+          <p>Danielle Wiley, PA-C is a board-certified physician assistant specializing in advanced aesthetic and regenerative treatments. Her approach is rooted in clinical precision, structural understanding, and a philosophy that prioritizes treating the underlying cause&mdash;not just the visible concern.</p>
+          <p>Her path into medicine began with a personal commitment to health and wellness, where she developed a deep appreciation for the connection between discipline, physical change, and long-term outcomes. That foundation continued during her time as a collegiate athlete, playing rugby at Penn State University while studying kinesiology and contributing to a national championship team&mdash;an experience that continues to influence her performance-driven, anatomy-focused mindset.</p>
+          <p>Danielle's early clinical experience was shaped within regenerative medicine at National Spine &amp; Pain Centers in Tysons Corner, Virginia, where she worked under the mentorship of Dr. Mayo Friedlis. Over several years, she developed a strong foundation in injection-based therapies, sterile technique, and protocol-driven care, while gaining an appreciation for thoughtful, patient-centered treatment and ethical clinical decision-making.</p>
+          <p>She went on to earn her Master of Physician Assistant Studies from Alderson Broaddus University, where she trained in a hands-on clinical environment and completed advanced cadaver-based anatomical coursework. This experience deepened her understanding of facial structure, anatomical variation, and precision-based injection techniques.</p>
+          <p>Danielle's background also includes several years in family medicine with a focus on medical weight loss and GLP-1 therapy. This experience provided her with a unique understanding of the structural and facial changes associated with weight loss, further informing her approach to comprehensive, long-term aesthetic planning.</p>
+          <p>Prior to founding Calibrae, Danielle played a central role in developing and expanding an established aesthetic practice, where she helped build the injectable department and introduce a range of advanced treatment services. This experience further refined her clinical systems, consultation approach, and commitment to intentional, outcomes-driven care.</p>
+          <p>Her work today is guided by The Layer Method&#8482;, a diagnosis-first framework designed to identify the true anatomical drivers of a concern and treat them in the correct layer and sequence. She is known for a conservative, structure-first approach that prioritizes balance, longevity, and natural results.</p>
+          <p>Through Calibrae, Danielle is building a practice centered on thoughtful medicine, elevated aesthetics, and a higher standard of care.</p>
         </div>
 
-        <div class="manifesto" style="margin-top:18px;">
-          <div class="soft-block"><h3>Treat the full picture</h3><p>The face works as a complete system. Recommendations should come from assessing structure, movement, support, proportion, and skin quality together.</p></div>
-          <div class="soft-block"><h3>Natural always comes first</h3><p>The most beautiful results are the ones that still look like you.</p></div>
-          <div class="soft-block"><h3>Education matters</h3><p>Patients deserve to understand what is being treated, why it is being treated, and what options truly make sense for them.</p></div>
-          <div class="soft-block"><h3>More product is not better care</h3><p>Precision matters more than excess.</p></div>
+        <div class="about-page-cta">
+          <div class="btn-row" style="justify-content:center;">
+            <a href="#contact-page" class="btn primary">Request Consultation</a>
+            <a href="#layer-method-page" class="btn secondary">Explore The Layer Method&#8482;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1078,7 +3543,7 @@
         <div class="section-head">
           <div class="kicker">Contact</div>
           <h2>Contact</h2>
-          <p>Questions, brand inquiries, and general interest are welcome. If you’re ready to take the next step, we’ll help direct you where to begin.</p>
+          <p>Questions, brand inquiries, and general interest are welcome. If you&rsquo;re ready to take the next step, we&rsquo;ll help direct you where to begin.</p>
         </div>
 
         <div class="split">
@@ -1091,8 +3556,18 @@
               <div><strong>Instagram</strong><br /><a href="https://instagram.com/calibraeinstitute" target="_blank" rel="noopener">@calibraeinstitute</a></div>
             </div>
             <div class="btn-row">
-              <a href="#consultation" class="btn primary">Request Consultation</a>
+              <a href="#contact-page" class="btn primary">Request Consultation</a>
               <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener" class="btn secondary">Shop Skincare</a>
+            </div>
+            <div class="consult-info-stack">
+              <div class="consult-info-card">
+                <h4>Aesthetic Consultation &mdash; $100</h4>
+                <p>Applied toward your treatment plan, skincare, or future services.</p>
+              </div>
+              <div class="consult-info-card">
+                <h4>Consultation + Treatment</h4>
+                <p>For patients who would like to be evaluated and treated during the same visit when clinically appropriate. Same-day treatment is not guaranteed and depends on candidacy, timing, medical history, provider recommendation, and appointment availability.</p>
+              </div>
             </div>
           </div>
 
@@ -1101,6 +3576,7 @@
             <form action="https://formsubmit.co/calibraeaestheticmedicine@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="New General Contact Message" />
               <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" id="contact-form-next" value="" />
               <div class="form-grid">
                 <input class="field" name="First Name" placeholder="First Name" required />
                 <input class="field" name="Last Name" placeholder="Last Name" required />
@@ -1112,6 +3588,19 @@
                 <button class="btn primary" type="submit">Send Message</button>
               </div>
             </form>
+            <p id="contact-form-success" class="contact-form-success" hidden>Thank you. Your message has been sent, and Calibrae will be in touch soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="final-cta" class="section-glow section-divider home-section-reveal">
+      <div class="wrap">
+        <div class="panel vault-center reveal-up">
+          <h2>Start with the right entry point.</h2>
+          <p class="final-cta-copy">Whether you&rsquo;re looking for skincare guidance, a more personalized skin review, or a full aesthetic plan, Calibrae will help direct you where to begin.</p>
+          <div class="btn-row final-cta-actions">
+            <a href="#contact-page" class="btn primary">Request Consultation</a>
+            <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn secondary">Start Your Skin Plan</a>
           </div>
         </div>
       </div>
@@ -1137,18 +3626,63 @@
   </footer>
 
   <script>
-    const slides = document.querySelectorAll('.quote-slide');
-    const dots = document.querySelectorAll('.dot');
-    let current = 0;
+    const revealTargets = document.querySelectorAll('.reveal-up, .reveal-image, .home-section-reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -10% 0px' });
 
-    function showSlide(index) {
-      slides.forEach((s, i) => s.classList.toggle('active', i === index));
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-      current = index;
+    revealTargets.forEach((target) => revealObserver.observe(target));
+
+    const homeLayerMethod = document.querySelector('.home-layer-method');
+    if (homeLayerMethod) {
+      const homeLayerMotionItems = homeLayerMethod.querySelectorAll('.lm-reveal, .lm-reveal-card');
+      homeLayerMotionItems.forEach((item) => {
+        const delay = item.getAttribute('data-lm-delay');
+        if (delay) item.style.transitionDelay = `${delay}ms`;
+      });
+
+      const prefersReducedLayerMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedLayerMotion) {
+        homeLayerMethod.classList.add('is-visible');
+      } else {
+        const homeLayerObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              homeLayerMethod.classList.add('is-visible');
+              homeLayerObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.32, rootMargin: '0px 0px -8% 0px' });
+
+        homeLayerObserver.observe(homeLayerMethod);
+      }
     }
 
-    dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
-    setInterval(() => showSlide((current + 1) % slides.length), 5000);
+    const contactForm = document.querySelector('#contact-page form');
+    const contactFormNext = document.getElementById('contact-form-next');
+    const contactFormSuccess = document.getElementById('contact-form-success');
+
+    if (contactForm && contactFormNext && window.location.protocol !== 'file:') {
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.set('contact', 'success');
+      nextUrl.hash = 'contact-page';
+      contactFormNext.value = nextUrl.toString();
+    }
+
+    if (contactForm && contactFormSuccess) {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('contact') === 'success') {
+        contactForm.hidden = true;
+        contactFormSuccess.hidden = false;
+      }
+    }
   </script>
+
 </body>
 </html>
+
