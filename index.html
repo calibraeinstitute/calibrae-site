@@ -1508,6 +1508,51 @@
       margin-top: 24px;
     }
 
+    .skin-page-entry-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .skin-page-entry-card {
+      padding: 26px 28px;
+    }
+
+    .skin-page-entry-card > p {
+      max-width: 52ch;
+    }
+
+    .skin-page-step-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .skin-page-step {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.024);
+    }
+
+    .skin-page-step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .skin-page-support-note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.022);
+      color: var(--muted);
+      line-height: 1.68;
+      max-width: 68ch;
+    }
+
     .skin-plan-page-hero {
       grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
       align-items: center;
@@ -3173,24 +3218,42 @@ Treatment depends on what is actually causing the concern.</p>
         <section class="skin-page-section">
           <div class="skin-page-section-head">
             <div class="kicker">How To Begin</div>
-            <h3>Start with a guided skin plan.</h3>
-            <p class="skin-page-subtitle">One clear entry point. The right next step after review.</p>
-            <p>Start with a guided skin plan. After review, Calibrae will recommend the most appropriate next step based on your routine, concerns, goals, and overall level of support needed.</p>
+            <h3>Start with the path that fits you best.</h3>
+            <p class="skin-page-subtitle">Choose guided support or shop directly.</p>
+            <p>Whether you want provider-guided direction or prefer to shop directly, Calibrae offers a clear way to begin. Start with the guided skin quiz if you want a more personalized recommendation, or shop products directly if you already know what you need.</p>
           </div>
-          <div class="skin-page-grid">
-            <div class="skin-page-point" id="skin-start">
+          <div class="skin-page-grid skin-page-entry-grid">
+            <div class="skin-page-point skin-page-entry-card" id="skin-start">
               <h4>Start Your Skin Plan</h4>
-              <p>Start Your Skin Plan is the single guided entry point. After submission, Calibrae will review your routine, concerns, and goals to recommend the most appropriate next step.</p>
+              <p>Begin with the guided skin quiz. After review, Calibrae will recommend the most appropriate next step based on your routine, concerns, goals, and level of support needed.</p>
+              <div class="skin-page-step-stack">
+                <div class="skin-page-step">
+                  <strong>Step 1 &mdash; Complete</strong>
+                  <p>Complete the guided skin quiz.</p>
+                </div>
+                <div class="skin-page-step">
+                  <strong>Step 2 &mdash; Review</strong>
+                  <p>Calibrae reviews your submission.</p>
+                </div>
+                <div class="skin-page-step">
+                  <strong>Step 3 &mdash; Next Step</strong>
+                  <p>You receive the most appropriate next recommendation, which may include product guidance, a starter system, or more personalized support if needed.</p>
+                </div>
+              </div>
               <div class="btn-row skin-page-actions">
                 <a href="https://form.jotform.com/261133688084057" target="_blank" rel="noopener" class="btn primary">Start Your Skin Plan</a>
               </div>
             </div>
-            <div class="skin-page-point" id="skin-edit">
-              <h4>More personalized review if needed</h4>
-              <p>For some patients, the next step after review may include a more personalized discussion, virtual follow-up, or appointment-based guidance.</p>
+            <div class="skin-page-point skin-page-entry-card">
+              <h4>Shop Products</h4>
+              <p>If you already know what you need, you can shop Calibrae skincare directly. This is the best path for patients who prefer to browse products and purchase without starting with the quiz.</p>
+              <div class="btn-row skin-page-actions">
+                <a href="https://calibrae-skin.myshopify.com" target="_blank" rel="noopener" class="btn secondary">Shop Products</a>
+              </div>
             </div>
           </div>
-          <p class="skin-page-closing">One guided starting point. The right recommendation after review.</p>
+          <div class="skin-page-support-note">If a more personalized review is needed after quiz submission, Calibrae may recommend a virtual follow-up, in-person appointment, or appointment-based guidance.</div>
+          <p class="skin-page-closing">Two clear ways to begin. The right level of support when needed.</p>
         </section>
 
         <section class="skin-page-section">
