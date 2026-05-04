@@ -196,6 +196,103 @@
       color: var(--text);
     }
 
+    body.booking-modal-open {
+      overflow: hidden;
+    }
+
+    .booking-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 140;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(11,11,11,0.62);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+    }
+
+    .booking-modal-overlay.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .booking-modal {
+      width: min(520px, 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(43,43,43,0.98);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+      overflow: hidden;
+      transform: translateY(12px) scale(0.985);
+      transition: transform 0.24s ease;
+    }
+
+    .booking-modal-overlay.is-visible .booking-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .booking-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(24,24,24,0.62);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 1;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .booking-modal-close:hover {
+      background: rgba(34,34,34,0.82);
+      border-color: rgba(255,255,255,0.24);
+      transform: translateY(-1px);
+    }
+
+    .booking-modal-body {
+      position: relative;
+      padding: 18px 18px 22px;
+    }
+
+    .booking-modal-image {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .booking-modal-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .booking-modal-note {
+      margin: 14px 0 0;
+      text-align: center;
+      color: rgba(247,247,245,0.82);
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+
+    .booking-modal-actions {
+      margin-top: 16px;
+      justify-content: center;
+    }
+
     .btn-row {
       display: flex;
       gap: 14px;
@@ -1391,6 +1488,37 @@
       margin-top: 24px;
     }
 
+    .hair-faq-section {
+      margin-top: 40px;
+    }
+
+    .hair-faq-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .hair-faq-item {
+      padding: 22px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.026);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hair-faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .hair-faq-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
     .skin-page-hero {
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
       align-items: center;
@@ -2284,6 +2412,10 @@
       background: rgba(255,255,255,0.03);
       color: rgba(255,255,255,0.84);
       line-height: 1.68;
+    }
+
+    #contact-request-form {
+      scroll-margin-top: 112px;
     }
 
     @media (max-width: 1080px) {
@@ -3556,6 +3688,46 @@ Treatment depends on what is actually causing the concern.</p>
           </div>
         </div>
 
+        <div class="hair-faq-section">
+          <div class="section-head">
+            <h2>Hair Support, Explained</h2>
+          </div>
+          <div class="hair-faq-grid">
+            <div class="hair-faq-item">
+              <h3>What is Calibrae Hair Growth Support?</h3>
+              <p>A provider-guided approach for patients who want a more structured plan for thinning or density changes.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>What might treatment include?</h3>
+              <p>Depending on your needs, support may include topical treatment, scalp-care products, and in-office microneedling.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>Do I need a consultation first?</h3>
+              <p>Yes. Consultation is the best place to determine fit and build the right plan.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>Do I have to do in-office treatments?</h3>
+              <p>Not always. Some patients begin with home care and topical support, while others may benefit from adding in-office treatment.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>Can I just buy the products?</h3>
+              <p>Supportive products may be available separately, but consultation is the best starting point if you want a true plan rather than random product selection.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>How quickly will I see results?</h3>
+              <p>Hair improvement is gradual. This is a consistency-based plan, not an overnight change.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>Is this right for every type of hair loss?</h3>
+              <p>No. Some presentations may require broader medical evaluation or a different treatment path.</p>
+            </div>
+            <div class="hair-faq-item">
+              <h3>Will my plan look like someone else&rsquo;s?</h3>
+              <p>No. Calibrae is built around individualized planning based on your presentation, goals, and history.</p>
+            </div>
+          </div>
+        </div>
+
         <p class="hair-page-closing">Better hair support comes from a more thoughtful plan &mdash; not a rushed fix.</p>
 
         <div class="about-page-cta hair-page-cta">
@@ -3634,8 +3806,9 @@ Treatment depends on what is actually causing the concern.</p>
             </div>
           </div>
 
-          <div class="panel">
-            <h3>Send a message</h3>
+          <div class="panel" id="contact-request-form">
+            <h3>Request an Appointment</h3>
+            <p>Complete the form below and Calibrae will follow up within 24&ndash;48 hours with the most appropriate next step. You can also email, call, or text your request if you prefer.</p>
             <form action="https://formsubmit.co/calibraeaestheticmedicine@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="New General Contact Message" />
               <input type="hidden" name="_captcha" value="false" />
@@ -3669,6 +3842,21 @@ Treatment depends on what is actually causing the concern.</p>
       </div>
     </section>
   </main>
+
+  <div class="booking-modal-overlay" id="booking-modal" hidden>
+    <div class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+      <div class="booking-modal-body">
+        <button class="booking-modal-close" type="button" aria-label="Close booking announcement">&times;</button>
+        <div class="booking-modal-image">
+          <img src="./images/calibraebooknowsite.png" alt="Booking now open announcement for Calibrae Institute of Aesthetic Medicine" />
+        </div>
+        <p class="booking-modal-note" id="booking-modal-title">Complete the request form and Calibrae will follow up within 24&ndash;48 hours. You can also email, call, or text your request.</p>
+        <div class="btn-row booking-modal-actions">
+          <a href="#contact-request-form" class="btn primary">Request an Appointment</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="wrap footer-grid">
@@ -3733,7 +3921,7 @@ Treatment depends on what is actually causing the concern.</p>
     if (contactForm && contactFormNext && window.location.protocol !== 'file:') {
       const nextUrl = new URL(window.location.href);
       nextUrl.searchParams.set('contact', 'success');
-      nextUrl.hash = 'contact-page';
+      nextUrl.hash = 'contact-request-form';
       contactFormNext.value = nextUrl.toString();
     }
 
@@ -3743,6 +3931,45 @@ Treatment depends on what is actually causing the concern.</p>
         contactForm.hidden = true;
         contactFormSuccess.hidden = false;
       }
+    }
+
+    const bookingModal = document.getElementById('booking-modal');
+    const bookingModalClose = bookingModal?.querySelector('.booking-modal-close');
+    const bookingModalCta = bookingModal?.querySelector('.booking-modal-actions a');
+    const bookingModalSessionKey = 'calibrae-booking-modal-shown';
+    const isHomepageState = !window.location.hash || window.location.hash === '#top';
+
+    const closeBookingModal = () => {
+      if (!bookingModal) return;
+      bookingModal.classList.remove('is-visible');
+      document.body.classList.remove('booking-modal-open');
+      window.setTimeout(() => {
+        if (!bookingModal.classList.contains('is-visible')) {
+          bookingModal.hidden = true;
+        }
+      }, 220);
+    };
+
+    if (bookingModal && isHomepageState && !sessionStorage.getItem(bookingModalSessionKey)) {
+      window.setTimeout(() => {
+        bookingModal.hidden = false;
+        document.body.classList.add('booking-modal-open');
+        bookingModal.classList.add('is-visible');
+        sessionStorage.setItem(bookingModalSessionKey, 'true');
+      }, 2500);
+
+      bookingModalClose?.addEventListener('click', closeBookingModal);
+      bookingModal.addEventListener('click', (event) => {
+        if (event.target === bookingModal) {
+          closeBookingModal();
+        }
+      });
+      bookingModalCta?.addEventListener('click', closeBookingModal);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && bookingModal.classList.contains('is-visible')) {
+          closeBookingModal();
+        }
+      });
     }
   </script>
 
