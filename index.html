@@ -939,6 +939,222 @@
       margin-top: 28px;
     }
 
+    .treatment-method-section {
+      position: relative;
+    }
+
+    .treatment-method-intro {
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    .treatment-method-intro h2 {
+      margin-bottom: 14px;
+    }
+
+    .treatment-method-intro p {
+      margin: 0 0 14px;
+      line-height: 1.74;
+      color: rgba(247,247,245,0.84);
+    }
+
+    .treatment-method-support {
+      margin: 6px 0 0;
+      color: rgba(247,247,245,0.9);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .treatment-method-callout {
+      margin: 18px 0 0;
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.025);
+      color: rgba(247,247,245,0.84);
+      line-height: 1.72;
+    }
+
+    .treatment-method-callout strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .treatment-method-visual {
+      margin: 0 0 34px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .treatment-method-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .treatment-layer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .treatment-layer-card {
+      padding: 24px 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.022));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .treatment-layer-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+      line-height: 1.3;
+    }
+
+    .treatment-layer-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .treatment-layer-card p + p {
+      margin-top: 14px;
+    }
+
+    .treatment-layer-treatments {
+      color: rgba(247,247,245,0.88);
+      font-size: 0.92rem;
+      line-height: 1.64;
+    }
+
+    .treatment-method-accordion-group {
+      margin-top: 34px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .treatment-method-item {
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.034), rgba(255,255,255,0.018));
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .treatment-method-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .treatment-method-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .treatment-method-summary-copy h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      line-height: 1.3;
+    }
+
+    .treatment-method-summary-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+      max-width: 62ch;
+    }
+
+    .treatment-method-summary-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      padding-top: 2px;
+    }
+
+    .treatment-layer-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(247,247,245,0.9);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .treatment-method-toggle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      flex: 0 0 auto;
+    }
+
+    .treatment-method-item[open] .treatment-method-toggle {
+      transform: rotate(45deg);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .treatment-method-detail {
+      padding: 0 24px 24px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .treatment-method-detail-head {
+      display: grid;
+      gap: 10px;
+      padding-top: 18px;
+      margin-bottom: 16px;
+    }
+
+    .treatment-method-detail-head h4 {
+      margin: 0;
+      font-size: 0.96rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(247,247,245,0.92);
+    }
+
+    .treatment-method-detail-head p,
+    .treatment-method-detail-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .treatment-method-detail-body {
+      display: grid;
+      gap: 14px;
+    }
+
     .about-home {
       display: grid;
       grid-template-columns: 0.86fr 1.14fr;
@@ -2430,6 +2646,7 @@
       .check-grid,
       .layer-steps,
       .layer-home-layout,
+      .treatment-layer-grid,
       .founder-proof-grid,
       .testimonials-grid {
         grid-template-columns: 1fr;
@@ -2748,9 +2965,47 @@
       .injectables-page-grid,
       .layer-method-grid,
       .skin-plan-steps,
-      .layer-method-points {
+      .layer-method-points,
+      .treatment-method-accordion-group {
         gap: 14px;
         margin-top: 18px;
+      }
+
+      .treatment-method-intro {
+        margin-bottom: 24px;
+      }
+
+      .treatment-method-callout {
+        margin-top: 16px;
+        padding: 16px 18px;
+      }
+
+      .treatment-method-visual {
+        margin-bottom: 24px;
+        border-radius: 24px;
+      }
+
+      .treatment-layer-card {
+        padding: 20px 18px;
+        border-radius: 22px;
+      }
+
+      .treatment-method-item summary {
+        padding: 18px;
+        grid-template-columns: 1fr;
+      }
+
+      .treatment-method-summary-meta {
+        justify-content: flex-start;
+      }
+
+      .treatment-method-detail {
+        padding: 0 18px 18px;
+      }
+
+      .treatment-method-detail-head {
+        padding-top: 16px;
+        margin-bottom: 14px;
       }
 
       .skin-plan-page-point,
@@ -3071,6 +3326,177 @@
         </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="treatments-layer-method-home" class="section-light section-divider treatment-method-section home-section-reveal">
+      <div class="wrap">
+      <div class="section-head treatment-method-intro reveal-up">
+        <div class="kicker">The Layer Method&#8482;</div>
+        <h2>The Layer Method&#8482;<br />Diagnosis Before Product</h2>
+        <p>At Calibrae, treatments are not chosen from a generic menu. We begin by identifying what is actually driving the concern.</p>
+        <p>Most aesthetic changes are not caused by a single issue alone. Some come from movement. Some come from structural change. Some are rooted in skin quality. Others involve volume balance. Many are a combination.</p>
+        <p>The Layer Method&#8482; helps us place the concern in the right layer before deciding how to treat it. That means more thoughtful recommendations, better sequencing, and results that look refined instead of overdone.</p>
+        <p class="treatment-method-support">Most aesthetic concerns are not caused by a single layer.</p>
+        <div class="treatment-method-callout">
+          <strong>The face is not one layer.</strong>
+          <p>Movement, collagen, structure, skin quality, pigment, barrier health, and repair capacity all contribute to how we age.</p>
+          <p>That is why one treatment rarely does everything.</p>
+          <p>Daxxify&reg; and Botox&reg; soften movement. Sculptra&reg; rebuilds collagen support. Dermal filler restores structure and detail. SkinPen Precision Elite&reg; remodels skin quality. Regenerative add-ons support healing signals. Clinically guided skincare protects and maintains the result.</p>
+          <p>The Layer Method&#8482; is how we decide what comes first, what comes next, and what your skin actually needs.</p>
+        </div>
+      </div>
+
+        <figure class="treatment-method-visual reveal-image">
+      <img src="./images/Calibrae-layer-method-artwork.png" alt="Calibrae The Layer Method anatomical artwork illustrating structure, movement, skin quality, and volume balance" />
+        </figure>
+
+        <div class="treatment-layer-grid">
+          <article class="treatment-layer-card reveal-up">
+            <h3>Structure</h3>
+            <p>The structure layer is the deeper foundation of the face. When this layer changes, patients may notice flattening, thinning, hollowing, reduced support, or a face that feels less lifted over time.</p>
+            <p class="treatment-layer-treatments">Treatments that may support this layer: Sculptra&reg; and selected facial balancing approaches</p>
+          </article>
+          <article class="treatment-layer-card reveal-up">
+            <h3>Movement</h3>
+            <p>The movement layer relates to repetitive muscle activity that contributes to dynamic lines, tension, and etched-in expression patterns over time.</p>
+            <p class="treatment-layer-treatments">Treatments that may support this layer: Botox&reg; and Daxxify&reg;</p>
+          </article>
+          <article class="treatment-layer-card reveal-up">
+            <h3>Skin Quality</h3>
+            <p>The skin quality layer focuses on the visible condition of the skin itself &mdash; including texture, pores, acne scarring, tone, and overall collagen remodeling.</p>
+            <p class="treatment-layer-treatments">Treatments that may support this layer: SkinPen Precision Elite&reg;</p>
+          </article>
+          <article class="treatment-layer-card reveal-up">
+            <h3>Volume Balance</h3>
+            <p>Volume balance refers to proportion, contour, and support in specific areas of the face. This layer matters when a patient needs precision correction rather than generalized treatment.</p>
+            <p class="treatment-layer-treatments">Treatments that may support this layer: Dermal filler / facial balancing</p>
+          </article>
+        </div>
+
+        <div class="treatment-method-accordion-group">
+          <details class="treatment-method-item reveal-up">
+            <summary>
+              <div class="treatment-method-summary-copy">
+                <h3>Botox&reg;</h3>
+                <p>Refined neuromodulator treatment used to soften repetitive muscle movement that contributes to dynamic lines and etched expression patterns.</p>
+              </div>
+              <div class="treatment-method-summary-meta">
+                <span class="treatment-layer-pill">Layer: Movement</span>
+                <span class="treatment-method-toggle" aria-hidden="true">+</span>
+              </div>
+            </summary>
+            <div class="treatment-method-detail">
+              <div class="treatment-method-detail-head">
+                <h4>Where This Fits in The Layer Method&#8482;</h4>
+                <p><strong>Primary Layer:</strong> Movement</p>
+              </div>
+              <div class="treatment-method-detail-body">
+                <p>Botox works in the movement layer by softening repetitive muscle activity that contributes to dynamic lines and etched expression patterns over time. At Calibrae, Botox is used when the true driver of the concern is muscular movement &mdash; not when structure, skin quality, or volume loss is the bigger issue.</p>
+                <p>We are not just treating a wrinkle.</p>
+                <p>We are treating the movement that is creating it.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="treatment-method-item reveal-up">
+            <summary>
+              <div class="treatment-method-summary-copy">
+                <h3>Daxxify&reg;</h3>
+                <p>A neuromodulator used to support the movement layer and soften repetitive muscle activity with a strategic, natural-looking approach.</p>
+              </div>
+              <div class="treatment-method-summary-meta">
+                <span class="treatment-layer-pill">Layer: Movement</span>
+                <span class="treatment-method-toggle" aria-hidden="true">+</span>
+              </div>
+            </summary>
+            <div class="treatment-method-detail">
+              <div class="treatment-method-detail-head">
+                <h4>Where This Fits in The Layer Method&#8482;</h4>
+                <p><strong>Primary Layer:</strong> Movement</p>
+              </div>
+              <div class="treatment-method-detail-body">
+                <p>Daxxify also works in the movement layer. It is used to soften the repetitive muscle contractions that contribute to wrinkles, tension, and facial patterns that become more etched over time.</p>
+                <p>At Calibrae, Daxxify is chosen when movement is a key driver of the visible concern and the goal is refined, strategic softening &mdash; not a frozen or unnatural look.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="treatment-method-item reveal-up">
+            <summary>
+              <div class="treatment-method-summary-copy">
+                <h3>Sculptra&reg;</h3>
+                <p>Collagen-stimulating injectable treatment used to rebuild support gradually from within for facial thinning, laxity, and long-term restoration.</p>
+              </div>
+              <div class="treatment-method-summary-meta">
+                <span class="treatment-layer-pill">Layer: Structure / Collagen Support</span>
+                <span class="treatment-method-toggle" aria-hidden="true">+</span>
+              </div>
+            </summary>
+            <div class="treatment-method-detail">
+              <div class="treatment-method-detail-head">
+                <h4>Where This Fits in The Layer Method&#8482;</h4>
+                <p><strong>Primary Layer:</strong> Structure / Collagen Support</p>
+              </div>
+              <div class="treatment-method-detail-body">
+                <p>Sculptra belongs in the structure and collagen support layer. At Calibrae, it is used when the deeper foundation of the face needs support &mdash; especially with collagen loss, facial thinning, laxity, weight-loss related changes, and early structural decline.</p>
+                <p>Rather than simply filling a hollow, Sculptra helps stimulate collagen over time so the face becomes more supported from within.</p>
+                <p>We are not chasing lines.</p>
+                <p>We are rebuilding the layer that caused them.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="treatment-method-item reveal-up">
+            <summary>
+              <div class="treatment-method-summary-copy">
+                <h3>Facial Balancing</h3>
+                <p>Precision dermal filler treatment used to improve contour, proportion, and support with an anatomy-based approach. Calibrae uses RHA / Teoxane fillers for their ability to create refined, dynamic support while maintaining natural movement and expression.</p>
+              </div>
+              <div class="treatment-method-summary-meta">
+                <span class="treatment-layer-pill">Layer: Volume Balance / Structure</span>
+                <span class="treatment-method-toggle" aria-hidden="true">+</span>
+              </div>
+            </summary>
+            <div class="treatment-method-detail">
+              <div class="treatment-method-detail-head">
+                <h4>Where This Fits in The Layer Method&#8482;</h4>
+                <p><strong>Primary Layer:</strong> Volume Balance</p>
+                <p><strong>Secondary Layer:</strong> Structure</p>
+              </div>
+              <div class="treatment-method-detail-body">
+                <p>Dermal filler and facial balancing usually fit within the volume balance layer, and in some cases the structure layer as well. At Calibrae, filler is used when a patient needs targeted support, contour, proportional refinement, or correction in a specific area.</p>
+                <p>Calibrae uses the RHA Collection / Teoxane dermal fillers in part because of their unique ability to support dynamic facial movement while maintaining naturality. These fillers are especially aligned with a layered, anatomy-based approach because they are designed to move more naturally with facial animation rather than creating a stiff or overfilled look.</p>
+                <p>This is precision work. Filler is not used to overfill the face or chase every concern blindly. It is used when the treatment goal is intentional shaping, balance, localized support, and natural enhancement that still looks like you when you talk, smile, and move.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="treatment-method-item reveal-up">
+            <summary>
+              <div class="treatment-method-summary-copy">
+                <h3>SkinPen Precision Elite&reg;</h3>
+                <p>Advanced microneedling treatment designed to improve texture, pores, acne scars, tone, and overall skin quality through collagen remodeling.</p>
+              </div>
+              <div class="treatment-method-summary-meta">
+                <span class="treatment-layer-pill">Layer: Skin Quality</span>
+                <span class="treatment-method-toggle" aria-hidden="true">+</span>
+              </div>
+            </summary>
+            <div class="treatment-method-detail">
+              <div class="treatment-method-detail-head">
+                <h4>Where This Fits in The Layer Method&#8482;</h4>
+                <p><strong>Primary Layer:</strong> Skin Quality</p>
+              </div>
+              <div class="treatment-method-detail-body">
+                <p>SkinPen Precision Elite works in the skin quality layer. At Calibrae, it is used when the concern is rooted more in the skin itself &mdash; such as texture, pores, acne scarring, tone irregularity, fine lines, or overall collagen remodeling.</p>
+                <p>This treatment helps support healthier, stronger-looking skin by stimulating the skin&rsquo;s repair response and encouraging collagen remodeling over time.</p>
+                <p>When the skin is the issue, we do not jump straight to volume.</p>
+                <p>We treat the skin quality layer directly.</p>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
