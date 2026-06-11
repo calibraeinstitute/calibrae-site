@@ -765,17 +765,64 @@
 
     .layer-home-layout {
       display: grid;
-      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-      gap: 32px;
-      align-items: center;
+      grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+      gap: 40px;
+      align-items: start;
     }
 
     .layer-home-copy {
-      max-width: 560px;
+      max-width: 540px;
+      display: grid;
+      gap: 16px;
     }
 
     .layer-home-copy p {
       max-width: 52ch;
+      margin: 0;
+    }
+
+    .layer-home-copy .kicker {
+      margin-bottom: 0;
+    }
+
+    .layer-home-title {
+      margin: 0;
+    }
+
+    .layer-home-body.layer-home-intro {
+      color: rgba(247,247,245,0.9);
+      font-size: 1.02rem;
+      line-height: 1.68;
+    }
+
+    .layer-home-pillar-list {
+      display: grid;
+      gap: 0;
+      margin-top: 10px;
+    }
+
+    .layer-home-pillar {
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .layer-home-pillar strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .layer-home-pillar p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+    }
+
+    .layer-home-pillar:last-child {
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .home-layer-method .lm-reveal,
@@ -805,45 +852,26 @@
     }
 
     .layer-home-visual {
-      position: relative;
-      border-radius: 28px;
+      justify-self: end;
+      width: min(100%, 540px);
+      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
-      box-shadow: var(--shadow);
+      border: none;
+      background: transparent;
+      box-shadow: none;
     }
 
     .layer-home-visual img {
       width: 100%;
       display: block;
-      object-fit: cover;
-    }
-
-    .layer-home-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(100deg, transparent 26%, rgba(255,255,255,0.14) 50%, transparent 74%);
-      transform: translateX(-135%);
-      opacity: 0;
+      height: auto;
+      object-fit: contain;
     }
 
     #layer-home.is-visible .layer-home-visual {
       opacity: 1;
       transform: translateY(0) scale(1);
       transition-delay: 0.18s;
-    }
-
-    #layer-home.is-visible .layer-home-visual::before {
-      opacity: 1;
-      animation: layerHomeSweep 0.9s ease 0.72s 1 forwards;
-    }
-
-    @keyframes layerHomeSweep {
-      from { transform: translateX(-135%); opacity: 0; }
-      20% { opacity: 0.42; }
-      to { transform: translateX(135%); opacity: 0; }
     }
 
     .service-duo {
@@ -2668,6 +2696,10 @@
         grid-template-columns: 1fr;
       }
 
+      .layer-home-pillar-list {
+        gap: 10px;
+      }
+
       .skin-page-grid {
         grid-template-columns: 1fr;
       }
@@ -3147,6 +3179,15 @@
       .layer-method-copy h2 {
         max-width: 11ch;
       }
+
+      .layer-home-pillar {
+        padding: 14px 0;
+      }
+
+      .layer-home-visual {
+        width: 100%;
+        justify-self: stretch;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3244,12 +3285,34 @@
           <div class="layer-home-copy">
             <div class="kicker layer-home-eyebrow lm-reveal" data-lm-delay="0">The Layer Method™</div>
             <h2 class="layer-home-title lm-reveal" data-lm-delay="80">The face is not one layer.</h2>
-            <p class="layer-home-body lm-reveal" data-lm-delay="160">Diagnosis before product. Treat the driver, not just the complaint.</p>
-            <p class="layer-home-body lm-reveal" data-lm-delay="220">Movement, collagen, structure, skin quality, pigment, barrier health, and repair capacity all contribute to how we age. That is why one treatment rarely does everything.</p>
-            <p class="layer-home-body lm-reveal" data-lm-delay="280">Daxxify® and Botox® help soften movement. Sculptra® helps rebuild collagen support. Dermal filler restores structure and detail. SkinPen Precision Elite® remodels skin quality. Regenerative add-ons support healing signals, and clinically guided skincare helps protect and maintain the result.</p>
-            <p class="layer-home-body lm-reveal" data-lm-delay="340">Structure before refinement. The right treatment, in the right layer, in the right order.</p>
-            <p class="layer-home-body lm-reveal" data-lm-delay="400">The Layer Method™ is how we decide what comes first, what comes next, and what your skin actually needs.</p>
-            <div class="btn-row layer-home-actions lm-reveal" data-lm-delay="240" style="margin-top:24px;">
+            <p class="layer-home-body layer-home-intro lm-reveal" data-lm-delay="160">
+              Diagnosis before product. Treat the driver, not just the complaint.
+            </p>
+            <p class="layer-home-body lm-reveal" data-lm-delay="220">
+              Movement, collagen support, structure, skin quality, and repair capacity all shape how we age. That is why one treatment rarely does everything.
+            </p>
+            <div class="layer-home-pillar-list lm-reveal" data-lm-delay="280">
+              <div class="layer-home-pillar">
+                <strong>Movement — Botox® / Daxxify®</strong>
+                <p>Softens repetitive muscle activity that contributes to lines and tension.</p>
+              </div>
+              <div class="layer-home-pillar">
+                <strong>Structure / collagen support — Sculptra®</strong>
+                <p>Helps rebuild deeper support gradually from within.</p>
+              </div>
+              <div class="layer-home-pillar">
+                <strong>Volume balance / facial balancing — Dermal filler</strong>
+                <p>Refines contour, support, and natural-looking structure.</p>
+              </div>
+              <div class="layer-home-pillar">
+                <strong>Skin quality — SkinPen Precision Elite®</strong>
+                <p>Supports collagen remodeling, texture, tone, and overall skin quality.</p>
+              </div>
+            </div>
+            <p class="layer-home-body lm-reveal" data-lm-delay="340">
+              The Layer Method™ is how we decide what comes first, what comes next, and what your skin actually needs.
+            </p>
+            <div class="btn-row layer-home-actions lm-reveal" data-lm-delay="400" style="margin-top:10px;">
               <a href="#layer-method-page" class="btn primary">Explore The Layer Method™</a>
             </div>
           </div>
