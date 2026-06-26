@@ -440,54 +440,54 @@
     }
 
     .hero {
+      padding: 58px 0 50px;
       background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.14), transparent 18%),
-        radial-gradient(circle at 74% 16%, rgba(255,255,255,0.10), transparent 16%),
-        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+        linear-gradient(90deg, rgba(15,15,15,0.94) 0%, rgba(15,15,15,0.84) 26%, rgba(15,15,15,0.56) 48%, rgba(15,15,15,0.22) 72%, rgba(15,15,15,0.08) 100%),
+        radial-gradient(circle at 18% 16%, rgba(184,154,114,0.08), transparent 24%),
+        url('./images/sitehero1.jpg');
+      background-size: auto, auto, 102%;
+      background-position: center, center, 74% 44%;
+      background-repeat: no-repeat;
       background-attachment: scroll, scroll, scroll;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 74% 44%, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.06) 34%, rgba(0,0,0,0.18) 100%),
+        linear-gradient(180deg, rgba(8,8,8,0.04) 0%, rgba(8,8,8,0.14) 100%);
+      opacity: 0.14;
     }
 
     .hero-card {
-      min-height: 560px;
-      border-radius: 36px;
-      overflow: hidden;
+      min-height: 620px;
+      border-radius: 0;
+      overflow: visible;
       position: relative;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(90deg, rgba(112,112,112,0.42) 0%, rgba(112,112,112,0.24) 42%, rgba(112,112,112,0.14) 100%),
-        radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 20%),
-        linear-gradient(125deg, rgba(126,126,126,0.28) 0%, rgba(136,136,136,0.18) 42%, rgba(150,150,150,0.12) 100%);
       display: block;
+      box-shadow: none;
+      border: none;
+      background: transparent;
       isolation: isolate;
     }
 
     .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 28%, rgba(255,255,255,0.12) 0 1px, transparent 1.5px 100%),
-        radial-gradient(circle at 68% 32%, rgba(255,255,255,0.10) 0 1px, transparent 1.5px 100%),
-        radial-gradient(circle at 40% 72%, rgba(255,255,255,0.10) 0 1px, transparent 1.5px 100%),
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.06) 48%, transparent 100%);
-      background-size: 240px 240px, 320px 320px, 280px 280px, 72px 72px, 72px 72px, 100% 100%;
-      background-position: 6% 12%, 84% 18%, 52% 76%, center, center, center;
-      pointer-events: none;
-      opacity: 0.18;
+      content: none;
     }
 
     .hero-card::after {
       content: "";
       position: absolute;
-      inset: auto auto -80px -80px;
-      width: 240px;
-      height: 240px;
+      inset: auto auto -88px -68px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 68%);
-      filter: blur(18px);
+      background: radial-gradient(circle, rgba(184,154,114,0.14), transparent 72%);
+      filter: blur(22px);
       animation: heroPulse 9s ease-in-out infinite;
       pointer-events: none;
     }
@@ -495,9 +495,10 @@
     .hero-copy {
       position: relative;
       z-index: 1;
-      width: min(100%, 980px);
+      width: auto;
+      max-width: 500px;
       margin: 0;
-      padding: 96px 88px 92px;
+      padding: 108px 0 104px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -522,29 +523,31 @@
 
     .hero-copy h1 {
       max-width: none;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
       display: grid;
-      gap: 14px;
+      gap: 8px;
       white-space: normal;
     }
 
     .hero-brand-main {
       display: block;
-      font-size: clamp(3.5rem, 7.6vw, 6.2rem);
-      line-height: 0.94;
+      font-size: clamp(2.8rem, 5.6vw, 4.35rem);
+      line-height: 0.97;
       font-weight: 400;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
+      text-shadow: 0 10px 22px rgba(0,0,0,0.24);
     }
 
     .hero-brand-sub {
       display: block;
-      font-size: clamp(0.92rem, 1.5vw, 1.22rem);
+      font-size: clamp(0.76rem, 0.96vw, 0.9rem);
       line-height: 1.35;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.17em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.74);
+      text-shadow: 0 4px 14px rgba(0,0,0,0.18);
     }
 
     .brand span:last-child,
@@ -555,10 +558,11 @@
     }
 
     .hero-subtext {
-      max-width: 760px;
-      font-size: 1.02rem;
-      line-height: 1.74;
-      margin-bottom: 38px;
+      max-width: 34ch;
+      font-size: 0.98rem;
+      line-height: 1.68;
+      margin-bottom: 30px;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.18);
     }
 
     @keyframes heroRise {
@@ -630,10 +634,12 @@
     .hero-copy .lead {
       text-transform: none;
       letter-spacing: 0.01em;
-      font-size: 1.02rem;
-      color: rgba(255,255,255,0.84);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.56;
+      margin-bottom: 12px;
+      max-width: 20ch;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.18);
     }
 
     .section-head {
@@ -2828,12 +2834,16 @@
       .hero {
         padding: 36px 0 40px;
         background:
-          radial-gradient(circle at 20% 18%, rgba(255,255,255,0.10), transparent 16%),
-          linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-        background-attachment: scroll, scroll;
+          linear-gradient(180deg, rgba(14,14,14,0.88) 0%, rgba(14,14,14,0.60) 40%, rgba(14,14,14,0.56) 100%),
+          radial-gradient(circle at 16% 12%, rgba(184,154,114,0.08), transparent 18%),
+          url('./images/start-here-founder2.png');
+        background-size: auto, auto, cover;
+        background-position: center, center, 64% 42%;
+        background-attachment: scroll, scroll, scroll;
       }
-      .hero-card { min-height: 520px; border-radius: 24px; }
-      .hero-copy { width: auto; margin-left: 0; padding: 34px 18px 24px; }
+      .hero::after { opacity: 0.14; }
+      .hero-card { min-height: 520px; border-radius: 0; }
+      .hero-copy { width: auto; margin-left: 0; max-width: none; padding: 44px 0 32px; }
       .hero-copy h1 {
         max-width: none;
         white-space: normal;
@@ -2841,36 +2851,13 @@
       }
       .hero-brand-main {
         font-size: clamp(2.2rem, 10vw, 3.2rem);
-        letter-spacing: 0.16em;
+        letter-spacing: 0.14em;
       }
       .hero-brand-sub {
         font-size: 0.74rem;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.16em;
       }
       .hero-subtext { font-size: 0.96rem; margin-bottom: 22px; }
-      .hero-meta { grid-template-columns: 1fr; margin-top: 22px; }
-      .hero-visual { min-height: 320px; padding: 0 18px 18px; }
-      .hero-visual-frame { width: min(100%, 290px); border-radius: 24px; }
-      .hero-framework {
-        inset: 16px;
-        padding: 14px 14px 16px;
-        border-radius: 20px;
-      }
-      .hero-framework-main {
-        gap: 10px;
-        padding: 18px 4px 20px;
-      }
-      .hero-framework-title {
-        font-size: clamp(1.6rem, 6vw, 2.2rem);
-        letter-spacing: 0.12em;
-      }
-      .hero-framework-subtitle {
-        max-width: 16ch;
-        font-size: 0.9rem;
-      }
-      .hero-framework-graphic {
-        min-height: 140px;
-      }
 
       h1 { font-size: clamp(2.1rem, 8.5vw, 3rem); max-width: 12ch; }
       h2 { font-size: clamp(1.7rem, 6.2vw, 2.3rem); }
