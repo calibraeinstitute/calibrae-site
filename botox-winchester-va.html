@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Botox in Winchester, VA | Danielle Wiley, PA-C | Calibrae Institute</title>
+  <meta name="description" content="Botox at Calibrae Institute of Aesthetic Medicine in Winchester, Virginia. Danielle Wiley, PA-C offers diagnosis-first treatment planning for refined, natural-looking results." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #464646;
+      --panel: rgba(255,255,255,0.08);
+      --panel-soft: rgba(255,255,255,0.04);
+      --text: #f7f7f5;
+      --muted: #deded9;
+      --soft: #d2d2cd;
+      --line: rgba(255,255,255,0.16);
+      --shadow: 0 18px 50px rgba(0,0,0,0.16);
+      --radius: 28px;
+      --max: 1240px;
+      --nav-h: 84px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(255,255,255,0.12), transparent 24%),
+        radial-gradient(circle at 10% 40%, rgba(255,255,255,0.06), transparent 20%),
+        linear-gradient(180deg, #4c4c4c 0%, #3f3f3f 42%, #343434 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(58,58,58,0.58);
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .nav-inner {
+      width: min(1360px, calc(100% - 32px));
+      min-height: var(--nav-h);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.14));
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 0.92rem;
+    }
+
+    .nav-item {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: var(--text);
+    }
+
+    main {
+      padding: 52px 0 76px;
+    }
+
+    .page-shell {
+      display: grid;
+      gap: 28px;
+    }
+
+    .crumbs {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+
+    .crumbs a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .kicker {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 4.6vw, 4.4rem);
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.65rem, 3vw, 2.5rem);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.14rem;
+      line-height: 1.32;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .subhead {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.03rem;
+      line-height: 1.68;
+      max-width: 48ch;
+    }
+
+    .hero-image {
+      min-height: 500px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      letter-spacing: 0.035em;
+      font-size: 0.93rem;
+      font-weight: 500;
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn.primary {
+      background: var(--text);
+      color: #1d1d1d;
+      border-color: var(--text);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.025);
+      color: var(--text);
+    }
+
+    .section-card {
+      padding: 32px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .section-card + .section-card {
+      margin-top: 22px;
+    }
+
+    .section-card p + p {
+      margin-top: 14px;
+    }
+
+    .bullet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .bullet-card {
+      padding: 18px 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--panel-soft);
+      color: var(--text);
+      line-height: 1.58;
+      min-height: 100%;
+    }
+
+    .note-card {
+      padding: 22px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      margin-top: 18px;
+    }
+
+    .closing-card {
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .closing-card p {
+      max-width: 58ch;
+      margin: 0 auto;
+    }
+
+    .closing-card .btn-row {
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        min-height: 360px;
+      }
+
+      .bullet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root { --nav-h: 64px; }
+
+      .brand {
+        font-size: 1.12rem;
+        letter-spacing: 0.18em;
+      }
+
+      .links {
+        gap: 14px;
+        font-size: 0.88rem;
+      }
+
+      main {
+        padding: 34px 0 56px;
+      }
+
+      .hero,
+      .section-card,
+      .closing-card {
+        padding: 22px 18px;
+        border-radius: 24px;
+      }
+
+      .hero-image {
+        min-height: 300px;
+      }
+
+      .bullet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/#top">
+        <span class="brand-mark">C</span>
+        <span>CALIBRAE</span>
+      </a>
+      <nav class="links">
+        <a class="nav-item" href="/#top">Home</a>
+        <a class="nav-item" href="/#layer-method-page">The Layer Method&#8482;</a>
+        <a class="nav-item" href="/#skin-page">Skin</a>
+        <a class="nav-item" href="/#injectables-page">Injectables</a>
+        <a class="nav-item" href="/danielle-wiley-pa-c">About Danielle</a>
+        <a class="nav-item" href="/#contact-page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page-shell">
+      <div class="crumbs">
+        <a href="/#injectables-page">Injectables</a>
+        <span>/</span>
+        <span>Botox</span>
+      </div>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="kicker">Botox</div>
+          <h1>Botox in Winchester, Virginia</h1>
+          <p class="subhead">Thoughtful neurotoxin treatment guided by facial movement, anatomy, and The Layer Method&#8482;.</p>
+          <p>At Calibrae, Botox is not approached as a one-size-fits-all treatment. Danielle Wiley, PA-C evaluates how facial movement contributes to lines, tension, balance, and expression before deciding where treatment makes sense. The goal is refined, natural-looking results that fit the face &mdash; not frozen features or automatic dosing.</p>
+          <div class="btn-row">
+            <a href="/#contact-page" class="btn primary">Request Consultation</a>
+            <a href="tel:+17035931948" class="btn secondary">Existing Patient? Call or Text</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="./images/injectables-syringe.png" alt="Botox consultation and treatment planning at Calibrae Institute of Aesthetic Medicine" />
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2>What Botox is</h2>
+        <p>Botox is a neuromodulator used to temporarily soften repetitive muscle activity that contributes to dynamic lines and expression-related aging. It is commonly used to improve concerns such as frown lines, forehead lines, crow&rsquo;s feet, and other areas where muscular pull affects facial appearance or balance.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>How Botox fits The Layer Method&#8482;</h2>
+        <p>Botox works within the movement layer. At Calibrae, treatment begins by identifying whether the visible concern is actually being driven by muscular activity. If movement is the driver, Botox may be the right first step. If structure, skin quality, or volume loss are more important, treatment may need to be staged differently.</p>
+        <p>Botox is not just about treating a wrinkle. It is about treating the movement that is creating it.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>What Botox may improve</h2>
+        <div class="bullet-grid">
+          <div class="bullet-card">Forehead lines</div>
+          <div class="bullet-card">Frown lines</div>
+          <div class="bullet-card">Crow&rsquo;s feet</div>
+          <div class="bullet-card">Brow balance</div>
+          <div class="bullet-card">Downturned corners of the mouth</div>
+          <div class="bullet-card">Chin dimpling</div>
+          <div class="bullet-card">Jawline or lower-face tension</div>
+          <div class="bullet-card">Neck banding in appropriate candidates</div>
+          <div class="bullet-card">Facial balance affected by repetitive movement</div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2>Who Botox is best for</h2>
+        <p>Botox may be a good fit for patients who want a more refined, rested appearance, want to soften repetitive expression lines, or want to begin treating movement before lines become more deeply etched. It is also useful for patients whose facial balance is being affected by muscular pull rather than volume loss alone.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>Botox vs Daxxify</h2>
+        <p>Both Botox and Daxxify are neuromodulators, but they are not treated as interchangeable by default. At Calibrae, the right product depends on your facial movement, goals, treatment history, and overall plan. The decision is made through consultation and assessment rather than by trend or assumption.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>What treatment is like</h2>
+        <p>Treatment is performed in office and typically takes only a short time. Danielle evaluates facial movement dynamically, maps the treatment plan, and places product strategically based on anatomy and how the face moves. Most patients return to normal activity the same day with standard post-care guidance.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>When results appear</h2>
+        <p>Results do not appear instantly. Most patients begin to notice softening over the next several days, with fuller effect typically developing within about 2 weeks. Your final result depends on the treatment areas, anatomy, dosing strategy, and how your muscles respond.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>A note on the Calibrae approach</h2>
+        <p>Calibrae does not begin with a preset number of areas or a generic formula. Danielle Wiley, PA-C uses diagnosis-first treatment planning to understand what is actually driving the concern before deciding whether Botox belongs in the plan.</p>
+      </section>
+
+      <section class="closing-card">
+        <div class="kicker">Next Step</div>
+        <h2>If you are considering Botox in Winchester, Virginia, request a consultation with Danielle Wiley, PA-C to determine whether movement is the true driver of your concern and whether Botox is the right first step.</h2>
+        <div class="btn-row">
+          <a href="/#contact-page" class="btn primary">Request Consultation</a>
+          <a href="tel:+17035931948" class="btn secondary">Existing Patient? Call or Text</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
