@@ -10,11 +10,11 @@
   <meta property="og:title" content="Sculptra in Winchester, VA | Danielle Wiley, PA-C | Calibrae Institute" />
   <meta property="og:description" content="Explore Sculptra treatments at Calibrae Institute in Winchester, Virginia. Danielle Wiley, PA-C uses diagnosis-first planning to support collagen, facial structure, skin firmness, and natural-looking restoration." />
   <meta property="og:url" content="https://www.calibraeinstitute.com/sculptra-winchester-va" />
-  <meta property="og:image" content="https://www.calibraeinstitute.com/images/entry-injectables-luxury.png" />
+  <meta property="og:image" content="https://www.calibraeinstitute.com/images/sculptra-hero-1537.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sculptra in Winchester, VA | Danielle Wiley, PA-C | Calibrae Institute" />
   <meta name="twitter:description" content="Diagnosis-first Sculptra planning for collagen, facial structure, skin firmness, and natural-looking restoration in Winchester, Virginia." />
-  <meta name="twitter:image" content="https://www.calibraeinstitute.com/images/entry-injectables-luxury.png" />
+  <meta name="twitter:image" content="https://www.calibraeinstitute.com/images/sculptra-hero-1537.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -372,8 +372,9 @@
     }
 
     .hero-image {
-      min-height: 460px;
-      height: 100%;
+      aspect-ratio: 1537 / 1023;
+      align-self: center;
+      height: auto;
       border-radius: 28px;
       overflow: hidden;
       background: rgba(255,255,255,0.04);
@@ -384,7 +385,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 36%;
+      object-position: center center;
     }
 
     .btn-row {
@@ -579,7 +580,6 @@
       }
 
       .hero-image {
-        min-height: 360px;
         height: auto;
       }
     }
@@ -613,7 +613,6 @@
       }
 
       .hero-image {
-        min-height: 300px;
         height: auto;
       }
 
@@ -675,7 +674,14 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="./images/entry-injectables-luxury.png" alt="Luxury clinical injectables setup for Sculptra collagen support treatment planning at Calibrae Institute of Aesthetic Medicine" />
+          <img
+            src="./images/sculptra-hero-1200.jpg"
+            srcset="./images/sculptra-hero-768.jpg 768w, ./images/sculptra-hero-1200.jpg 1200w, ./images/sculptra-hero-1537.jpg 1537w"
+            sizes="(max-width: 980px) calc(100vw - 76px), min(46vw, 570px)"
+            width="1537"
+            height="1023"
+            alt="Sculptra box and vial centered on a dark luxury surface for collagen support treatment planning at Calibrae Institute of Aesthetic Medicine"
+          />
         </div>
       </section>
 
