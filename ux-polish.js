@@ -128,6 +128,8 @@
       founderPhoto.style.backgroundImage = "url('/images/start-here-founder2.png')";
       founderPhoto.style.backgroundPosition = 'center 12%';
       founderPhoto.style.backgroundSize = 'cover';
+      founderPhoto.setAttribute('role', 'img');
+      founderPhoto.setAttribute('aria-label', 'Danielle Wiley, PA-C, founder and clinical provider at Calibrae Institute');
     }
   }
 
@@ -144,7 +146,7 @@
       },
       '/dermal-filler-winchester-va': {
         src: '/images/start-here-founder.jpg.png',
-        alt: 'Provider-led facial assessment representing dermal filler and facial balancing planning at Calibrae Institute'
+        alt: 'Danielle Wiley, PA-C representing provider-led facial assessment and facial balancing planning at Calibrae Institute'
       },
       '/lip-filler-winchester-va': {
         src: '/skin-closeup.png',
