@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  var BOOKING_URL = 'https://web2.myaestheticspro.com/BN/index.cfm?3B99CD1D946B564730D08902C37429094CFC2165279C2B6FC9B29ADF9D0A6FBB';
+
   function normalizePath(pathname) {
     var path = (pathname || '/').replace(/\/+$/, '');
     return path || '/';
@@ -22,6 +24,87 @@
     link.href = href;
     link.textContent = text;
     menu.appendChild(link);
+  }
+
+  function createBookingLink(className) {
+    var link = document.createElement('a');
+    link.href = BOOKING_URL;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = className || '';
+    link.textContent = 'Book Online';
+    link.setAttribute('aria-label', 'Book an appointment online with Calibrae Institute');
+    return link;
+  }
+
+  function ensureBookingStyles() {
+    if (document.getElementById('calibrae-booking-styles')) return;
+    var style = document.createElement('style');
+    style.id = 'calibrae-booking-styles';
+    style.textContent = [
+      '.booking-btn{background:rgba(255,255,255,0.10)!important;border-color:rgba(255,255,255,0.34)!important;color:var(--text,#f7f7f5)!important;font-weight:600!important;}',
+      '.booking-btn:hover{background:rgba(255,255,255,0.16)!important;border-color:rgba(255,255,255,0.50)!important;}',
+      '.booking-nav-link{display:inline-flex!important;align-items:center;justify-content:center;min-height:38px;padding:0 15px!important;border:1px solid rgba(255,255,255,0.26);border-radius:999px;background:rgba(255,255,255,0.08)!important;background-image:none!important;color:var(--text,#f7f7f5)!important;font-weight:600;white-space:nowrap;}',
+      '.booking-nav-link:hover{background:rgba(255,255,255,0.14)!important;border-color:rgba(255,255,255,0.42);background-size:0!important;}',
+      '.booking-footer-link{font-weight:600;}',
+      '@media(max-width:720px){.booking-nav-link{width:100%;min-height:44px;margin-top:4px;padding:0 16px!important;}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
+  function insertBookingButton(row, positionAfterFirst) {
+    if (!row || row.querySelector('a[href="' + BOOKING_URL + '"]')) return;
+    var booking = createBookingLink('btn booking-btn');
+    if (positionAfterFirst && row.firstElementChild) {
+      row.insertBefore(booking, row.firstElementChild.nextSibling);
+    } else {
+      row.appendChild(booking);
+    }
+  }
+
+  function homepageBookingPass() {
+    var path = normalizePath(window.location.pathname);
+    if (path !== '/' && path !== '/index.html') return;
+
+    var nav = document.querySelector('header.nav nav.links');
+    if (nav && !nav.querySelector('a[href="' + BOOKING_URL + '"]')) {
+      var bookingNav = createBookingLink('nav-item booking-nav-link');
+      var contactLink = nav.querySelector('a[href="#contact-page"]');
+      if (contactLink) {
+        nav.insertBefore(bookingNav, contactLink);
+      } else {
+        nav.appendChild(bookingNav);
+      }
+    }
+
+    insertBookingButton(document.querySelector('.hero .hero-copy .btn-row'), true);
+    insertBookingButton(document.querySelector('#contact-page .panel.stack .btn-row'), true);
+    insertBookingButton(document.querySelector('#final-cta .final-cta-actions'), true);
+
+    var footerLinks = document.querySelector('.footer .mini-links');
+    if (footerLinks && !footerLinks.querySelector('a[href="' + BOOKING_URL + '"]')) {
+      var footerBooking = createBookingLink('booking-footer-link');
+      footerLinks.insertBefore(footerBooking, footerLinks.firstChild);
+    }
+  }
+
+  var bookingPagePaths = {
+    '/botox-winchester-va': true,
+    '/daxxify-winchester-va': true,
+    '/dermal-filler-winchester-va': true,
+    '/lip-filler-winchester-va': true,
+    '/microneedling-winchester-va': true,
+    '/hair-restoration-winchester-va': true,
+    '/sculptra-winchester-va': true,
+    '/danielle-wiley-pa-c': true
+  };
+
+  function servicePageBookingPass() {
+    var path = normalizePath(window.location.pathname);
+    if (!bookingPagePaths[path]) return;
+
+    insertBookingButton(document.querySelector('.hero .btn-row'), true);
+    insertBookingButton(document.querySelector('.closing-card .btn-row'), true);
   }
 
   function homepageLinkPass() {
@@ -181,8 +264,11 @@
   }
 
   function run() {
+    ensureBookingStyles();
     homepageLinkPass();
+    homepageBookingPass();
     servicePageLinkPass();
+    servicePageBookingPass();
   }
 
   if (document.readyState === 'loading') {
