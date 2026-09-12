@@ -23,6 +23,22 @@
     document.head.appendChild(link);
   }
 
+  function ensurePolishStyles() {
+    if (document.getElementById('calibrae-ux-polish-styles')) return;
+
+    var style = document.createElement('style');
+    style.id = 'calibrae-ux-polish-styles';
+    style.textContent = [
+      '.ux-treatment-visual{margin:0 0 30px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.025);box-shadow:0 18px 44px rgba(0,0,0,0.14);}',
+      '.ux-treatment-visual img{display:block;width:100%;max-height:430px;object-fit:cover;object-position:center;}',
+      '.hero-image img{transition:transform .35s ease,filter .35s ease;}',
+      '.hero-image:hover img{transform:scale(1.015);}',
+      '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;}.ux-treatment-visual img{max-height:300px;}.hero-image:hover img{transform:none;}}',
+      '@media(prefers-reduced-motion:reduce){.hero-image img{transition:none!important;transform:none!important;}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
   function improveConsultationTargets() {
     var path = normalizePath(window.location.pathname);
     var onHomepage = path === '/' || path === '/index.html';
@@ -61,12 +77,80 @@
       skinServicePanel.style.backgroundSize = 'cover';
     }
 
+    var injectablesServicePanel = document.querySelector('#services-home .service-panel.injectables');
+    if (injectablesServicePanel) {
+      injectablesServicePanel.style.backgroundImage = "url('/images/sculptra-hero-1537.jpg')";
+      injectablesServicePanel.style.backgroundPosition = 'center 44%';
+      injectablesServicePanel.style.backgroundSize = 'cover';
+    }
+
+    var treatmentSection = document.querySelector('#treatments-layer-method-home .wrap');
+    var treatmentIntro = treatmentSection ? treatmentSection.querySelector('.treatment-method-intro') : null;
+    if (treatmentSection && treatmentIntro && !treatmentSection.querySelector('.ux-treatment-visual')) {
+      var treatmentVisual = document.createElement('div');
+      treatmentVisual.className = 'ux-treatment-visual reveal-image is-visible';
+
+      var treatmentImage = document.createElement('img');
+      treatmentImage.src = '/images/layer-method-principles.png.png';
+      treatmentImage.alt = 'Calibrae Layer Method visual showing the relationship between structure, movement, skin quality, and treatment planning';
+      treatmentImage.loading = 'lazy';
+      treatmentImage.decoding = 'async';
+
+      treatmentVisual.appendChild(treatmentImage);
+      treatmentIntro.insertAdjacentElement('afterend', treatmentVisual);
+    }
+
     var founderPhoto = document.querySelector('#about-home .about-home-photo');
     if (founderPhoto) {
       founderPhoto.style.backgroundImage = "url('/images/start-here-founder2.png')";
       founderPhoto.style.backgroundPosition = 'center 12%';
       founderPhoto.style.backgroundSize = 'cover';
     }
+  }
+
+  function refreshServiceHeroImages() {
+    var path = normalizePath(window.location.pathname);
+    var map = {
+      '/botox-winchester-va': {
+        src: '/images/entry-injectables-luxury.png',
+        alt: 'Refined clinical injectables setting representing Botox treatment planning at Calibrae Institute'
+      },
+      '/daxxify-winchester-va': {
+        src: '/images/sitehero1.jpg',
+        alt: 'Editorial facial image representing movement-focused Daxxify treatment planning at Calibrae Institute'
+      },
+      '/dermal-filler-winchester-va': {
+        src: '/images/start-here-founder.jpg.png',
+        alt: 'Provider-led facial assessment representing dermal filler and facial balancing planning at Calibrae Institute'
+      },
+      '/lip-filler-winchester-va': {
+        src: '/skin-closeup.png',
+        alt: 'Close facial detail representing lip proportion, framing, and lower-face treatment planning at Calibrae Institute'
+      },
+      '/microneedling-winchester-va': {
+        src: '/images/entry-skin-luxury.png',
+        alt: 'Clinical skin-quality image representing microneedling treatment planning at Calibrae Institute'
+      }
+    };
+
+    var config = map[path];
+    if (!config) return;
+
+    var image = document.querySelector('.hero .hero-image img');
+    if (!image) return;
+
+    image.src = config.src;
+    image.alt = config.alt;
+    image.loading = 'eager';
+    image.decoding = 'async';
+  }
+
+  function improveExternalActionLabels() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[target="_blank"]'), function (link) {
+      if (!link.rel || link.rel.indexOf('noopener') === -1) {
+        link.rel = (link.rel ? link.rel + ' ' : '') + 'noopener';
+      }
+    });
   }
 
   function correctVisiblePolish() {
@@ -79,8 +163,11 @@
 
   function run() {
     ensureFavicon();
+    ensurePolishStyles();
     improveConsultationTargets();
     refreshHomepageImages();
+    refreshServiceHeroImages();
+    improveExternalActionLabels();
     correctVisiblePolish();
   }
 
