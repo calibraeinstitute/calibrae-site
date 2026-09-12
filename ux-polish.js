@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  var BOOKING_URL = 'https://web2.myaestheticspro.com/BN/index.cfm?3B99CD1D946B564730D08902C37429094CFC2165279C2B6FC9B29ADF9D0A6FBB';
+
   function normalizePath(pathname) {
     var path = (pathname || '/').replace(/\/+$/, '');
     return path || '/';
@@ -44,6 +46,7 @@
       '.hero-image:hover img{transform:scale(1.015);}',
       '#contact-page .ux-phone-actions{display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:4px;}',
       '#contact-page .ux-phone-actions a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}',
+      '.ux-booking-confirmed{box-shadow:0 10px 24px rgba(0,0,0,0.12);}',
       '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;}.ux-treatment-visual img{max-height:300px;}.hero-image:hover img{transform:none;}.calibrae-service-page .nav-inner{flex-wrap:wrap;padding:10px 0;}.calibrae-service-page .nav .links{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:18px;padding:2px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.calibrae-service-page .nav .links::-webkit-scrollbar{display:none;}.calibrae-service-page .nav .links a{white-space:nowrap;flex:0 0 auto;}}',
       '@media(prefers-reduced-motion:reduce){.hero-image img{transition:none!important;transform:none!important;}}'
     ].join('');
@@ -61,6 +64,19 @@
       } else if (!onHomepage && link.getAttribute('href') === '/#contact-page') {
         link.setAttribute('href', '/#contact-request-form');
       }
+    });
+  }
+
+  function verifyBookingActions() {
+    Array.prototype.forEach.call(document.querySelectorAll('a'), function (link) {
+      var label = link.textContent.trim().toLowerCase();
+      if (label !== 'book online' && label !== 'book now') return;
+
+      link.href = BOOKING_URL;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('aria-label', 'Book an appointment online with Calibrae Institute');
+      link.classList.add('ux-booking-confirmed');
     });
   }
 
@@ -195,6 +211,7 @@
     refreshHomepageImages();
     refreshServiceHeroImages();
     improveExternalActionLabels();
+    verifyBookingActions();
     correctVisiblePolish();
   }
 
