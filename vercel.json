@@ -20,6 +20,60 @@
       ]
     },
     {
+      "source": "/daxxify-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/daxxify-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/dermal-filler-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/dermal-filler-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/lip-filler-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/lip-filler-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/microneedling-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/microneedling-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/hair-restoration-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/hair-restoration-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/sculptra-winchester-va",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.calibraeinstitute.com/sculptra-winchester-va>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
       "source": "/danielle-wiley-pa-c",
       "headers": [
         {
