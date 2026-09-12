@@ -40,15 +40,21 @@
     var style = document.createElement('style');
     style.id = 'calibrae-ux-polish-styles';
     style.textContent = [
-      '.ux-treatment-visual{margin:0 0 30px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.025);box-shadow:0 18px 44px rgba(0,0,0,0.14);}',
-      '.ux-treatment-visual img{display:block;width:100%;max-height:430px;object-fit:cover;object-position:center;}',
+      '.ux-treatment-visual{margin:0 0 30px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:#f2efea;box-shadow:0 18px 44px rgba(0,0,0,0.14);display:flex;align-items:center;justify-content:center;min-height:300px;}',
+      '.ux-treatment-visual img{display:block;width:100%;height:420px;object-fit:contain;object-position:center center;background:#f2efea;}',
+      '.ux-start-here-image{width:100%!important;height:320px!important;object-fit:cover!important;object-position:50% 30%!important;}',
       '.hero-image img{transition:transform .35s ease,filter .35s ease;}',
       '.hero-image:hover img{transform:scale(1.015);}',
       '#contact-page .ux-phone-actions{display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:4px;}',
       '#contact-page .ux-phone-actions a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}',
       '.ux-booking-confirmed{box-shadow:0 10px 24px rgba(0,0,0,0.12);}',
-      '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;}.ux-treatment-visual img{max-height:300px;}.hero-image:hover img{transform:none;}.calibrae-service-page .nav-inner{flex-wrap:wrap;padding:10px 0;}.calibrae-service-page .nav .links{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:18px;padding:2px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.calibrae-service-page .nav .links::-webkit-scrollbar{display:none;}.calibrae-service-page .nav .links a{white-space:nowrap;flex:0 0 auto;}}',
-      '@media(prefers-reduced-motion:reduce){.hero-image img{transition:none!important;transform:none!important;}}'
+      '.ux-booking-nav{display:inline-flex!important;align-items:center;justify-content:center;min-height:40px;padding:0 17px!important;border-radius:999px!important;border:1px solid #f7f7f5!important;background:#f7f7f5!important;background-image:none!important;color:#1d1d1d!important;font-weight:700!important;white-space:nowrap;}',
+      '.ux-booking-nav:hover{background:#fff!important;border-color:#fff!important;color:#111!important;transform:translateY(-1px);}',
+      '.ux-booking-cta{background:#f7f7f5!important;color:#1d1d1d!important;border-color:#f7f7f5!important;font-weight:700!important;}',
+      '.ux-booking-cta:hover{background:#fff!important;border-color:#fff!important;color:#111!important;}',
+      '.ux-mobile-booking{display:none;}',
+      '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;min-height:220px;}.ux-treatment-visual img{height:280px;object-fit:contain;}.ux-start-here-image{height:280px!important;object-position:50% 28%!important;}.hero-image:hover img{transform:none;}.calibrae-service-page .nav-inner{flex-wrap:wrap;padding:10px 0;}.calibrae-service-page .nav .links{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:18px;padding:2px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.calibrae-service-page .nav .links::-webkit-scrollbar{display:none;}.calibrae-service-page .nav .links a{white-space:nowrap;flex:0 0 auto;}.ux-booking-nav{min-height:44px;}.ux-mobile-booking{display:flex;position:fixed;left:14px;right:14px;bottom:14px;z-index:9999;align-items:center;justify-content:center;min-height:54px;border-radius:999px;background:#f7f7f5;color:#171717!important;border:1px solid rgba(0,0,0,.08);box-shadow:0 14px 36px rgba(0,0,0,.28);font-weight:700;letter-spacing:.02em;}.ux-has-mobile-booking{padding-bottom:82px;}}',
+      '@media(prefers-reduced-motion:reduce){.hero-image img{transition:none!important;transform:none!important;}.ux-booking-nav{transition:none!important;}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -67,10 +73,96 @@
     });
   }
 
+  function isBookingLink(link) {
+    if (!link) return false;
+    var href = link.getAttribute('href') || '';
+    var label = (link.textContent || '').trim().toLowerCase();
+    return href.indexOf('myaestheticspro.com/BN/index.cfm') !== -1 || label === 'book online' || label === 'book now';
+  }
+
+  function findBookingLink(container) {
+    if (!container) return null;
+    return Array.prototype.find.call(container.querySelectorAll('a'), isBookingLink) || null;
+  }
+
+  function makeBookingLink(className) {
+    var link = document.createElement('a');
+    link.href = BOOKING_URL;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'Book Online';
+    link.setAttribute('aria-label', 'Book an appointment online with Calibrae Institute');
+    link.className = className || '';
+    return link;
+  }
+
+  function ensureBookingInContainer(container, className, insertFirst) {
+    if (!container) return null;
+
+    var existing = findBookingLink(container);
+    if (existing) {
+      if (className) {
+        className.split(' ').forEach(function (name) {
+          if (name) existing.classList.add(name);
+        });
+      }
+      return existing;
+    }
+
+    var link = makeBookingLink(className);
+    if (insertFirst && container.firstElementChild) {
+      container.insertBefore(link, container.firstElementChild);
+    } else {
+      container.appendChild(link);
+    }
+    return link;
+  }
+
+  function ensureVisibleBookingCTAs() {
+    var nav = document.querySelector('header.nav nav.links');
+    if (nav) {
+      var existingNavBooking = findBookingLink(nav);
+      if (existingNavBooking) {
+        existingNavBooking.classList.add('ux-booking-nav');
+      } else {
+        var navBooking = makeBookingLink('nav-item ux-booking-nav');
+        var contactLink = nav.querySelector('a[href="#contact-page"], a[href="/#contact-page"]');
+        if (contactLink) nav.insertBefore(navBooking, contactLink);
+        else nav.appendChild(navBooking);
+      }
+    }
+
+    if (isHomepage()) {
+      ensureBookingInContainer(document.querySelector('.hero .btn-row'), 'btn ux-booking-cta', false);
+
+      var startHereCard = Array.prototype.find.call(document.querySelectorAll('#entry-points article.card'), function (card) {
+        var heading = card.querySelector('h3');
+        return heading && heading.textContent.trim() === 'Start Here';
+      });
+      if (startHereCard) {
+        ensureBookingInContainer(startHereCard.querySelector('.entry-actions'), 'btn ux-booking-cta', false);
+      }
+
+      ensureBookingInContainer(document.querySelector('#contact-page .panel.stack .btn-row'), 'btn ux-booking-cta', false);
+      ensureBookingInContainer(document.querySelector('#final-cta .final-cta-actions, #final-cta .btn-row'), 'btn ux-booking-cta', false);
+
+      var footerLinks = document.querySelector('.footer .mini-links');
+      if (footerLinks) ensureBookingInContainer(footerLinks, 'ux-booking-confirmed', true);
+    } else {
+      ensureBookingInContainer(document.querySelector('.hero .btn-row'), 'btn ux-booking-cta', false);
+      ensureBookingInContainer(document.querySelector('.closing-card .btn-row'), 'btn ux-booking-cta', false);
+    }
+
+    if (!document.querySelector('.ux-mobile-booking')) {
+      var mobileBooking = makeBookingLink('ux-mobile-booking');
+      document.body.appendChild(mobileBooking);
+      document.body.classList.add('ux-has-mobile-booking');
+    }
+  }
+
   function verifyBookingActions() {
     Array.prototype.forEach.call(document.querySelectorAll('a'), function (link) {
-      var label = link.textContent.trim().toLowerCase();
-      if (label !== 'book online' && label !== 'book now') return;
+      if (!isBookingLink(link)) return;
 
       link.href = BOOKING_URL;
       link.target = '_blank';
@@ -104,8 +196,11 @@
     if (startHereCard) {
       var startHereImage = startHereCard.querySelector('img.entry-image');
       if (startHereImage) {
-        startHereImage.src = '/images/entry-start-here-clinic.png';
-        startHereImage.alt = 'Calibrae Institute consultation setting in Winchester, Virginia';
+        startHereImage.src = '/images/start-here-founder.jpg.png';
+        startHereImage.alt = 'Provider-led consultation and treatment planning at Calibrae Institute in Winchester, Virginia';
+        startHereImage.classList.add('ux-start-here-image');
+        startHereImage.loading = 'lazy';
+        startHereImage.decoding = 'async';
       }
     }
 
@@ -125,18 +220,27 @@
 
     var treatmentSection = document.querySelector('#treatments-layer-method-home .wrap');
     var treatmentIntro = treatmentSection ? treatmentSection.querySelector('.treatment-method-intro') : null;
-    if (treatmentSection && treatmentIntro && !treatmentSection.querySelector('.ux-treatment-visual')) {
-      var treatmentVisual = document.createElement('div');
-      treatmentVisual.className = 'ux-treatment-visual reveal-image is-visible';
+    if (treatmentSection && treatmentIntro) {
+      var treatmentVisual = treatmentSection.querySelector('.ux-treatment-visual');
+      if (!treatmentVisual) {
+        treatmentVisual = document.createElement('div');
+        treatmentVisual.className = 'ux-treatment-visual reveal-image is-visible';
 
-      var treatmentImage = document.createElement('img');
-      treatmentImage.src = '/images/layer-method-principles.png.png';
-      treatmentImage.alt = 'Calibrae Layer Method visual showing the relationship between structure, movement, skin quality, and treatment planning';
-      treatmentImage.loading = 'lazy';
-      treatmentImage.decoding = 'async';
+        var treatmentImage = document.createElement('img');
+        treatmentImage.src = '/images/layer-method-principles.png.png';
+        treatmentImage.alt = 'Calibrae Layer Method principles for diagnosis-first treatment planning';
+        treatmentImage.loading = 'lazy';
+        treatmentImage.decoding = 'async';
 
-      treatmentVisual.appendChild(treatmentImage);
-      treatmentIntro.insertAdjacentElement('afterend', treatmentVisual);
+        treatmentVisual.appendChild(treatmentImage);
+        treatmentIntro.insertAdjacentElement('afterend', treatmentVisual);
+      } else {
+        var existingTreatmentImage = treatmentVisual.querySelector('img');
+        if (existingTreatmentImage) {
+          existingTreatmentImage.style.objectFit = 'contain';
+          existingTreatmentImage.style.objectPosition = 'center center';
+        }
+      }
     }
 
     var founderPhoto = document.querySelector('#about-home .about-home-photo');
@@ -210,6 +314,7 @@
     improveContactActions();
     refreshHomepageImages();
     refreshServiceHeroImages();
+    ensureVisibleBookingCTAs();
     improveExternalActionLabels();
     verifyBookingActions();
     correctVisiblePolish();
