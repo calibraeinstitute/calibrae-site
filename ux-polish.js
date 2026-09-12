@@ -6,6 +6,15 @@
     return path || '/';
   }
 
+  function getPath() {
+    return normalizePath(window.location.pathname);
+  }
+
+  function isHomepage() {
+    var path = getPath();
+    return path === '/' || path === '/index.html';
+  }
+
   function ensureFavicon() {
     var existing = document.querySelector('link[rel~="icon"]');
     if (existing) {
@@ -33,15 +42,16 @@
       '.ux-treatment-visual img{display:block;width:100%;max-height:430px;object-fit:cover;object-position:center;}',
       '.hero-image img{transition:transform .35s ease,filter .35s ease;}',
       '.hero-image:hover img{transform:scale(1.015);}',
-      '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;}.ux-treatment-visual img{max-height:300px;}.hero-image:hover img{transform:none;}}',
+      '#contact-page .ux-phone-actions{display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:4px;}',
+      '#contact-page .ux-phone-actions a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}',
+      '@media(max-width:720px){.ux-treatment-visual{margin-bottom:22px;border-radius:22px;}.ux-treatment-visual img{max-height:300px;}.hero-image:hover img{transform:none;}.calibrae-service-page .nav-inner{flex-wrap:wrap;padding:10px 0;}.calibrae-service-page .nav .links{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:18px;padding:2px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.calibrae-service-page .nav .links::-webkit-scrollbar{display:none;}.calibrae-service-page .nav .links a{white-space:nowrap;flex:0 0 auto;}}',
       '@media(prefers-reduced-motion:reduce){.hero-image img{transition:none!important;transform:none!important;}}'
     ].join('');
     document.head.appendChild(style);
   }
 
   function improveConsultationTargets() {
-    var path = normalizePath(window.location.pathname);
-    var onHomepage = path === '/' || path === '/index.html';
+    var onHomepage = isHomepage();
 
     Array.prototype.forEach.call(document.querySelectorAll('a.btn'), function (link) {
       if (link.textContent.trim() !== 'Request Consultation') return;
@@ -54,9 +64,22 @@
     });
   }
 
+  function improveContactActions() {
+    if (!isHomepage()) return;
+
+    var contactInfo = document.querySelector('#contact-page .small');
+    if (!contactInfo || contactInfo.querySelector('.ux-phone-actions')) return;
+
+    var phoneBlock = Array.prototype.find.call(contactInfo.children, function (node) {
+      return node.textContent && node.textContent.trim().indexOf('Phone') === 0;
+    });
+    if (!phoneBlock) return;
+
+    phoneBlock.innerHTML = '<strong>Phone</strong><br /><span class="ux-phone-actions"><a href="tel:+17035931948">Call (703) 593-1948</a><a href="sms:+17035931948">Text Calibrae</a></span>';
+  }
+
   function refreshHomepageImages() {
-    var path = normalizePath(window.location.pathname);
-    if (path !== '/' && path !== '/index.html') return;
+    if (!isHomepage()) return;
 
     var startHereCard = Array.prototype.find.call(document.querySelectorAll('#entry-points article.card'), function (card) {
       var heading = card.querySelector('h3');
@@ -109,7 +132,7 @@
   }
 
   function refreshServiceHeroImages() {
-    var path = normalizePath(window.location.pathname);
+    var path = getPath();
     var map = {
       '/botox-winchester-va': {
         src: '/images/entry-injectables-luxury.png',
@@ -162,9 +185,11 @@
   }
 
   function run() {
+    if (!isHomepage()) document.body.classList.add('calibrae-service-page');
     ensureFavicon();
     ensurePolishStyles();
     improveConsultationTargets();
+    improveContactActions();
     refreshHomepageImages();
     refreshServiceHeroImages();
     improveExternalActionLabels();
