@@ -20,7 +20,7 @@
   function ensureFavicon() {
     var existing = document.querySelector('link[rel~="icon"]');
     if (existing) {
-      existing.href = '/favicon.png';
+      existing.href = '/favicon.png?v=20260918';
       existing.type = 'image/png';
       existing.setAttribute('sizes', '96x96');
       return;
@@ -30,7 +30,7 @@
     link.rel = 'icon';
     link.type = 'image/png';
     link.sizes = '96x96';
-    link.href = '/favicon.png';
+    link.href = '/favicon.png?v=20260918';
     document.head.appendChild(link);
   }
 
