@@ -81,6 +81,15 @@
           "value": "<https://www.calibraeinstitute.com/danielle-wiley-pa-c>; rel=\"canonical\""
         }
       ]
+    },
+    {
+      "source": "/booking-confirmed",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
   ]
 }
