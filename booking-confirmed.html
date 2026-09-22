@@ -223,14 +223,26 @@
       // redirects to the clean URL without preserving query parameters.
       if (!markedComplete && !fromAestheticsPro) return;
 
-      var firedKey = 'calibrae_online_appointment_booked_fired';
-
+      // Do not count a browser refresh as another booking. Unlike a session-wide
+      // storage flag, this still allows a genuinely separate booking later in the
+      // same browser session to be counted.
+      var isReload = false;
       try {
-        if (sessionStorage.getItem(firedKey) === '1') return;
-        sessionStorage.setItem(firedKey, '1');
+        var navigationEntries = window.performance &&
+          typeof window.performance.getEntriesByType === 'function'
+          ? window.performance.getEntriesByType('navigation')
+          : [];
+        isReload = navigationEntries.length > 0 && navigationEntries[0].type === 'reload';
+
+        // Legacy fallback for older browsers.
+        if (!navigationEntries.length && window.performance && window.performance.navigation) {
+          isReload = window.performance.navigation.type === 1;
+        }
       } catch (error) {
-        // If storage is unavailable, history cleanup below still prevents most refresh repeats.
+        isReload = false;
       }
+
+      if (isReload) return;
 
       gtag('event', 'conversion', {
         'send_to': 'AW-18178251952/tS0qCKr9vIEdELC5iNxD'
